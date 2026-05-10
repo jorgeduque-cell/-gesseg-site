@@ -1,0 +1,15 @@
+{
+  "name": "gesseg-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "GESSEG Colombia S.A.S — Seguridad y Salud en el Trabajo",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}

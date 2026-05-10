@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gesseg.com.co/sitemap.xml

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1D3F"/>
+      <stop offset="60%" stop-color="#1F3463"/>
+      <stop offset="100%" stop-color="#06122B"/>
+    </linearGradient>
+    <radialGradient id="warmth" cx="80%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#B8542A" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#B8542A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#warmth)"/>
+
+  <g stroke="rgba(245,240,230,0.06)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <rect x="80" y="80" width="56" height="56" rx="10" fill="#F5F0E6"/>
+  <text x="108" y="124" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-weight="500" font-size="40" fill="#0B1D3F">G</text>
+  <text x="156" y="111" font-family="Georgia, serif" font-weight="500" font-size="22" letter-spacing="3" fill="#F5F0E6">GESSEG</text>
+  <text x="156" y="132" font-family="monospace" font-size="11" letter-spacing="3" fill="#A29D92">COLOMBIA S.A.S</text>
+
+  <text x="80" y="350" font-family="Georgia, 'Times New Roman', serif" font-weight="350" font-size="78" fill="#F5F0E6" letter-spacing="-2">Seguridad y Salud</text>
+  <text x="80" y="430" font-family="Georgia, 'Times New Roman', serif" font-weight="350" font-style="italic" font-size="78" fill="#E8C4A6" letter-spacing="-2">en el Trabajo.</text>
+
+  <line x1="80" y1="480" x2="160" y2="480" stroke="#B8542A" stroke-width="2"/>
+  <text x="80" y="525" font-family="monospace" font-size="18" letter-spacing="2" fill="rgba(245,240,230,0.8)">SG-SST · DECRETO 1072 / 2015 · RESOLUCIÓN 0312</text>
+  <text x="80" y="555" font-family="monospace" font-size="14" letter-spacing="2" fill="rgba(245,240,230,0.55)">CONSULTORÍA ESPECIALIZADA · BOGOTÁ, COLOMBIA</text>
+
+  <g transform="translate(950, 280)">
+    <circle cx="0" cy="0" r="140" fill="none" stroke="#E8C4A6" stroke-opacity="0.2" stroke-width="1"/>
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#E8C4A6" stroke-opacity="0.35" stroke-width="1"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#E8C4A6" stroke-opacity="0.6" stroke-width="1"/>
+    <path d="M0 -80 L60 -55 L60 10 Q60 60 0 90 Q-60 60 -60 10 L-60 -55 Z"
+          fill="rgba(245,240,230,0.05)"
+          stroke="#E8C4A6" stroke-width="1.5" stroke-opacity="0.7"/>
+    <path d="M-25 5 L-5 25 L30 -15"
+          fill="none"
+          stroke="#E8C4A6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
