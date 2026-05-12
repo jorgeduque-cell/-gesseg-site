@@ -1,78 +1,59 @@
-# =====================================================
-# CONTENIDO EDITABLE DEL SITIO GESSEG
-# =====================================================
-# Este archivo controla todos los textos e imágenes que
-# pueden cambiar sin tocar código. Decap CMS edita este
-# archivo a través de un panel web (gesseg.com.co/admin).
-# =====================================================
-
-# ----- HERO (portada) -----
 hero:
-  badge: "Licenciados · **Decreto 1072 / 2015**"
-  title: "Protegemos la *vida* de quienes *sostienen* su organización."
-  lede: "Diseñamos, implementamos y auditamos Sistemas de Gestión de SST bajo el Decreto 1072 de 2015 y los estándares mínimos de la Resolución 0312."
-  photo: "/helmet-logo.jpg"
-  photo_alt: "Profesional de SST con casco de seguridad marcado con el logo GESSEG"
-
-# ----- 3 SERVICIOS DESTACADOS (Lo que más nos piden) -----
+  badge: Licenciados · **Decreta 1072 / 2015**
+  title: Protegemos la *vida* de quienes *sostienen* su organización.
+  lede: Diseñamos, implementamos y auditamos Sistemas de Gestión de SST bajo el Decreto 1072 de 2015 y los estándares mínimos de la Resolución 0312.
+  photo: /helmet-logo.jpg
+  photo_alt: Profesional de SST con casco de seguridad marcado con el logo GESSEG
 featured_services:
   - id: sgsst
-    badge: "01 · Más solicitado"
-    title: "Implementación SG-SST"
-    description: "No solo entregamos documentos. Dejamos un sistema funcional, listo para auditorías, contratos y requerimientos legales."
+    badge: 01 · Más solicitado
+    title: Implementación SG-SST
+    description: No solo entregamos documentos. Dejamos un sistema funcional, listo para auditorías, contratos y requerimientos legales.
     points:
-      - "+85% de avance en aproximadamente 4 meses"
-      - "Cumplimiento Decreto 1072 / Resolución 0312"
-      - "Tercerización completa del sistema"
-      - "Optimiza la reinversión de su ARL"
-    photo: "/servicio-sgsst.jpg"
-    photo_alt: "Consultora GESSEG revisando documentación técnica del SG-SST en oficina"
-
+      - +85% de avance en aproximadamente 4 meses
+      - Cumplimiento Decreto 1072 / Resolución 0312
+      - Tercerización completa del sistema
+      - Optimiza la reinversión de su ARL
+    photo: /servicio-sgsst.jpg
+    photo_alt: Consultora GESSEG revisando documentación técnica del SG-SST en oficina
   - id: emergencias
-    badge: "02 · Paquete integral"
-    title: "Plan de Emergencias"
-    description: "Preparamos a su empresa para responder con certeza ante cualquier evento que afecte la seguridad o la operación."
+    badge: 02 · Paquete integral
+    title: Plan de Emergencias
+    description: Preparamos a su empresa para responder con certeza ante cualquier evento que afecte la seguridad o la operación.
     points:
-      - "Análisis de vulnerabilidad y procedimientos"
-      - "Conformación de brigada + simulacro"
-      - "Planos de evacuación y socialización"
-      - "Entrega 100% digital · 15 días hábiles"
-    photo: "/plan-emergencias.jpg"
-    photo_alt: "Equipo GESSEG diseñando planos de evacuación con brigadas de emergencia"
-
+      - Análisis de vulnerabilidad y procedimientos
+      - Conformación de brigada + simulacro
+      - Planos de evacuación y socialización
+      - Entrega 100% digital · 15 días hábiles
+    photo: /plan-emergencias.jpg
+    photo_alt: Equipo GESSEG diseñando planos de evacuación con brigadas de emergencia
   - id: auditorias
-    badge: "03 · Diagnóstico real"
-    title: "Auditorías Internas"
-    description: "Evaluamos el estado real de su SG-SST: dónde está, qué le falta y qué priorizar para llegar al cumplimiento."
+    badge: 03 · Diagnóstico real
+    title: Auditorías Internas
+    description: 'Evaluamos el estado real de su SG-SST: dónde está, qué le falta y qué priorizar para llegar al cumplimiento.'
     points:
-      - "Identificación de oportunidades de mejora"
-      - "Hallazgos accionables con responsables"
-      - "Decreto 1072 / Resolución 0312"
-      - "Preparación ante visitas y requerimientos"
-    photo: "/servicio-auditorias.jpg"
-    photo_alt: "Reunión de auditoría interna del SG-SST con equipo directivo"
-
-# ----- PREGUNTAS FRECUENTES -----
+      - Identificación de oportunidades de mejora
+      - Hallazgos accionables con responsables
+      - Decreto 1072 / Resolución 0312
+      - Preparación ante visitas y requerimientos
+    photo: /servicio-auditorias.jpg
+    photo_alt: Reunión de auditoría interna del SG-SST con equipo directivo
 faq:
-  - question: "¿La asesoría con GESSEG tiene costo?"
-    answer: "**No.** La reunión incluye un diagnóstico inicial y es completamente gratuita, para que conozcas exactamente qué necesita tu empresa."
-  - question: "¿Cuánto cuesta implementar el SG-SST?"
-    answer: "El valor depende de las características de tu empresa: número de trabajadores, nivel de riesgo, sector, entre otros. **En GESSEG te damos un diagnóstico claro y una propuesta ajustada a tu necesidad.**"
-  - question: "¿Mi ARL no debería encargarse del SG-SST?"
-    answer: "**No.** La ARL brinda acompañamiento, pero no implementa el sistema por completo. Nosotros te ayudamos a gestionar ese apoyo de acuerdo a los aportes que realiza tu empresa, para que realmente obtengas beneficios."
-  - question: "¿El SG-SST me sirve para licitaciones o contratos?"
-    answer: "**Sí.** Muchas empresas exigen el cumplimiento del SG-SST como requisito para contratar o participar en procesos comerciales."
-
-# ----- DATOS DE CONTACTO (footers + topbar + WhatsApp) -----
+  - question: ¿La asesoría con GESSEG tiene costo?
+    answer: '**No.** La reunión incluye un diagnóstico inicial y es completamente gratuita, para que conozcas exactamente qué necesita tu empresa.'
+  - question: ¿Cuánto cuesta implementar el SG-SST?
+    answer: 'El valor depende de las características de tu empresa: número de trabajadores, nivel de riesgo, sector, entre otros. **En GESSEG te damos un diagnóstico claro y una propuesta ajustada a tu necesidad.**'
+  - question: ¿Mi ARL no debería encargarse del SG-SST?
+    answer: '**No.** La ARL brinda acompañamiento, pero no implementa el sistema por completo. Nosotros te ayudamos a gestionar ese apoyo de acuerdo a los aportes que realiza tu empresa, para que realmente obtengas beneficios.'
+  - question: ¿El SG-SST me sirve para licitaciones o contratos?
+    answer: '**Sí.** Muchas empresas exigen el cumplimiento del SG-SST como requisito para contratar o participar en procesos comerciales.'
 contact:
-  phone: "+57 304 390 0623"
-  phone_url: "tel:+573043900623"
-  whatsapp: "573043900623"
-  email: "contacto@gesseg.com.co"
-  city: "Bogotá D.C., Colombia"
-  hours: "Lun – Vie · 8:00 a 18:00"
-
-# ----- REDES SOCIALES -----
+  phone: +57 304 390 0623
+  phone_url: tel:+573043900623
+  whatsapp: '573043900623'
+  email: contacto@gesseg.com.co
+  city: Bogotá D.C., Colombia
+  hours: Lun – Vie · 8:00 a 18:00
 social:
-  instagram: "https://www.instagram.com/gesseg_colombia"
-  facebook: "https://www.facebook.com/share/18q2nj233A/"
+  instagram: https://www.instagram.com/gesseg_colombia
+  facebook: https://www.facebook.com/share/18q2nj233A/
