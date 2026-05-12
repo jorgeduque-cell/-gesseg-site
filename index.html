@@ -111,12 +111,10 @@
     <div class="hero-text reveal">
       <span class="hero-badge">
         <span class="dot"></span>
-        <span>Licenciados · <strong>Decreto 1072 / 2015</strong></span>
+        <span>{{{hero.badge}}}</span>
       </span>
-      <h1 class="hero-title">
-        Protegemos la <em>vida</em> de quienes <em>sostienen</em> su organización.
-      </h1>
-      <p class="lede">Diseñamos, implementamos y auditamos Sistemas de Gestión de SST bajo el Decreto 1072 de 2015 y los estándares mínimos de la Resolución 0312.</p>
+      <h1 class="hero-title">{{{hero.title}}}</h1>
+      <p class="lede">{{hero.lede}}</p>
       <div class="hero-actions">
         <a href="servicios.html" class="btn btn-primary btn-arrow">Conocer servicios</a>
         <a href="contacto.html" class="btn btn-ghost">Hablar con un asesor</a>
@@ -130,7 +128,7 @@
     </div>
 
     <div class="hero-visual reveal delay-1">
-      <img class="hero-photo" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1100&h=1300&q=85&auto=format&fit=crop" alt="Reunión profesional de asesoría en seguridad y salud en el trabajo" loading="eager" fetchpriority="high">
+      <img class="hero-photo" src="{{hero.photo}}" alt="{{hero.photo_alt}}" loading="eager" fetchpriority="high">
       <span class="vsignal tl">SG-SST · 2026</span>
       <span class="vsignal br">PHVA · ISO 45001</span>
       <span class="vmark">Cumplimiento <span>medible.</span></span>
@@ -190,59 +188,24 @@
   </div>
 
   <div class="featured-grid reveal delay-1">
+    {{#each featured_services}}
     <article class="featured-card">
-      <a href="servicios.html#sgsst" class="featured-image" aria-label="Implementación SG-SST">
-        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80&auto=format&fit=crop" alt="Trabajador con casco y EPP" loading="lazy">
-        <span class="featured-tag">01 · Más solicitado</span>
+      <a href="servicios.html#{{id}}" class="featured-image" aria-label="{{title}}">
+        <img src="{{photo}}" alt="{{photo_alt}}" loading="lazy">
+        <span class="featured-tag">{{badge}}</span>
       </a>
       <div class="featured-body">
-        <h3>Implementación SG-SST</h3>
-        <p>No solo entregamos documentos. Dejamos un sistema funcional, listo para auditorías, contratos y requerimientos legales.</p>
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
         <ul class="featured-points">
-          <li>+85% de avance en aproximadamente 4 meses</li>
-          <li>Cumplimiento Decreto 1072 / Resolución 0312</li>
-          <li>Tercerización completa del sistema</li>
-          <li>Optimiza la reinversión de su ARL</li>
+          {{#each points}}
+          <li>{{this}}</li>
+          {{/each}}
         </ul>
-        <a href="servicios.html#sgsst" class="btn-link">Conocer servicio</a>
+        <a href="servicios.html#{{id}}" class="btn-link">Conocer servicio</a>
       </div>
     </article>
-
-    <article class="featured-card">
-      <a href="servicios.html#emergencias" class="featured-image" aria-label="Plan de Emergencias">
-        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=900&q=80&auto=format&fit=crop" alt="Brigada de emergencia y simulacro" loading="lazy">
-        <span class="featured-tag">02 · Paquete integral</span>
-      </a>
-      <div class="featured-body">
-        <h3>Plan de Emergencias</h3>
-        <p>Preparamos a su empresa para responder con certeza ante cualquier evento que afecte la seguridad o la operación.</p>
-        <ul class="featured-points">
-          <li>Análisis de vulnerabilidad y procedimientos</li>
-          <li>Conformación de brigada + simulacro</li>
-          <li>Planos de evacuación y socialización</li>
-          <li>Entrega 100% digital · 15 días hábiles</li>
-        </ul>
-        <a href="servicios.html#emergencias" class="btn-link">Conocer servicio</a>
-      </div>
-    </article>
-
-    <article class="featured-card">
-      <a href="servicios.html#auditorias" class="featured-image" aria-label="Auditorías Internas">
-        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=80&auto=format&fit=crop" alt="Auditoría interna y revisión de cumplimiento" loading="lazy">
-        <span class="featured-tag">03 · Diagnóstico real</span>
-      </a>
-      <div class="featured-body">
-        <h3>Auditorías Internas</h3>
-        <p>Evaluamos el estado real de su SG-SST: dónde está, qué le falta y qué priorizar para llegar al cumplimiento.</p>
-        <ul class="featured-points">
-          <li>Identificación de oportunidades de mejora</li>
-          <li>Hallazgos accionables con responsables</li>
-          <li>Decreto 1072 / Resolución 0312</li>
-          <li>Preparación ante visitas y requerimientos</li>
-        </ul>
-        <a href="servicios.html#auditorias" class="btn-link">Conocer servicio</a>
-      </div>
-    </article>
+    {{/each}}
   </div>
 </section>
 
@@ -405,22 +368,12 @@
   </div>
 
   <div class="faq reveal">
+    {{#each faq}}
     <details class="faq-item">
-      <summary>¿La asesoría con GESSEG tiene costo?</summary>
-      <p><strong>No.</strong> La reunión incluye un diagnóstico inicial y es completamente gratuita, para que conozcas exactamente qué necesita tu empresa.</p>
+      <summary>{{question}}</summary>
+      <p>{{{answer}}}</p>
     </details>
-    <details class="faq-item">
-      <summary>¿Cuánto cuesta implementar el SG-SST?</summary>
-      <p>El valor depende de las características de tu empresa: número de trabajadores, nivel de riesgo, sector, entre otros. <strong>En GESSEG te damos un diagnóstico claro y una propuesta ajustada a tu necesidad.</strong></p>
-    </details>
-    <details class="faq-item">
-      <summary>¿Mi ARL no debería encargarse del SG-SST?</summary>
-      <p><strong>No.</strong> La ARL brinda acompañamiento, pero no implementa el sistema por completo. Nosotros te ayudamos a gestionar ese apoyo de acuerdo a los aportes que realiza tu empresa, para que realmente obtengas beneficios.</p>
-    </details>
-    <details class="faq-item">
-      <summary>¿El SG-SST me sirve para licitaciones o contratos?</summary>
-      <p><strong>Sí.</strong> Muchas empresas exigen el cumplimiento del SG-SST como requisito para contratar o participar en procesos comerciales.</p>
-    </details>
+    {{/each}}
   </div>
 </section>
 
@@ -484,10 +437,10 @@
       <div>
         <h5>Contacto</h5>
         <ul>
-          <li><a href="tel:+573107702418">+57 310 770 2418</a></li>
-          <li><a href="mailto:contacto@gesseg.com.co">contacto@gesseg.com.co</a></li>
-          <li>Bogotá D.C., Colombia</li>
-          <li>Lun – Vie · 8:00 a 18:00</li>
+          <li><a href="{{contact.phone_url}}">{{contact.phone}}</a></li>
+          <li><a href="mailto:{{contact.email}}">{{contact.email}}</a></li>
+          <li>{{contact.city}}</li>
+          <li>{{contact.hours}}</li>
         </ul>
       </div>
     </div>
@@ -499,7 +452,7 @@
 </footer>
 
 <!-- WhatsApp FAB -->
-<a href="https://wa.me/573107702418" class="wa-fab" target="_blank" rel="noopener" aria-label="Escríbanos por WhatsApp">
+<a href="https://wa.me/{{contact.whatsapp}}" class="wa-fab" target="_blank" rel="noopener" aria-label="Escríbanos por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.4-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 22a10 10 0 0 1-5.1-1.4L2 22l1.4-4.8A10 10 0 1 1 12 22"/></svg>
   <span class="wa-label" aria-hidden="true">Escríbanos por WhatsApp</span>
 </a>

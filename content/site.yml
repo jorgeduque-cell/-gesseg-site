@@ -1,0 +1,73 @@
+# =====================================================
+# CONTENIDO EDITABLE DEL SITIO GESSEG
+# =====================================================
+# Este archivo controla todos los textos e imágenes que
+# pueden cambiar sin tocar código. Decap CMS edita este
+# archivo a través de un panel web (gesseg.com.co/admin).
+# =====================================================
+
+# ----- HERO (portada) -----
+hero:
+  badge: "Licenciados · <strong>Decreto 1072 / 2015</strong>"
+  title: "Protegemos la <em>vida</em> de quienes <em>sostienen</em> su organización."
+  lede: "Diseñamos, implementamos y auditamos Sistemas de Gestión de SST bajo el Decreto 1072 de 2015 y los estándares mínimos de la Resolución 0312."
+  photo: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1100&h=1300&q=85&auto=format&fit=crop"
+  photo_alt: "Reunión profesional de asesoría en seguridad y salud en el trabajo"
+
+# ----- 3 SERVICIOS DESTACADOS (Lo que más nos piden) -----
+featured_services:
+  - id: sgsst
+    badge: "01 · Más solicitado"
+    title: "Implementación SG-SST"
+    description: "No solo entregamos documentos. Dejamos un sistema funcional, listo para auditorías, contratos y requerimientos legales."
+    points:
+      - "+85% de avance en aproximadamente 4 meses"
+      - "Cumplimiento Decreto 1072 / Resolución 0312"
+      - "Tercerización completa del sistema"
+      - "Optimiza la reinversión de su ARL"
+    photo: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80&auto=format&fit=crop"
+    photo_alt: "Trabajador con casco y EPP"
+
+  - id: emergencias
+    badge: "02 · Paquete integral"
+    title: "Plan de Emergencias"
+    description: "Preparamos a su empresa para responder con certeza ante cualquier evento que afecte la seguridad o la operación."
+    points:
+      - "Análisis de vulnerabilidad y procedimientos"
+      - "Conformación de brigada + simulacro"
+      - "Planos de evacuación y socialización"
+      - "Entrega 100% digital · 15 días hábiles"
+    photo: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=900&q=80&auto=format&fit=crop"
+    photo_alt: "Brigada de emergencia y simulacro"
+
+  - id: auditorias
+    badge: "03 · Diagnóstico real"
+    title: "Auditorías Internas"
+    description: "Evaluamos el estado real de su SG-SST: dónde está, qué le falta y qué priorizar para llegar al cumplimiento."
+    points:
+      - "Identificación de oportunidades de mejora"
+      - "Hallazgos accionables con responsables"
+      - "Decreto 1072 / Resolución 0312"
+      - "Preparación ante visitas y requerimientos"
+    photo: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=80&auto=format&fit=crop"
+    photo_alt: "Auditoría interna y revisión de cumplimiento"
+
+# ----- PREGUNTAS FRECUENTES -----
+faq:
+  - question: "¿La asesoría con GESSEG tiene costo?"
+    answer: "<strong>No.</strong> La reunión incluye un diagnóstico inicial y es completamente gratuita, para que conozcas exactamente qué necesita tu empresa."
+  - question: "¿Cuánto cuesta implementar el SG-SST?"
+    answer: "El valor depende de las características de tu empresa: número de trabajadores, nivel de riesgo, sector, entre otros. <strong>En GESSEG te damos un diagnóstico claro y una propuesta ajustada a tu necesidad.</strong>"
+  - question: "¿Mi ARL no debería encargarse del SG-SST?"
+    answer: "<strong>No.</strong> La ARL brinda acompañamiento, pero no implementa el sistema por completo. Nosotros te ayudamos a gestionar ese apoyo de acuerdo a los aportes que realiza tu empresa, para que realmente obtengas beneficios."
+  - question: "¿El SG-SST me sirve para licitaciones o contratos?"
+    answer: "<strong>Sí.</strong> Muchas empresas exigen el cumplimiento del SG-SST como requisito para contratar o participar en procesos comerciales."
+
+# ----- DATOS DE CONTACTO (footers + topbar + WhatsApp) -----
+contact:
+  phone: "+57 310 770 2418"
+  phone_url: "tel:+573107702418"
+  whatsapp: "573107702418"
+  email: "contacto@gesseg.com.co"
+  city: "Bogotá D.C., Colombia"
+  hours: "Lun – Vie · 8:00 a 18:00"
