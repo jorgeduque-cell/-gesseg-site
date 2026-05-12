@@ -60,16 +60,17 @@ collections:
             collapsed: false
             fields:
               - name: badge
-                label: "Badge superior"
+                label: "Badge superior (etiqueta arriba del título)"
                 widget: string
-                hint: "Texto pequeño arriba del título. Soporta HTML básico (ej: <strong>palabra</strong>)."
+                hint: "💡 Para resaltar una palabra en NEGRITA, ponla entre dobles asteriscos: **palabra**. Ejemplo: Licenciados · **Decreto 1072 / 2015**"
               - name: title
                 label: "Título principal"
                 widget: string
-                hint: "Use <em>palabra</em> para destacar una palabra en cursiva dorada."
+                hint: "💡 Para destacar una palabra en CURSIVA DORADA, ponla entre asteriscos sencillos: *palabra*. Ejemplo: Protegemos la *vida* de quienes *sostienen* su organización."
               - name: lede
                 label: "Descripción debajo del título"
                 widget: text
+                hint: "Texto largo bajo el título. No requiere formato especial."
               - name: photo
                 label: "Foto principal"
                 widget: image
@@ -77,10 +78,11 @@ collections:
                 media_library:
                   config:
                     multiple: false
-                hint: "Sube una imagen JPG/PNG. Se mostrará en blanco y negro automáticamente."
+                hint: "📸 Sube una imagen JPG o PNG (arrastra y suelta o haz click). Se mostrará en blanco y negro automáticamente para destacar la paleta dorada."
               - name: photo_alt
                 label: "Texto alternativo de la foto (accesibilidad)"
                 widget: string
+                hint: "Describe la foto para personas con discapacidad visual. Ej: 'Equipo de seguridad en obra'."
 
           # ---------------- SERVICIOS DESTACADOS ----------------
           - name: featured_services
@@ -131,7 +133,7 @@ collections:
               - name: answer
                 label: "Respuesta"
                 widget: text
-                hint: "Soporta HTML. Use <strong>palabra</strong> para destacar."
+                hint: "💡 Para resaltar una palabra en negrita, ponla entre dobles asteriscos: **No.** o **Sí.** al inicio funciona muy bien."
 
           # ---------------- CONTACTO ----------------
           - name: contact

@@ -7,8 +7,34 @@ import yaml from 'js-yaml';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const loadContent = () =>
-  yaml.load(readFileSync(resolve(__dirname, 'content/site.yml'), 'utf-8'));
+// Convierte sintaxis simple markdown inline en HTML.
+// Esto permite que el cliente solo escriba *palabra* o **palabra** en el panel
+// CMS sin tener que tocar HTML como <em> o <strong>.
+//   **texto** → <strong>texto</strong>
+//   *texto*   → <em>texto</em>
+function markdownInline(str) {
+  if (typeof str !== 'string') return str;
+  return str
+    .replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(?<!\*)\*([^*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+}
+
+// Aplica markdownInline recursivamente sobre strings dentro de un objeto/array.
+function transformContent(value) {
+  if (typeof value === 'string') return markdownInline(value);
+  if (Array.isArray(value)) return value.map(transformContent);
+  if (value && typeof value === 'object') {
+    const out = {};
+    for (const k of Object.keys(value)) out[k] = transformContent(value[k]);
+    return out;
+  }
+  return value;
+}
+
+const loadContent = () => {
+  const raw = yaml.load(readFileSync(resolve(__dirname, 'content/site.yml'), 'utf-8'));
+  return transformContent(raw);
+};
 
 export default defineConfig({
   root: '.',
