@@ -31,7 +31,6 @@ export default defineConfig({
         main: 'index.html',
         nosotros: 'nosotros.html',
         servicios: 'servicios.html',
-        sectores: 'sectores.html',
         contacto: 'contacto.html',
         privacidad: 'politica-privacidad.html',
         tratamiento: 'tratamiento-datos.html',
