@@ -41,7 +41,7 @@ Cualquier hosting estático sirve: **Netlify**, **Vercel**, **Cloudflare Pages**
 
 ### 1. Datos de contacto
 Buscar y reemplazar en todos los `.html`:
-- `+57 310 770 2418` → teléfono real
+- `+57 304 390 0623` → teléfono real
 - `contacto@gesseg.com.co` → correo real
 - `Bogotá D.C., Colombia` → dirección real
 - `Calle [pendiente]` → dirección física en `contacto.html`

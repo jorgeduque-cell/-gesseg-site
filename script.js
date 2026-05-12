@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ----- Form submission → WhatsApp Business -----
   const form = document.querySelector('#contact-form');
   if (form) {
-    const WA_NUMBER = '573107702418';
+    const WA_NUMBER = '573043900623';
     const val = (id) => (form.querySelector('#' + id)?.value || '').trim();
 
     const buildMessage = () => {

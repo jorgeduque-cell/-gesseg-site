@@ -37,8 +37,8 @@ featured_services:
       - "Conformación de brigada + simulacro"
       - "Planos de evacuación y socialización"
       - "Entrega 100% digital · 15 días hábiles"
-    photo: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=900&q=80&auto=format&fit=crop"
-    photo_alt: "Brigada de emergencia y simulacro"
+    photo: "https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?w=900&q=80&auto=format&fit=crop"
+    photo_alt: "Equipo de emergencia con extintor durante simulacro de evacuación"
 
   - id: auditorias
     badge: "03 · Diagnóstico real"
@@ -65,9 +65,14 @@ faq:
 
 # ----- DATOS DE CONTACTO (footers + topbar + WhatsApp) -----
 contact:
-  phone: "+57 310 770 2418"
-  phone_url: "tel:+573107702418"
-  whatsapp: "573107702418"
+  phone: "+57 304 390 0623"
+  phone_url: "tel:+573043900623"
+  whatsapp: "573043900623"
   email: "contacto@gesseg.com.co"
   city: "Bogotá D.C., Colombia"
   hours: "Lun – Vie · 8:00 a 18:00"
+
+# ----- REDES SOCIALES -----
+social:
+  instagram: "https://www.instagram.com/gesseg_colombia"
+  facebook: "https://www.facebook.com/share/18q2nj233A/"
