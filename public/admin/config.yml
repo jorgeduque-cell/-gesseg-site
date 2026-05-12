@@ -10,6 +10,8 @@ backend:
   name: github
   repo: jorgeduque-cell/-gesseg-site
   branch: main
+  base_url: https://gesset.vercel.app
+  auth_endpoint: api/auth
   commit_messages:
     create: "Crear {{collection}} desde panel"
     update: "Actualizar {{collection}} desde panel"
