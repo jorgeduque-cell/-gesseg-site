@@ -2,8 +2,11 @@
   <path d="M40 4 L67 18 L67 62 L40 76 L13 62 L13 18 Z"
         fill="#0B1D3F"
         stroke="#0B1D3F" stroke-width="2" stroke-linejoin="round"/>
-  <g stroke="#F5F0E6" stroke-width="3.6" fill="none" stroke-linecap="round">
-    <ellipse cx="33" cy="36" rx="12" ry="9" transform="rotate(28 33 36)"/>
-    <ellipse cx="47" cy="44" rx="12" ry="9" transform="rotate(-28 47 44)"/>
+  <g fill="#F5F0E6">
+    <path d="M28 32 C28 26 32 22 38 22 C42 22 45 24 46 27 L42 29 C41 27 39 26 37 26 C33 26 31 28 31 32 C31 36 33 38 37 38 C39 38 41 37 42 36 C40 36 38 36 36 36 L36 32 L48 32 L48 42 C46 44 43 46 39 46 L40 45 C40 49 36 51 32 51 C28 51 26 49 26 47 L29 46 C30 47 31 48 33 48 C36 48 37 47 37 45 L37 44 C36 45 34 45 32 45 C29 45 26 43 26 39 C26 36 28 33 32 33 L32 34 C30 33 28 32 28 32 Z" opacity="0"/>
+  </g>
+  <g fill="none" stroke="#F5F0E6" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 30 C28 25 32 22 36 22 C40 22 43 25 43 30 L43 38 C43 44 39 48 35 48 C32 48 29 46 28 43"/>
+    <path d="M52 50 C52 55 48 58 44 58 C40 58 37 55 37 50 L37 42 C37 36 41 32 45 32 C48 32 51 34 52 37"/>
   </g>
 </svg>
