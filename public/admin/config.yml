@@ -1,0 +1,172 @@
+# =====================================================
+# SVELTIA CMS — Panel de administración GESSEG
+# =====================================================
+# Este archivo define qué campos puede editar el cliente
+# desde gesseg.com.co/admin. NO editar a mano salvo que
+# se quiera añadir/quitar campos editables.
+# =====================================================
+
+backend:
+  name: github
+  repo: jorgeduque-cell/-gesseg-site
+  branch: main
+  commit_messages:
+    create: "Crear {{collection}} desde panel"
+    update: "Actualizar {{collection}} desde panel"
+    delete: "Eliminar {{collection}} desde panel"
+    uploadMedia: "Subir imagen {{path}} desde panel"
+    deleteMedia: "Eliminar imagen {{path}} desde panel"
+
+# URL pública del sitio (para previews)
+site_url: https://gesset.vercel.app
+display_url: https://gesset.vercel.app
+
+# Idioma del panel (para que la UI salga en español)
+locale: es
+
+# Logo del panel
+logo_url: /logo-mark-light.png
+
+# Las imágenes que suba el cliente van a la carpeta public/
+# y se sirven desde la raíz del sitio
+media_folder: "public"
+public_folder: "/"
+
+# Permite cambios directos (sin workflow de aprobación)
+publish_mode: simple
+
+# =====================================================
+# COLECCIONES (qué puede editar el cliente)
+# =====================================================
+collections:
+  - name: contenido
+    label: "Contenido del sitio"
+    description: "Edita los textos e imágenes que aparecen en la página principal."
+    delete: false
+    files:
+      - name: home
+        label: "Página inicio"
+        file: "content/site.yml"
+        format: yaml
+
+        fields:
+          # ---------------- HERO ----------------
+          - name: hero
+            label: "🏠 Portada principal"
+            label_singular: "Portada"
+            widget: object
+            collapsed: false
+            fields:
+              - name: badge
+                label: "Badge superior"
+                widget: string
+                hint: "Texto pequeño arriba del título. Soporta HTML básico (ej: <strong>palabra</strong>)."
+              - name: title
+                label: "Título principal"
+                widget: string
+                hint: "Use <em>palabra</em> para destacar una palabra en cursiva dorada."
+              - name: lede
+                label: "Descripción debajo del título"
+                widget: text
+              - name: photo
+                label: "Foto principal"
+                widget: image
+                choose_url: false
+                media_library:
+                  config:
+                    multiple: false
+                hint: "Sube una imagen JPG/PNG. Se mostrará en blanco y negro automáticamente."
+              - name: photo_alt
+                label: "Texto alternativo de la foto (accesibilidad)"
+                widget: string
+
+          # ---------------- SERVICIOS DESTACADOS ----------------
+          - name: featured_services
+            label: "💼 3 servicios destacados"
+            widget: list
+            min: 3
+            max: 3
+            collapsed: true
+            summary: "{{fields.title}}"
+            fields:
+              - name: id
+                label: "ID interno (NO MODIFICAR)"
+                widget: string
+                hint: "⚠️ No tocar este campo — lo usa la página para anclajes internos."
+              - name: badge
+                label: "Etiqueta superior (ej: '01 · Más solicitado')"
+                widget: string
+              - name: title
+                label: "Título del servicio"
+                widget: string
+              - name: description
+                label: "Descripción corta"
+                widget: text
+              - name: points
+                label: "Bullets / puntos clave (4 recomendados)"
+                widget: list
+                field:
+                  name: point
+                  label: "Punto"
+                  widget: string
+              - name: photo
+                label: "Foto del servicio"
+                widget: image
+              - name: photo_alt
+                label: "Texto alternativo de la foto"
+                widget: string
+
+          # ---------------- FAQ ----------------
+          - name: faq
+            label: "❓ Preguntas frecuentes"
+            widget: list
+            collapsed: true
+            summary: "{{fields.question}}"
+            fields:
+              - name: question
+                label: "Pregunta"
+                widget: string
+              - name: answer
+                label: "Respuesta"
+                widget: text
+                hint: "Soporta HTML. Use <strong>palabra</strong> para destacar."
+
+          # ---------------- CONTACTO ----------------
+          - name: contact
+            label: "📞 Datos de contacto"
+            widget: object
+            collapsed: false
+            fields:
+              - name: phone
+                label: "Teléfono visible (ej: '+57 304 390 0623')"
+                widget: string
+              - name: phone_url
+                label: "Link de teléfono (formato tel:+57...)"
+                widget: string
+                hint: "Sin espacios. Ejemplo: tel:+573043900623"
+              - name: whatsapp
+                label: "WhatsApp (solo dígitos, prefijo país)"
+                widget: string
+                hint: "Sin espacios ni +. Ejemplo: 573043900623"
+              - name: email
+                label: "Correo electrónico"
+                widget: string
+              - name: city
+                label: "Ciudad / ubicación"
+                widget: string
+              - name: hours
+                label: "Horario de atención"
+                widget: string
+
+          # ---------------- REDES SOCIALES ----------------
+          - name: social
+            label: "🌐 Redes sociales"
+            widget: object
+            collapsed: false
+            fields:
+              - name: instagram
+                label: "URL Instagram"
+                widget: string
+              - name: facebook
+                label: "URL Facebook"
+                widget: string

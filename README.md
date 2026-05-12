@@ -1,100 +1,103 @@
 # GESSEG Colombia S.A.S — Sitio Web
 
-Sitio multi-página estático para GESSEG Colombia S.A.S, especializado en Seguridad y Salud en el Trabajo (SST).
+Sitio web corporativo de GESSEG Colombia, consultora especializada en Seguridad y Salud en el Trabajo (SST).
 
-## Estructura
+## Panel de administración
 
+El cliente puede editar el contenido del sitio (textos, imágenes, datos de contacto) **sin necesidad de saber programar**.
+
+### Cómo editar el sitio
+
+1. Abrir `https://gesset.vercel.app/admin` (o `https://gesseg.com.co/admin` cuando el dominio esté conectado)
+2. Click en **"Sign in with GitHub"** → autorizar la primera vez
+3. En el panel, click en **"Página inicio"** dentro de "Contenido del sitio"
+4. Edita lo que quieras: textos, imágenes (arrastra y suelta), bullets, FAQ, etc.
+5. Click en **"Publish"** (arriba a la derecha) → los cambios aparecen en el sitio en ~30 segundos
+
+### Qué se puede editar desde el panel
+
+- **Portada (Hero)**: badge, título, descripción, foto principal
+- **3 servicios destacados**: badge, título, descripción, 4 bullets, foto (cada uno)
+- **Preguntas frecuentes**: pregunta + respuesta (sin límite de número)
+- **Datos de contacto**: teléfono, WhatsApp, correo, ciudad, horario
+- **Redes sociales**: Instagram y Facebook
+
+### Qué NO se edita desde el panel (requiere código)
+
+- Estructura de páginas / orden de secciones
+- Colores y tipografía
+- Precios de los planes (en HTML directo)
+- Páginas legales (privacidad, tratamiento de datos)
+- Logo de la empresa
+- Página "Nosotros", "Servicios" detallados
+
+Si necesitas cambiar alguno de estos, contacta al desarrollador.
+
+---
+
+## Para desarrolladores
+
+### Stack
+- **HTML5** estático con **Handlebars** para templating de contenido
+- **Vite** como build tool
+- **GitHub + Vercel** para deploy automático con cada push
+- **Sveltia CMS** (`/admin`) para edición sin código
+
+### Estructura
 ```
 gesseg-site/
-├── index.html        ← Inicio
-├── nosotros.html     ← Quiénes somos / valores / equipo / marco normativo
-├── servicios.html    ← Catálogo de servicios + metodología
-├── sectores.html     ← Industrias atendidas + clasificación de riesgo
-├── contacto.html     ← Formulario + datos de contacto + FAQ
-├── styles.css        ← Sistema de diseño completo (compartido)
-├── script.js         ← Menú móvil + animaciones + counters
-└── README.md
+├── index.html          ← Página principal (hero, servicios, planes, FAQ, etc.)
+├── nosotros.html       ← Quiénes somos
+├── servicios.html      ← Detalle de servicios y metodología
+├── contacto.html       ← Formulario + datos
+├── 404.html            ← Página no encontrada
+├── politica-privacidad.html
+├── tratamiento-datos.html
+├── content/
+│   └── site.yml        ← TODO el contenido editable (lee Sveltia)
+├── public/
+│   ├── admin/          ← Panel CMS Sveltia
+│   ├── logo*.png       ← Logos del cliente
+│   ├── *.jpg           ← Fotos del sitio
+│   └── ...
+├── styles.css          ← Sistema de diseño
+├── script.js           ← Form + interacciones
+├── vite.config.js      ← Build config + handlebars + YAML loader
+└── vercel.json         ← Headers + caching
 ```
 
-## Stack
-
-- HTML5 + CSS moderno (variables, grid, container queries no necesarios)
-- JS vanilla (sin frameworks ni build steps)
-- Tipografía Google Fonts: **Fraunces** (display) + **Geist** (body)
-- Sin dependencias, sin build, listo para subir tal cual a cualquier hosting
-
-## Cómo verlo localmente
-
-Abrir `index.html` directamente en el navegador, o servirlo:
-
+### Local development
 ```bash
-cd gesseg-site
-python3 -m http.server 8000
-# Abrir http://localhost:8000
+npm install
+npm run dev
+# → http://localhost:5173
 ```
 
-## Para publicar
-
-Cualquier hosting estático sirve: **Netlify**, **Vercel**, **Cloudflare Pages**, **GitHub Pages**, o un hosting tradicional vía FTP. Solo subir los archivos de la carpeta tal cual.
-
-## Personalizar
-
-### 1. Datos de contacto
-Buscar y reemplazar en todos los `.html`:
-- `+57 304 390 0623` → teléfono real
-- `contacto@gesseg.com.co` → correo real
-- `Bogotá D.C., Colombia` → dirección real
-- `Calle [pendiente]` → dirección física en `contacto.html`
-
-### 2. Logo
-El logo actual es solo tipografía (la "G" en cuadro azul). Para usar el logo real:
-- Reemplazar el bloque `<span class="brand-mark">G</span>` por `<img src="logo.svg" alt="GESSEG" style="width:42px; height:42px;">`
-- Subir el archivo `logo.svg` o `logo.png` a la carpeta del sitio
-
-### 3. Estadísticas (home)
-En `index.html`, sección `.stats`, ajustar los valores de `data-count` con cifras reales de la empresa:
-```html
-<span class="stat-num"><span data-count="120">0</span><sup>+</sup></span>
+### Build de producción
+```bash
+npm run build
+# → genera /dist
 ```
 
-### 4. Formulario de contacto
-El formulario está conectado solo al frontend (simula el envío). Para que envíe de verdad, tres opciones según el caso:
-
-- **Formspree** (más simple): cambiar `<form id="contact-form">` por `<form id="contact-form" action="https://formspree.io/f/TU_ID" method="POST">` y eliminar el `e.preventDefault()` en `script.js`.
-- **Backend propio**: si Jorge usa ControlIA o tiene un endpoint Node.js, conectar el `fetch()` en `script.js`.
-- **WhatsApp directo**: cambiar el botón por un link `https://wa.me/573107702418?text=...` que arme el mensaje desde los campos.
-
-### 5. Colores
-Editar las variables CSS en la cabecera de `styles.css`:
-```css
-:root {
-  --bg:     #F5F0E6;   /* fondo crema */
-  --navy:   #0B1D3F;   /* azul marino del logo */
-  --accent: #B8542A;   /* terracota (acento) */
-  ...
-}
+### Deploy
+Automático en cada push a `main` (Vercel). Para forzar deploy manual:
+```bash
+vercel --prod
 ```
 
-### 6. Política de tratamiento de datos
-Los enlaces en el footer (`Política de privacidad` y `Tratamiento de datos`) apuntan a `#`. Crear esas páginas o enlazarlas a un PDF externo según corresponda (Ley 1581 de 2012 lo exige si se recolectan datos vía formulario).
+### Cambiar campos editables del CMS
+Editar `public/admin/config.yml`. La estructura usa el formato de [Decap CMS](https://decapcms.org/docs/configuration-options/) (Sveltia es compatible).
 
-## Notas técnicas
+### Identidad de marca
+| Token | Valor |
+|---|---|
+| Navy (primario) | `#0B1D3F` |
+| Dorado (acento) | `#D4A547` |
+| Dorado brillante | `#E7B94F` |
+| Cream / hueso (fondo) | `#F5F0E6` |
+| Tipografía display | Fraunces (serif) |
+| Tipografía body | Geist (sans) |
+| Tipografía mono | Geist Mono |
 
-- **SEO básico** ya incluido: `<title>`, `<meta description>`, `lang="es-CO"`, estructura semántica con `<header>`, `<section>`, `<article>`, `<footer>`.
-- **Accesibilidad**: contrastes AA, focus visible, labels asociados a inputs, alt en íconos decorativos como `aria-hidden`.
-- **Performance**: cero dependencias JS, fonts cargadas con `display=swap`, imágenes inline en SVG.
-- **Responsive**: probado conceptualmente para mobile/tablet/desktop. Breakpoints en 600px / 700px / 800px / 900px / 1100px.
-
-## Contenido — Marco normativo referenciado
-
-El contenido cita las normas vigentes del Sistema General de Riesgos Laborales en Colombia:
-- Decreto 1072 de 2015 (Decreto Único Reglamentario del Sector Trabajo)
-- Resolución 0312 de 2019 (Estándares mínimos del SG-SST)
-- Resolución 1401 de 2007 (Investigación de incidentes y accidentes)
-- Resolución 2400 de 1979 (Estatuto de seguridad industrial)
-- Ley 1562 de 2012 (Sistema General de Riesgos Laborales)
-- Resolución 4272 de 2021 (Trabajo seguro en alturas)
-- Resolución 2646 de 2008 (Riesgo psicosocial)
-- GTC 45 (Identificación de peligros)
-
-Si el equipo legal de GESSEG considera que algún texto requiere matización o referencia adicional, los textos están claramente delimitados en cada `.html` y son fáciles de editar.
+### Datos de contacto (centralizados)
+Todos los datos viven en `content/site.yml` bajo `contact:` y `social:`. El cliente los edita desde el CMS — no hay que tocar HTML.

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GESSEG · Panel de administración</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Panel de administración del sitio GESSEG Colombia S.A.S. Acceso restringido.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; background: #0B1D3F; color: #F5F0E6; }
+  .loading {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 40px;
+  }
+  .loading h1 {
+    font-family: Georgia, serif;
+    font-weight: 350;
+    font-size: 32px;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .loading p {
+    color: rgba(245,240,230,0.7);
+    max-width: 38ch;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  .loading .brand-mark {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 28px;
+    display: block;
+  }
+  .loading .hint {
+    margin-top: 24px;
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #ECCF85;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+<div class="loading" id="loading">
+  <div>
+    <img src="/logo-mark-light.png" alt="GESSEG" class="brand-mark">
+    <h1>Cargando panel de administración…</h1>
+    <p>Inicia sesión con GitHub para editar el contenido del sitio. Los cambios se publican automáticamente en gesseg.com.co.</p>
+    <p class="hint">Sveltia CMS · GESSEG Colombia S.A.S</p>
+  </div>
+</div>
+
+<script type="module" src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+<script>
+  // Oculta el loading screen una vez Sveltia se ha montado
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const el = document.getElementById('loading');
+      if (el) el.style.display = 'none';
+    }, 1500);
+  });
+</script>
+</body>
+</html>
