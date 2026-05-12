@@ -84,6 +84,24 @@ collections:
                 widget: string
                 hint: "Describe la foto para personas con discapacidad visual. Ej: 'Equipo de seguridad en obra'."
 
+              # Textos superpuestos sobre la foto del hero
+              - name: vsignal_top
+                label: "Texto sobrepuesto · arriba izquierda"
+                widget: string
+                hint: "Texto pequeño que aparece sobre la esquina superior izquierda de la foto. Ej: 'SG-SST · 2026'."
+              - name: vsignal_bottom
+                label: "Texto sobrepuesto · abajo derecha"
+                widget: string
+                hint: "Texto pequeño que aparece sobre la esquina inferior derecha de la foto. Ej: 'PHVA · ISO 45001'."
+              - name: vmark_line1
+                label: "Texto grande sobrepuesto · línea 1 (color cream)"
+                widget: string
+                hint: "Primera línea del texto cursivo grande sobre la foto. Ej: 'Cumplimiento'."
+              - name: vmark_line2
+                label: "Texto grande sobrepuesto · línea 2 (color dorado)"
+                widget: string
+                hint: "Segunda línea (se muestra en dorado debajo de la primera). Ej: 'medible.' o 'que importa.'"
+
           # ---------------- SERVICIOS DESTACADOS ----------------
           - name: featured_services
             label: "💼 3 servicios destacados"
