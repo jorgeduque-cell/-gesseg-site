@@ -144,61 +144,98 @@
         <p style="font-size:14px;">Complete el formulario y un asesor lo contactará en menos de 24 horas hábiles.</p>
       </div>
 
-      <div class="field-row">
-        <div class="field">
-          <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" name="nombre" required>
+      <!-- Grupo 1: Quién nos contacta -->
+      <fieldset class="form-group">
+        <legend>Quién nos contacta</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          <div class="field">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" required>
+          </div>
         </div>
-        <div class="field">
-          <label for="empresa">Empresa</label>
-          <input type="text" id="empresa" name="empresa" required>
-        </div>
-      </div>
+      </fieldset>
 
-      <div class="field-row">
-        <div class="field">
-          <label for="email">Correo electrónico</label>
-          <input type="email" id="email" name="email" required>
+      <!-- Grupo 2: Cómo lo contactamos -->
+      <fieldset class="form-group">
+        <legend>Cómo lo contactamos</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono / WhatsApp</label>
+            <input type="tel" id="telefono" name="telefono" required>
+          </div>
         </div>
         <div class="field">
-          <label for="telefono">Teléfono</label>
-          <input type="tel" id="telefono" name="telefono" required>
+          <label for="ciudad">Ciudad</label>
+          <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Bogotá, Medellín, Cali..." required>
         </div>
-      </div>
+      </fieldset>
 
-      <div class="field-row">
+      <!-- Grupo 3: Sobre su empresa -->
+      <fieldset class="form-group">
+        <legend>Sobre su empresa</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="sector">Sector</label>
+            <select id="sector" name="sector">
+              <option value="">Seleccione...</option>
+              <option>Construcción</option>
+              <option>Manufactura</option>
+              <option>Logística y transporte</option>
+              <option>Salud</option>
+              <option>Educación</option>
+              <option>Comercio y oficinas</option>
+              <option>Energía y servicios</option>
+              <option>Sector público</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="trabajadores">N° de trabajadores</label>
+            <select id="trabajadores" name="trabajadores">
+              <option value="">Seleccione...</option>
+              <option>1 – 10</option>
+              <option>11 – 50</option>
+              <option>51 – 200</option>
+              <option>201 – 500</option>
+              <option>500+</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Grupo 4: Qué le interesa -->
+      <fieldset class="form-group">
+        <legend>Qué plan le interesa</legend>
         <div class="field">
-          <label for="sector">Sector</label>
-          <select id="sector" name="sector">
-            <option value="">Seleccione...</option>
-            <option>Construcción</option>
-            <option>Manufactura</option>
-            <option>Logística y transporte</option>
-            <option>Salud</option>
-            <option>Educación</option>
-            <option>Comercio y oficinas</option>
-            <option>Energía y servicios</option>
-            <option>Sector público</option>
-            <option>Otro</option>
+          <label for="plan">Plan de interés</label>
+          <select id="plan" name="plan">
+            <option value="">Aún no sé / quiero un diagnóstico</option>
+            <optgroup label="Sistema de Gestión SST">
+              <option>Plan I — Estructura empresarial I ($693.000 + IVA con desc.)</option>
+              <option>Plan II — Estructura empresarial II ($875.000 + IVA con desc.)</option>
+              <option>Plan III — Estructura empresarial III ($1.050.000 + IVA con desc.)</option>
+            </optgroup>
+            <optgroup label="Plan Estratégico de Seguridad Vial (add-on)">
+              <option>Plan Vial Básico (+25%)</option>
+              <option>Plan Vial Estándar (+35%)</option>
+              <option>Plan Vial Avanzado (+45%)</option>
+            </optgroup>
+            <option>Otra combinación / asesoría a la medida</option>
           </select>
         </div>
         <div class="field">
-          <label for="trabajadores">N° de trabajadores</label>
-          <select id="trabajadores" name="trabajadores">
-            <option value="">Seleccione...</option>
-            <option>1 – 10</option>
-            <option>11 – 50</option>
-            <option>51 – 200</option>
-            <option>201 – 500</option>
-            <option>500+</option>
-          </select>
+          <label for="mensaje">Cuéntenos brevemente su necesidad</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Ej: Necesitamos auditar el cumplimiento de los estándares mínimos antes de una visita del Ministerio de Trabajo."></textarea>
         </div>
-      </div>
-
-      <div class="field">
-        <label for="mensaje">Cuéntenos brevemente su necesidad</label>
-        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Ej: Necesitamos auditar el cumplimiento de los estándares mínimos antes de una visita del Ministerio de Trabajo."></textarea>
-      </div>
+      </fieldset>
 
       <button type="submit" class="btn btn-primary btn-wa" style="align-self: flex-start; margin-top: 8px;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.4-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 22a10 10 0 0 1-5.1-1.4L2 22l1.4-4.8A10 10 0 1 1 12 22"/></svg>

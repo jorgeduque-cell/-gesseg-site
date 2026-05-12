@@ -141,8 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
         '*Correo:* ' + val('email'),
         '*Teléfono:* ' + val('telefono'),
       ];
+      if (val('ciudad')) lines.push('*Ciudad:* ' + val('ciudad'));
       if (val('sector')) lines.push('*Sector:* ' + val('sector'));
       if (val('trabajadores')) lines.push('*N° trabajadores:* ' + val('trabajadores'));
+      if (val('plan')) lines.push('*Plan de interés:* ' + val('plan'));
       if (val('mensaje')) lines.push('', '*Necesidad:*', val('mensaje'));
       lines.push('', '_Enviado desde gesseg.com.co_');
       return lines.join('\n');
@@ -171,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
 
-      const required = ['nombre', 'empresa', 'email', 'telefono'];
+      const required = ['nombre', 'empresa', 'email', 'telefono', 'ciudad'];
       for (const id of required) {
         const field = form.querySelector('#' + id);
         if (!field.value.trim()) {
