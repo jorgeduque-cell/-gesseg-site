@@ -541,11 +541,10 @@ h1.hero-title--dark em {
   flex-shrink: 0;
 }
 
-/* Foto del hero con marco decorativo dorado en esquinas */
+/* Foto del hero con borde difuminado que se funde con el navy */
 .hero-dark-photo {
   position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: 8px;
   overflow: visible;
   max-height: 600px;
 }
@@ -553,33 +552,13 @@ h1.hero-title--dark em {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
   display: block;
-  box-shadow: 0 25px 60px -20px rgba(0,0,0,0.5);
   filter: saturate(1.05) contrast(1.02);
-}
-.hero-dark-photo::before {
-  content: '';
-  position: absolute;
-  top: -12px; right: -12px;
-  width: 52px; height: 52px;
-  border-top: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
-  pointer-events: none;
-}
-.hero-dark-photo::after {
-  content: '';
-  position: absolute;
-  bottom: -12px; left: -12px;
-  width: 52px; height: 52px;
-  border-bottom: 2px solid var(--accent);
-  border-left: 2px solid var(--accent);
-  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 90% 92% at center, black 55%, rgba(0,0,0,0.7) 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 92% at center, black 55%, rgba(0,0,0,0.7) 78%, transparent 100%);
 }
 @media (max-width: 700px) {
   .hero-dark-photo { max-width: 380px; margin: 0 auto; }
-  .hero-dark-photo::before,
-  .hero-dark-photo::after { width: 40px; height: 40px; }
 }
 .hero-text {
   display: flex;
