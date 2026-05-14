@@ -1,13 +1,7 @@
 hero:
-  badge: Licenciados · **Decreto 1072 / 2015**
   title: Protegemos la *vida* de quienes *sostienen* su organización.
   lede: Diseñamos, implementamos y auditamos Sistemas de Gestión de SST bajo el Decreto 1072 de 2015 y los estándares mínimos de la Resolución 0312.
-  photo: /helmet-logo.jpg
-  photo_alt: Profesional de SST con casco de seguridad marcado con el logo GESSEG
-  vsignal_top: SG-SST · 2026
-  vsignal_bottom: PHVA · ISO 45001
-  vmark_line1: Cumplimiento
-  vmark_line2: medible.
+
 featured_services:
   - id: sgsst
     badge: 01 · Más solicitado
@@ -42,6 +36,50 @@ featured_services:
       - Preparación ante visitas y requerimientos
     photo: /servicio-auditorias.jpg
     photo_alt: Reunión de auditoría interna del SG-SST con equipo directivo
+
+plans:
+  promo_label: 50% OFF · primeros 2 meses
+  tiers:
+    - id: '1'
+      label: Estructura empresarial I
+      name: Plan I
+      subtitle: 10 o menos trabajadores.
+      original_price: '850.000'
+      discount_price: '425.000'
+      badge: 50% OFF
+      featured: false
+    - id: '2'
+      label: Estructura empresarial II
+      name: Plan II
+      subtitle: Entre 11 y 50 trabajadores.
+      original_price: '1.100.000'
+      discount_price: '550.000'
+      badge: 50% OFF
+      featured: true
+    - id: '3'
+      label: Estructura empresarial III
+      name: Plan III
+      subtitle: 51 trabajadores o más.
+      original_price: '1.500.000'
+      discount_price: '750.000'
+      badge: 50% OFF
+      featured: false
+  features:
+    - Visitas presenciales y remoto
+    - Entregables documentados
+    - Acompañamiento ante ARL y Mintrabajo
+    - Contrato inicial por 6 meses
+  vial_title: Plan Estratégico de Seguridad Vial
+  vial_description: Adicional opcional para empresas con vehículos o conductores. Se calcula sobre el plan SG-SST base contratado.
+  vial_levels:
+    - name: Básico
+      increment: +25%
+    - name: Estándar
+      increment: +35%
+    - name: Avanzado
+      increment: +45%
+  disclaimer: '* El descuento del 50% se mantiene durante los primeros 2 meses del contrato. Los precios pueden variar según el diagnóstico inicial de su empresa.'
+
 faq:
   - question: ¿La asesoría con GESSEG tiene costo?
     answer: '**No.** La reunión incluye un diagnóstico inicial y es completamente gratuita, para que conozcas exactamente qué necesita tu empresa.'
@@ -51,6 +89,7 @@ faq:
     answer: '**No.** La ARL brinda acompañamiento, pero no implementa el sistema por completo. Nosotros te ayudamos a gestionar ese apoyo de acuerdo a los aportes que realiza tu empresa, para que realmente obtengas beneficios.'
   - question: ¿El SG-SST me sirve para licitaciones o contratos?
     answer: '**Sí.** Muchas empresas exigen el cumplimiento del SG-SST como requisito para contratar o participar en procesos comerciales.'
+
 contact:
   phone: +57 304 390 0623
   phone_url: tel:+573043900623
@@ -58,6 +97,7 @@ contact:
   email: contacto@gesseg.com.co
   city: Bogotá D.C., Colombia
   hours: Lun – Vie · 8:00 a 18:00
+
 social:
   instagram: https://www.instagram.com/gesseg_colombia
   facebook: https://www.facebook.com/share/18q2nj233A/

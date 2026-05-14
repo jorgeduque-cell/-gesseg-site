@@ -75,79 +75,50 @@
   <!-- SG-SST tiers -->
   <div class="plan-section-head reveal">
     <h3>Sistema de Gestión SST</h3>
-    <span class="plan-promo">50% OFF · primeros 2 meses</span>
+    <span class="plan-promo">{{plans.promo_label}}</span>
   </div>
 
   <div class="tier-grid reveal">
-    <article class="tier-card">
-      <span class="tier-label">Estructura empresarial I</span>
-      <h4>Plan I</h4>
-      <p class="tier-desc">10 o menos trabajadores.</p>
+    {{#each plans.tiers}}
+    <article class="tier-card{{#if featured}} tier-card--featured{{/if}}">
+      <span class="tier-label">{{label}}</span>
+      <h4>{{name}}</h4>
+      <p class="tier-desc">{{subtitle}}</p>
       <div class="tier-prices">
-        <span class="tier-original">$850.000<sup>+ IVA</sup></span>
-        <span class="tier-discount">$425.000<sup>+ IVA</sup></span>
+        <span class="tier-original">${{original_price}}<sup>+ IVA</sup></span>
+        <span class="tier-discount">${{discount_price}}<sup>+ IVA</sup></span>
       </div>
-      <span class="tier-badge">50% OFF</span>
-      <a href="contacto.html" class="btn-link">Cotizar plan I</a>
+      <span class="tier-badge">{{badge}}</span>
+      <a href="contacto.html" class="btn-link">Cotizar {{name}}</a>
     </article>
-
-    <article class="tier-card tier-card--featured">
-      <span class="tier-label">Estructura empresarial II</span>
-      <h4>Plan II</h4>
-      <p class="tier-desc">Entre 11 y 50 trabajadores.</p>
-      <div class="tier-prices">
-        <span class="tier-original">$1.100.000<sup>+ IVA</sup></span>
-        <span class="tier-discount">$550.000<sup>+ IVA</sup></span>
-      </div>
-      <span class="tier-badge">50% OFF</span>
-      <a href="contacto.html" class="btn-link">Cotizar plan II</a>
-    </article>
-
-    <article class="tier-card">
-      <span class="tier-label">Estructura empresarial III</span>
-      <h4>Plan III</h4>
-      <p class="tier-desc">51 trabajadores o más.</p>
-      <div class="tier-prices">
-        <span class="tier-original">$1.500.000<sup>+ IVA</sup></span>
-        <span class="tier-discount">$750.000<sup>+ IVA</sup></span>
-      </div>
-      <span class="tier-badge">50% OFF</span>
-      <a href="contacto.html" class="btn-link">Cotizar plan III</a>
-    </article>
+    {{/each}}
   </div>
 
   <!-- Features comunes -->
   <ul class="plan-features reveal">
-    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg>Visitas presenciales y remoto</li>
-    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg>Entregables documentados</li>
-    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg>Acompañamiento ante ARL y Mintrabajo</li>
-    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg>Contrato inicial por 6 meses</li>
+    {{#each plans.features}}
+    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg>{{this}}</li>
+    {{/each}}
   </ul>
 
   <!-- Plan Vial add-on -->
   <div class="plan-vial reveal">
     <div class="plan-vial-intro">
       <span class="eyebrow">Complemento</span>
-      <h3>Plan Estratégico de Seguridad Vial</h3>
-      <p>Adicional opcional para empresas con vehículos o conductores. Se calcula sobre el plan SG-SST base contratado.</p>
+      <h3>{{plans.vial_title}}</h3>
+      <p>{{plans.vial_description}}</p>
     </div>
     <div class="plan-vial-tiers">
+      {{#each plans.vial_levels}}
       <div class="vial-tier">
-        <span class="vial-level">Básico</span>
-        <span class="vial-increment">+25%</span>
+        <span class="vial-level">{{name}}</span>
+        <span class="vial-increment">{{increment}}</span>
       </div>
-      <div class="vial-tier">
-        <span class="vial-level">Estándar</span>
-        <span class="vial-increment">+35%</span>
-      </div>
-      <div class="vial-tier">
-        <span class="vial-level">Avanzado</span>
-        <span class="vial-increment">+45%</span>
-      </div>
+      {{/each}}
     </div>
   </div>
 
-  <p class="plan-disclaimer reveal">* El descuento del 50% se mantiene durante los primeros 2 meses del contrato. Los precios pueden variar según el diagnóstico inicial de su empresa.</p>
+  <p class="plan-disclaimer reveal">{{plans.disclaimer}}</p>
 </section>
 
 <!-- CTA -->

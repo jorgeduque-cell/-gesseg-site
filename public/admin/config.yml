@@ -1,9 +1,6 @@
 # =====================================================
-# SVELTIA CMS — Panel de administración GESSEG
-# =====================================================
-# Este archivo define qué campos puede editar el cliente
-# desde gesseg.com.co/admin. NO editar a mano salvo que
-# se quiera añadir/quitar campos editables.
+# PANEL DE ADMINISTRACIÓN GESSEG · Sveltia CMS
+# Edita el contenido del sitio sin tocar código.
 # =====================================================
 
 backend:
@@ -19,75 +16,48 @@ backend:
     uploadMedia: "Subir imagen {{path}} desde panel"
     deleteMedia: "Eliminar imagen {{path}} desde panel"
 
-# URL pública del sitio (para previews)
 site_url: https://gessegcolombia.com
 display_url: https://gessegcolombia.com
-
-# Idioma del panel (para que la UI salga en español)
 locale: es
-
-# Logo del panel
 logo_url: /logo-mark-light.png
 
-# Las imágenes que suba el cliente van a la carpeta public/
-# y se sirven desde la raíz del sitio
 media_folder: "public"
 public_folder: "/"
 
-# Permite cambios directos (sin workflow de aprobación)
 publish_mode: simple
 
-# =====================================================
-# COLECCIONES (qué puede editar el cliente)
-# =====================================================
 collections:
   - name: contenido
     label: "Contenido del sitio"
-    description: "Edita los textos e imágenes que aparecen en la página principal."
+    description: "Edita aquí todos los textos, precios e imágenes."
     delete: false
     files:
       - name: home
-        label: "Página inicio"
+        label: "Todo el contenido"
         file: "content/site.yml"
         format: yaml
 
         fields:
-          # ---------------- HERO ----------------
+
+          # ============= PORTADA =============
           - name: hero
             label: "🏠 Portada principal"
-            label_singular: "Portada"
             widget: object
             collapsed: false
+            summary: "Portada"
             fields:
-              - name: badge
-                label: "Badge superior (etiqueta arriba del título)"
-                widget: string
-                hint: "💡 Para resaltar una palabra en NEGRITA, ponla entre dobles asteriscos: **palabra**. Ejemplo: Licenciados · **Decreto 1072 / 2015**"
               - name: title
-                label: "Título principal"
+                label: "Título grande"
                 widget: string
-                hint: "💡 Para destacar una palabra en CURSIVA DORADA, ponla entre asteriscos sencillos: *palabra*. Ejemplo: Protegemos la *vida* de quienes *sostienen* su organización."
+                hint: "💡 Use *palabra* (con asteriscos) para destacar una palabra en cursiva dorada. Ej: Protegemos la *vida* de quienes *sostienen* su empresa."
               - name: lede
                 label: "Descripción debajo del título"
                 widget: text
-                hint: "Texto largo bajo el título. No requiere formato especial."
-              - name: photo
-                label: "Foto principal"
-                widget: image
-                choose_url: false
-                media_library:
-                  config:
-                    multiple: false
-                hint: "📸 Sube una imagen JPG o PNG (arrastra y suelta o haz click). Se mostrará en blanco y negro automáticamente para destacar la paleta dorada."
-              - name: photo_alt
-                label: "Texto alternativo de la foto (accesibilidad)"
-                widget: string
-                hint: "Describe la foto para personas con discapacidad visual. Ej: 'Equipo de seguridad en obra'."
+                hint: "Texto explicativo corto. Sin formato especial."
 
-
-          # ---------------- SERVICIOS DESTACADOS ----------------
+          # ============= SERVICIOS DESTACADOS =============
           - name: featured_services
-            label: "💼 3 servicios destacados"
+            label: "💼 Servicios destacados (3)"
             widget: list
             min: 3
             max: 3
@@ -95,33 +65,126 @@ collections:
             summary: "{{fields.title}}"
             fields:
               - name: id
-                label: "ID interno (NO MODIFICAR)"
-                widget: string
-                hint: "⚠️ No tocar este campo — lo usa la página para anclajes internos."
-              - name: badge
-                label: "Etiqueta superior (ej: '01 · Más solicitado')"
-                widget: string
+                label: "ID (no modificar)"
+                widget: hidden
               - name: title
-                label: "Título del servicio"
+                label: "Nombre del servicio"
                 widget: string
+              - name: badge
+                label: "Etiqueta superior"
+                widget: string
+                hint: "Ej: 01 · Más solicitado"
               - name: description
                 label: "Descripción corta"
                 widget: text
               - name: points
-                label: "Bullets / puntos clave (4 recomendados)"
+                label: "Puntos clave"
                 widget: list
                 field:
                   name: point
                   label: "Punto"
                   widget: string
+                hint: "Recomendado: 4 puntos."
               - name: photo
                 label: "Foto del servicio"
                 widget: image
+                hint: "📸 Arrastra una imagen o haz click. Se mostrará en blanco y negro."
               - name: photo_alt
-                label: "Texto alternativo de la foto"
+                label: "Descripción de la foto"
                 widget: string
 
-          # ---------------- FAQ ----------------
+          # ============= PLANES Y PRECIOS =============
+          - name: plans
+            label: "💰 Planes y precios"
+            widget: object
+            collapsed: false
+            summary: "Planes SG-SST + Vial"
+            fields:
+              - name: promo_label
+                label: "Banner promocional"
+                widget: string
+                hint: "Ej: 50% OFF · primeros 2 meses"
+
+              - name: tiers
+                label: "3 Planes SG-SST"
+                widget: list
+                min: 3
+                max: 3
+                collapsed: true
+                summary: "{{fields.name}} — ${{fields.discount_price}}"
+                fields:
+                  - name: id
+                    label: "ID (no modificar)"
+                    widget: hidden
+                  - name: name
+                    label: "Nombre"
+                    widget: string
+                    hint: "Ej: Plan I"
+                  - name: label
+                    label: "Etiqueta superior"
+                    widget: string
+                    hint: "Ej: Estructura empresarial I"
+                  - name: subtitle
+                    label: "¿Para cuántos trabajadores?"
+                    widget: string
+                    hint: "Ej: 10 o menos trabajadores."
+                  - name: original_price
+                    label: "Precio original"
+                    widget: string
+                    hint: "Sin símbolo $. Ej: 850.000"
+                  - name: discount_price
+                    label: "Precio con descuento"
+                    widget: string
+                    hint: "Sin símbolo $. Ej: 425.000"
+                  - name: badge
+                    label: "Badge de descuento"
+                    widget: string
+                    hint: "Ej: 50% OFF"
+                  - name: featured
+                    label: "¿Destacar este plan?"
+                    widget: boolean
+                    default: false
+                    hint: "Si marcas SÍ, este plan se muestra en azul navy resaltado en el centro."
+
+              - name: features
+                label: "Beneficios incluidos en todos los planes"
+                widget: list
+                field:
+                  name: feature
+                  label: "Beneficio"
+                  widget: string
+
+              - name: vial_title
+                label: "Título del Plan Vial"
+                widget: string
+
+              - name: vial_description
+                label: "Descripción del Plan Vial"
+                widget: text
+
+              - name: vial_levels
+                label: "3 niveles del Plan Vial"
+                widget: list
+                min: 3
+                max: 3
+                collapsed: true
+                summary: "{{fields.name}} {{fields.increment}}"
+                fields:
+                  - name: name
+                    label: "Nivel"
+                    widget: string
+                    hint: "Ej: Básico"
+                  - name: increment
+                    label: "Incremento"
+                    widget: string
+                    hint: "Ej: +25%"
+
+              - name: disclaimer
+                label: "Texto pequeño de aclaración"
+                widget: text
+                hint: "Aparece debajo de los planes en letra pequeña."
+
+          # ============= PREGUNTAS FRECUENTES =============
           - name: faq
             label: "❓ Preguntas frecuentes"
             widget: list
@@ -134,40 +197,43 @@ collections:
               - name: answer
                 label: "Respuesta"
                 widget: text
-                hint: "💡 Para resaltar una palabra en negrita, ponla entre dobles asteriscos: **No.** o **Sí.** al inicio funciona muy bien."
+                hint: "💡 Use **palabra** (doble asterisco) para destacar en negrita. Ej: **Sí.** Muchas empresas..."
 
-          # ---------------- CONTACTO ----------------
+          # ============= CONTACTO =============
           - name: contact
             label: "📞 Datos de contacto"
             widget: object
             collapsed: false
+            summary: "Contacto"
             fields:
               - name: phone
-                label: "Teléfono visible (ej: '+57 304 390 0623')"
+                label: "Teléfono"
                 widget: string
+                hint: "Ej: +57 304 390 0623"
               - name: phone_url
-                label: "Link de teléfono (formato tel:+57...)"
+                label: "Link teléfono (para click-to-call)"
                 widget: string
-                hint: "Sin espacios. Ejemplo: tel:+573043900623"
+                hint: "Ej: tel:+573043900623 (sin espacios)"
               - name: whatsapp
-                label: "WhatsApp (solo dígitos, prefijo país)"
+                label: "WhatsApp"
                 widget: string
-                hint: "Sin espacios ni +. Ejemplo: 573043900623"
+                hint: "Solo dígitos, prefijo país. Ej: 573043900623"
               - name: email
                 label: "Correo electrónico"
                 widget: string
               - name: city
-                label: "Ciudad / ubicación"
+                label: "Ciudad"
                 widget: string
               - name: hours
                 label: "Horario de atención"
                 widget: string
 
-          # ---------------- REDES SOCIALES ----------------
+          # ============= REDES SOCIALES =============
           - name: social
             label: "🌐 Redes sociales"
             widget: object
             collapsed: false
+            summary: "Redes"
             fields:
               - name: instagram
                 label: "URL Instagram"
