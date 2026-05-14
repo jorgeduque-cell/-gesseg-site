@@ -3,7 +3,7 @@
    Editorial · Authoritative · Ultra-professional
    =========================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&family=Geist+Mono:wght@400..600&display=swap');
 
 :root {
   /* Color tokens — bone background + deep navy + gold accent (paleta corporativa GESSEG) */
@@ -30,9 +30,9 @@
   --gray-soft:   #A29D92;
   --signal:      #2E7D5B;
 
-  /* Typography */
-  --font-display: 'Fraunces', 'Times New Roman', serif;
-  --font-body:    'Geist', system-ui, -apple-system, sans-serif;
+  /* Typography — Barlow Condensed unificada para todo el sitio (similar a Arial Nova Condensed) */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  --font-body:    'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
   --font-mono:    'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* Layout */
@@ -55,8 +55,10 @@ body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--ink);
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: 0.005em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -92,54 +94,64 @@ body::before {
 .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); position: relative; z-index: 2; }
 
 /* ============== TYPOGRAPHY ============== */
+/* Barlow Condensed unificada. Títulos y subtítulos en bold (700-800).
+   Body en regular (400-500). Eyebrows en bold uppercase con tracking. */
+
 .h-display {
   font-family: var(--font-display);
-  font-weight: 350;
-  letter-spacing: -0.025em;
+  font-weight: 800;
+  letter-spacing: -0.005em;
   line-height: 0.95;
-  font-variation-settings: "opsz" 144;
+  text-transform: none;
 }
 .h-display em {
   font-style: italic;
-  font-weight: 300;
-  font-variation-settings: "opsz" 144;
+  font-weight: 800;
+  color: var(--accent);
 }
 
 h1.hero-title {
   font-family: var(--font-display);
-  font-weight: 350;
-  font-size: clamp(34px, 4.4vw, 60px);
-  line-height: 0.98;
-  letter-spacing: -0.022em;
-  font-variation-settings: "opsz" 144;
+  font-weight: 800;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.005em;
   color: var(--navy);
+  text-transform: none;
 }
-h1.hero-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+h1.hero-title em { font-style: italic; font-weight: 800; color: var(--accent); }
 
 h2.section-title {
   font-family: var(--font-display);
-  font-weight: 350;
-  font-size: clamp(34px, 5vw, 64px);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 144;
+  font-weight: 800;
+  font-size: clamp(36px, 5.4vw, 68px);
+  line-height: 0.98;
+  letter-spacing: -0.005em;
+  color: var(--navy);
 }
-h2.section-title em { font-style: italic; }
+h2.section-title em { font-style: italic; font-weight: 800; color: var(--accent); }
 
 h3 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(22px, 2.4vw, 30px);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: var(--navy);
+}
+
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   color: var(--accent);
   display: inline-flex;
   align-items: center;
@@ -147,7 +159,7 @@ h3 {
 }
 .eyebrow::before {
   content: '';
-  width: 28px; height: 1px;
+  width: 28px; height: 2px;
   background: var(--accent);
 }
 .eyebrow.on-dark { color: var(--accent-soft); }
@@ -155,16 +167,16 @@ h3 {
 
 .lede {
   font-family: var(--font-display);
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(20px, 2.4vw, 26px);
   line-height: 1.4;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   color: var(--ink-soft);
 }
 
-p { font-size: 16px; line-height: 1.65; color: var(--ink-soft); }
-p.large { font-size: 18px; line-height: 1.6; }
+p { font-size: 17px; line-height: 1.55; color: var(--ink-soft); font-weight: 500; }
+p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
 .mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; }
 
 /* ============== TOP BAR ============== */
@@ -290,7 +302,7 @@ p.large { font-size: 18px; line-height: 1.6; }
 }
 .nav-links a {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.01em;
   color: var(--ink);
   position: relative;
@@ -500,7 +512,7 @@ p.large { font-size: 18px; line-height: 1.6; }
   position: absolute; z-index: 3;
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 700;
   color: var(--bg);
   font-size: clamp(26px, 3.4vw, 44px);
   line-height: 1.05;
@@ -544,17 +556,16 @@ p.large { font-size: 18px; line-height: 1.6; }
 .hero-interior .breadcrumb a:hover { color: var(--accent-soft); }
 .hero-interior h1 {
   font-family: var(--font-display);
-  font-weight: 350;
+  font-weight: 700;
   font-size: clamp(42px, 6.5vw, 88px);
   line-height: 0.95;
   letter-spacing: -0.025em;
   margin-bottom: 28px;
   max-width: 16ch;
-  font-variation-settings: "opsz" 144;
   position: relative; z-index: 2;
   color: var(--bg);
 }
-.hero-interior h1 em { font-style: italic; font-weight: 300; color: var(--accent-soft); }
+.hero-interior h1 em { font-style: italic; font-weight: 700; color: var(--accent-soft); }
 .hero-interior .lede { color: rgba(245,240,230,.78); max-width: 60ch; position: relative; z-index: 2; }
 
 /* ============== TRUST STRIP ============== */
@@ -592,7 +603,7 @@ p.large { font-size: 18px; line-height: 1.6; }
 }
 .trust-item {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.02em;
   color: var(--navy);
@@ -676,14 +687,13 @@ section.alt { background: var(--bg-alt); }
 }
 .stat-num {
   font-family: var(--font-display);
-  font-weight: 350;
+  font-weight: 700;
   font-size: clamp(40px, 5vw, 64px);
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--navy);
   display: block;
   margin-bottom: 14px;
-  font-variation-settings: "opsz" 144;
 }
 .stat-num sup { font-size: .5em; vertical-align: top; color: var(--accent); margin-left: 4px; }
 .stat-label {
@@ -817,7 +827,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
   content: counter(step, decimal-leading-zero);
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 700;
   font-size: 32px;
   color: var(--accent-soft);
   display: block;
@@ -874,16 +884,15 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 .method-badge {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 350;
+  font-weight: 700;
   font-size: clamp(32px, 4vw, 48px);
   line-height: 1;
   color: var(--accent-soft);
   letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 144;
 }
 .method-highlight p {
   font-family: var(--font-display);
-  font-weight: 350;
+  font-weight: 700;
   font-size: clamp(18px, 2vw, 22px);
   line-height: 1.35;
   color: rgba(245,240,230,.9);
@@ -938,7 +947,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .sector h4 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 22px;
   letter-spacing: -0.015em;
   color: var(--navy);
@@ -976,14 +985,14 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 .value-num {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 700;
   font-size: 48px;
   color: var(--accent);
   line-height: 1;
 }
 .value-body h4 {
   font-family: var(--font-display);
-  font-weight: 450;
+  font-weight: 700;
   font-size: 22px;
   margin-bottom: 8px;
   color: var(--navy);
@@ -1044,7 +1053,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .compare-col h4 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 22px;
   margin-bottom: 8px;
   letter-spacing: -0.015em;
@@ -1114,7 +1123,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .callout-body p {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 700;
   font-style: italic;
   font-size: clamp(28px, 3.4vw, 48px);
   line-height: 1.25;
@@ -1278,7 +1287,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .info-block p {
   font-family: var(--font-display);
-  font-weight: 350;
+  font-weight: 700;
   font-size: 22px;
   letter-spacing: -0.01em;
   color: var(--navy);
@@ -1287,7 +1296,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 .info-block p.small {
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--ink-soft);
   letter-spacing: 0;
 }
@@ -1385,7 +1394,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 .field select optgroup option {
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0;
   color: var(--ink);
   text-transform: none;
@@ -1520,7 +1529,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 .legal-doc { max-width: 760px; }
 .legal-doc h3 {
   font-family: var(--font-display);
-  font-weight: 450;
+  font-weight: 700;
   font-size: 22px;
   color: var(--navy);
   margin-top: 36px;
@@ -1625,7 +1634,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 .level-arrow {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 700;
   font-size: 36px;
   line-height: 1;
   color: var(--accent);
@@ -1633,7 +1642,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .level-item h4 {
   font-family: var(--font-display);
-  font-weight: 450;
+  font-weight: 700;
   font-size: 22px;
   color: var(--navy);
   letter-spacing: -0.015em;
@@ -1708,17 +1717,16 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .tranquilidad-title {
   font-family: var(--font-display);
-  font-weight: 350;
+  font-weight: 700;
   font-size: clamp(34px, 5vw, 64px);
   line-height: 1.02;
   letter-spacing: -0.025em;
   color: var(--bg);
-  font-variation-settings: "opsz" 144;
   margin-bottom: 28px;
 }
 .tranquilidad-title em {
   font-style: italic;
-  font-weight: 300;
+  font-weight: 700;
   color: var(--accent);
   background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 50%, var(--accent-2) 100%);
   -webkit-background-clip: text;
@@ -1727,7 +1735,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .tranquilidad-sub {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 700;
   font-style: italic;
   font-size: clamp(18px, 2.2vw, 24px);
   line-height: 1.45;
@@ -1809,7 +1817,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .deadline-year {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 700;
   font-style: italic;
   font-size: 22px;
   color: var(--accent-2);
@@ -1879,7 +1887,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 .lines-grid .line-num {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 42px;
   color: var(--accent);
   line-height: 1;
@@ -1962,7 +1970,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .plan-section-head h3 {
   font-family: var(--font-display);
-  font-weight: 450;
+  font-weight: 700;
   font-size: clamp(22px, 2.6vw, 30px);
   color: var(--navy);
   letter-spacing: -0.015em;
@@ -2043,7 +2051,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .tier-card h4 {
   font-family: var(--font-display);
-  font-weight: 450;
+  font-weight: 700;
   font-size: 30px;
   color: var(--navy);
   letter-spacing: -0.02em;
@@ -2149,7 +2157,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 @media (min-width: 900px) { .plan-vial { grid-template-columns: 1.1fr 1.4fr; gap: 48px; align-items: center; } }
 .plan-vial-intro h3 {
   font-family: var(--font-display);
-  font-weight: 450;
+  font-weight: 700;
   font-size: clamp(22px, 2.4vw, 28px);
   color: var(--navy);
   margin-top: 12px;
@@ -2184,7 +2192,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .vial-level {
   font-family: var(--font-display);
-  font-weight: 450;
+  font-weight: 700;
   font-size: 16px;
   color: var(--navy);
   letter-spacing: -0.01em;
@@ -2279,7 +2287,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .diff-col--other li {
   color: var(--gray);
-  font-weight: 400;
+  font-weight: 500;
 }
 .diff-col--gesseg li {
   color: var(--navy);
@@ -2448,7 +2456,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 .line-num {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 700;
   font-size: 28px;
   color: var(--gray-soft);
   line-height: 1;
@@ -2457,7 +2465,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .line-item h4 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 22px;
   color: var(--navy);
   letter-spacing: -0.015em;
@@ -2483,7 +2491,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .faq-item summary {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: clamp(20px, 2.2vw, 26px);
   color: var(--navy);
   cursor: pointer;
@@ -2500,7 +2508,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 .faq-item summary::after {
   content: '+';
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 700;
   font-size: 32px;
   color: var(--accent);
   flex-shrink: 0;
@@ -2569,7 +2577,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
   z-index: 2;
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 700;
   font-size: 96px;
   color: rgba(245,240,230,.92);
   line-height: 1;
@@ -2586,7 +2594,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .svc-detail-body .lead-p {
   font-family: var(--font-display);
-  font-weight: 350;
+  font-weight: 700;
   font-size: clamp(17px, 1.8vw, 20px);
   line-height: 1.5;
   letter-spacing: -0.005em;
