@@ -113,13 +113,18 @@ body::before {
 h1.hero-title {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(40px, 5.4vw, 76px);
-  line-height: 0.95;
-  letter-spacing: -0.005em;
+  font-size: clamp(48px, 7.5vw, 110px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
   color: var(--navy);
   text-transform: none;
+  max-width: 100%;
 }
 h1.hero-title em { font-style: italic; font-weight: 800; color: var(--accent); }
+h1.hero-title--wide {
+  width: 100%;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
 
 h2.section-title {
   font-family: var(--font-display);
@@ -404,6 +409,19 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
 }
 @media (min-width: 900px) {
   .hero-grid { grid-template-columns: 6fr 5fr; gap: 64px; }
+}
+
+/* Variante para el hero rediseñado: título full-width + lede/foto abajo */
+.hero-grid--below {
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero-grid--below { grid-template-columns: 1fr 1fr; gap: 64px; }
+}
+.hero-grid--below .hero-visual {
+  aspect-ratio: 4 / 3;
+  max-height: 440px;
+  min-height: 320px;
 }
 .hero-text {
   display: flex;
@@ -2072,29 +2090,31 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 }
 .tier-card--featured .tier-prices { border-top-color: rgba(245,240,230,.2); }
 .tier-original {
-  font-family: var(--font-mono);
-  font-size: 14px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
   color: var(--gray);
   text-decoration: line-through;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: 1.5px;
+  letter-spacing: -0.005em;
 }
-.tier-original sup { font-size: 10px; margin-left: 4px; vertical-align: top; }
+.tier-original sup { font-size: 11px; margin-left: 4px; vertical-align: top; font-weight: 500; }
 .tier-discount {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  font-size: clamp(36px, 4vw, 50px);
   color: var(--accent-2);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1;
 }
 .tier-discount sup {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
   margin-left: 6px;
   vertical-align: super;
   color: var(--gray);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
 }
 .tier-card--featured .tier-discount sup { color: rgba(245,240,230,.6); }
 .tier-badge {
