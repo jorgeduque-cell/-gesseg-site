@@ -90,13 +90,27 @@
 </header>
 
 <!-- Hero -->
-<section class="hero wrap">
-  <div class="hero-solo reveal">
-    <h1 class="hero-title hero-title--wide">{{{hero.title}}}</h1>
-    <p class="lede">{{hero.lede}}</p>
-    <div class="hero-actions">
-      <a href="servicios.html" class="btn btn-primary btn-arrow">Conocer servicios</a>
-      <a href="contacto.html" class="btn btn-ghost">Hablar con un asesor</a>
+<section class="hero-dark">
+  <div class="hero-dark-deco" aria-hidden="true"></div>
+  <div class="hero-dark-inner">
+    <div class="hero-dark-grid">
+      <div class="hero-dark-text reveal">
+        <h1 class="hero-title hero-title--dark">{{{hero.title}}}</h1>
+        <p class="lede hero-dark-lede">{{hero.lede}}</p>
+        <div class="hero-actions">
+          <a href="contacto.html" class="btn btn-gold btn-arrow">Solicitar asesoría</a>
+          <a href="servicios.html" class="btn btn-ghost-dark">Conocer servicios</a>
+        </div>
+        <ul class="hero-checks">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Prevención</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Cumplimiento</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Seguimiento continuo</li>
+        </ul>
+      </div>
+
+      <div class="hero-dark-photo reveal delay-1">
+        <img src="/gabriela.jpg" alt="Asesora profesional de GESSEG Colombia S.A.S" loading="eager" fetchpriority="high">
+      </div>
     </div>
   </div>
 </section>

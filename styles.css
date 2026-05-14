@@ -422,6 +422,165 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
   max-width: 60ch;
   font-size: clamp(22px, 2.4vw, 30px);
 }
+
+/* ============== HERO DARK (con foto, fondo navy) ============== */
+.hero-dark {
+  position: relative;
+  background:
+    radial-gradient(70% 60% at 90% 0%, rgba(212,165,71,.15), transparent 60%),
+    radial-gradient(60% 60% at 0% 100%, rgba(31,52,99,.4), transparent 60%),
+    linear-gradient(135deg, var(--navy) 0%, var(--bg-deep-2) 100%);
+  color: var(--bg);
+  padding: clamp(60px, 9vw, 130px) 0 clamp(60px, 8vw, 120px);
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.hero-dark-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(45deg, transparent 49.4%, rgba(212,165,71,.05) 49.4%, rgba(212,165,71,.05) 50.6%, transparent 50.6%),
+    linear-gradient(-45deg, transparent 49.4%, rgba(212,165,71,.04) 49.4%, rgba(212,165,71,.04) 50.6%, transparent 50.6%);
+  background-size: 100px 100px;
+  opacity: .8;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
+}
+.hero-dark-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 2;
+}
+.hero-dark-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero-dark-grid { grid-template-columns: 1.3fr 1fr; gap: 72px; }
+}
+
+.hero-dark-text { display: flex; flex-direction: column; gap: 24px; }
+
+h1.hero-title--dark {
+  color: var(--bg);
+  font-size: clamp(40px, 5.4vw, 78px);
+  line-height: 0.98;
+}
+h1.hero-title--dark em {
+  color: var(--accent-bright);
+  font-style: italic;
+  font-weight: 800;
+}
+
+.hero-dark-lede {
+  color: rgba(245,240,230,.78);
+  font-weight: 500;
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-style: normal;
+  max-width: 56ch;
+  margin: 0;
+}
+
+/* Botón gold outline (variante para hero-dark) */
+.btn-gold {
+  background: transparent;
+  color: var(--bg);
+  border: 1.5px solid var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.btn-gold:hover {
+  background: var(--accent);
+  color: var(--navy);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Botón ghost para fondo oscuro */
+.btn-ghost-dark {
+  background: transparent;
+  color: var(--bg);
+  border: 1.5px solid rgba(245,240,230,0.3);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.btn-ghost-dark:hover {
+  background: rgba(245,240,230,0.1);
+  border-color: var(--bg);
+  color: var(--bg);
+}
+
+/* Lista de checks horizontales debajo de botones */
+.hero-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  margin-top: 8px;
+  list-style: none;
+  padding: 0;
+}
+.hero-checks li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--bg);
+  letter-spacing: 0.01em;
+}
+.hero-checks svg {
+  color: var(--accent-bright);
+  flex-shrink: 0;
+}
+
+/* Foto del hero con marco decorativo dorado en esquinas */
+.hero-dark-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  overflow: visible;
+  max-height: 600px;
+}
+.hero-dark-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  box-shadow: 0 25px 60px -20px rgba(0,0,0,0.5);
+  filter: saturate(1.05) contrast(1.02);
+}
+.hero-dark-photo::before {
+  content: '';
+  position: absolute;
+  top: -12px; right: -12px;
+  width: 52px; height: 52px;
+  border-top: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  pointer-events: none;
+}
+.hero-dark-photo::after {
+  content: '';
+  position: absolute;
+  bottom: -12px; left: -12px;
+  width: 52px; height: 52px;
+  border-bottom: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+  pointer-events: none;
+}
+@media (max-width: 700px) {
+  .hero-dark-photo { max-width: 380px; margin: 0 auto; }
+  .hero-dark-photo::before,
+  .hero-dark-photo::after { width: 40px; height: 40px; }
+}
 .hero-text {
   display: flex;
   flex-direction: column;
