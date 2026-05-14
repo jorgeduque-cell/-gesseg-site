@@ -178,46 +178,13 @@
         </div>
       </fieldset>
 
-      <!-- Grupo 3: Sobre su empresa -->
-      <fieldset class="form-group">
-        <legend>Sobre su empresa</legend>
-        <div class="field-row">
-          <div class="field">
-            <label for="sector">Sector</label>
-            <select id="sector" name="sector">
-              <option value="">Seleccione...</option>
-              <option>Construcción</option>
-              <option>Manufactura</option>
-              <option>Logística y transporte</option>
-              <option>Salud</option>
-              <option>Educación</option>
-              <option>Comercio y oficinas</option>
-              <option>Energía y servicios</option>
-              <option>Sector público</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="trabajadores">N° de trabajadores</label>
-            <select id="trabajadores" name="trabajadores">
-              <option value="">Seleccione...</option>
-              <option>1 – 10</option>
-              <option>11 – 50</option>
-              <option>51 – 200</option>
-              <option>201 – 500</option>
-              <option>500+</option>
-            </select>
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- Grupo 4: Qué le interesa -->
+      <!-- Grupo 3: Qué plan le interesa -->
       <fieldset class="form-group">
         <legend>Qué plan le interesa</legend>
         <div class="field">
           <label for="plan">Plan de interés</label>
-          <select id="plan" name="plan">
-            <option value="">Aún no sé / quiero un diagnóstico</option>
+          <select id="plan" name="plan" required>
+            <option value="" disabled selected>Selecciona un plan</option>
             <optgroup label="Sistema de Gestión SST">
               <option>Plan I — Estructura empresarial I ($693.000 + IVA con desc.)</option>
               <option>Plan II — Estructura empresarial II ($875.000 + IVA con desc.)</option>
@@ -228,12 +195,7 @@
               <option>Plan Vial Estándar (+35%)</option>
               <option>Plan Vial Avanzado (+45%)</option>
             </optgroup>
-            <option>Otra combinación / asesoría a la medida</option>
           </select>
-        </div>
-        <div class="field">
-          <label for="mensaje">Cuéntenos brevemente su necesidad</label>
-          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Ej: Necesitamos auditar el cumplimiento de los estándares mínimos antes de una visita del Ministerio de Trabajo."></textarea>
         </div>
       </fieldset>
 

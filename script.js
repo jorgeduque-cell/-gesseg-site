@@ -134,18 +134,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const buildMessage = () => {
       const lines = [
-        '*Nueva solicitud de diagnóstico — GESSEG*',
+        '*Nueva solicitud — GESSEG*',
         '',
         '*Nombre:* ' + val('nombre'),
         '*Empresa:* ' + val('empresa'),
         '*Correo:* ' + val('email'),
         '*Teléfono:* ' + val('telefono'),
+        '*Ciudad:* ' + val('ciudad'),
+        '*Plan de interés:* ' + val('plan'),
       ];
-      if (val('ciudad')) lines.push('*Ciudad:* ' + val('ciudad'));
-      if (val('sector')) lines.push('*Sector:* ' + val('sector'));
-      if (val('trabajadores')) lines.push('*N° trabajadores:* ' + val('trabajadores'));
-      if (val('plan')) lines.push('*Plan de interés:* ' + val('plan'));
-      if (val('mensaje')) lines.push('', '*Necesidad:*', val('mensaje'));
       lines.push('', '_Enviado desde gesseg.com.co_');
       return lines.join('\n');
     };
@@ -173,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
 
-      const required = ['nombre', 'empresa', 'email', 'telefono', 'ciudad'];
+      const required = ['nombre', 'empresa', 'email', 'telefono', 'ciudad', 'plan'];
       for (const id of required) {
         const field = form.querySelector('#' + id);
         if (!field.value.trim()) {
