@@ -71,32 +71,17 @@
 <!-- Scroll progress -->
 <div class="scroll-progress" aria-hidden="true"></div>
 
-<!-- Top bar -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <span>Bogotá · Colombia</span>
-    <div class="topbar-meta">
-      <span>Lic. en SST · Resolución 0312 de 2019</span>
-      <span class="live-dot">Atendiendo nuevos proyectos</span>
-      <a href="contacto.html">Contacto →</a>
-    </div>
-  </div>
-</div>
-
 <!-- Header -->
 <header class="site-header">
   <nav class="nav">
     <a href="index.html" class="brand" aria-label="Inicio GESSEG">
-      <img src="/logo-mark-dark.png" alt="GESSEG" class="brand-mark" width="42" height="42">
-      <span class="brand-text">
-        <span class="brand-name">GESSEG</span>
-        <span class="brand-tag">Colombia S.A.S</span>
-      </span>
+      <img src="/logo-dark.png" alt="GESSEG Colombia S.A.S" class="brand-logo" width="180" height="68">
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Inicio</a></li>
       <li><a href="nosotros.html">Nosotros</a></li>
       <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="planes.html">Planes</a></li>
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
     <a href="contacto.html" class="btn btn-primary nav-cta btn-arrow">Solicitar diagnóstico</a>
@@ -108,21 +93,11 @@
 <section class="hero wrap">
   <div class="hero-grid">
     <div class="hero-text reveal">
-      <span class="hero-badge">
-        <span class="dot"></span>
-        <span>{{{hero.badge}}}</span>
-      </span>
       <h1 class="hero-title">{{{hero.title}}}</h1>
       <p class="lede">{{hero.lede}}</p>
       <div class="hero-actions">
         <a href="servicios.html" class="btn btn-primary btn-arrow">Conocer servicios</a>
         <a href="contacto.html" class="btn btn-ghost">Hablar con un asesor</a>
-      </div>
-      <div class="hero-tag-row">
-        <span>SG-SST</span>
-        <span>Identificación de peligros</span>
-        <span>Capacitación certificada</span>
-        <span>Plan de emergencias</span>
       </div>
     </div>
 
@@ -283,39 +258,38 @@
   </div>
 </section>
 
-<!-- Comparison block — Por qué GESSEG -->
+<!-- ¿Por qué somos diferentes? (nueva comparativa simple) -->
 <section class="block tight wrap">
-  <div class="section-head">
+  <div class="section-head" style="justify-items: center; text-align: center; grid-template-columns: 1fr; max-width: 700px; margin: 0 auto clamp(40px,6vw,72px);">
     <div class="reveal">
-      <span class="eyebrow" style="margin-bottom:24px;">Por qué GESSEG</span>
-      <h2 class="section-title">La <em>diferencia</em> entre cumplir y proteger.</h2>
-    </div>
-    <div class="right reveal delay-1">
-      <p class="large">Una consultora SST se contrata para evitar sanciones. Una buena se contrata para que ningún trabajador deje de volver a casa. Esa distinción guía cada decisión técnica que tomamos.</p>
+      <h2 class="section-title">¿Por qué somos <em>diferentes</em>?</h2>
     </div>
   </div>
 
-  <div class="compare reveal">
-    <div class="compare-col">
-      <span class="label">Consultoría tradicional</span>
-      <h4>Documentos para auditar.</h4>
+  <div class="diff-grid reveal">
+    <div class="diff-col diff-col--other">
+      <div class="diff-icon" aria-hidden="true">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-4h6v4M9 12h2M13 12h2M9 8h2M13 8h2"/></svg>
+      </div>
+      <h4>Otras empresas</h4>
       <ul>
-        <li>Plantillas genéricas reutilizadas entre clientes.</li>
-        <li>Matrices IPVR llenadas desde escritorio, sin verificación en sitio.</li>
-        <li>Capacitaciones de relleno, sin medición de transferencia.</li>
-        <li>El cliente queda solo después de la entrega.</li>
-        <li>Cumplimiento estático — válido el día de la auditoría.</li>
+        <li>No pueden soportar otros requisitos legales</li>
+        <li>Entregan tareas que sobrecargan al cliente</li>
+        <li>Al irse, las evidencias se van también</li>
+        <li>Cumplimiento parcial</li>
       </ul>
     </div>
-    <div class="compare-col gesseg">
-      <span class="label">GESSEG Colombia</span>
-      <h4>Sistemas que reducen riesgo real.</h4>
+
+    <div class="diff-col diff-col--gesseg">
+      <div class="diff-icon" aria-hidden="true">
+        <img src="/logo-mark-dark.png" alt="GESSEG" width="56" height="56">
+      </div>
+      <h4>GESSEG Colombia S.A.S</h4>
       <ul>
-        <li>Cada matriz se levanta en planta con el equipo operativo.</li>
-        <li>Documentos defendibles ante ARL, Mintrabajo y judicialización.</li>
-        <li>Capacitaciones evaluadas con observación en puesto de trabajo.</li>
-        <li>Acompañamiento mensual con indicadores y reporte ejecutivo.</li>
-        <li>Sistema vivo — evoluciona con la organización y la norma.</li>
+        <li>Vamos más allá de lo mínimo</li>
+        <li>Proceso ágil y sin sobrecargas operativas</li>
+        <li>Las evidencias están en poder del cliente</li>
+        <li>Servicio integral</li>
       </ul>
     </div>
   </div>
@@ -329,107 +303,6 @@
       <span class="attr">Equipo técnico GESSEG</span>
     </div>
   </div>
-</section>
-
-<!-- Planes (El siguiente paso) -->
-<section class="block wrap" id="planes">
-  <div class="section-head">
-    <div class="reveal">
-      <span class="eyebrow" style="margin-bottom:24px;">El siguiente paso</span>
-      <h2 class="section-title">Planes que se <em>ajustan</em> a su empresa.</h2>
-    </div>
-    <div class="right reveal delay-1">
-      <p class="large">El plan ideal depende de las características reales de su organización. Diagnosticamos juntos y le proponemos lo que necesita — sin paquetes prefabricados.</p>
-    </div>
-  </div>
-
-  <!-- Criterios -->
-  <div class="plan-criteria reveal">
-    <span class="plan-criteria-label">El valor se define según</span>
-    <ul>
-      <li><span class="num">1</span> Cantidad de trabajadores</li>
-      <li><span class="num">2</span> Clase de riesgo de la actividad económica</li>
-      <li><span class="num">3</span> Cantidad de vehículos al servicio de la organización</li>
-      <li><span class="num">4</span> Cantidad de conductores al servicio de la organización</li>
-    </ul>
-  </div>
-
-  <!-- SG-SST tiers -->
-  <div class="plan-section-head reveal">
-    <h3>Sistema de Gestión SST</h3>
-    <span class="plan-promo">30% OFF · primeros 3 meses</span>
-  </div>
-
-  <div class="tier-grid reveal">
-    <article class="tier-card">
-      <span class="tier-label">Estructura empresarial</span>
-      <h4>Plan I</h4>
-      <p class="tier-desc">Para empresas pequeñas con riesgo I–II.</p>
-      <div class="tier-prices">
-        <span class="tier-original">$990.000<sup>+ IVA</sup></span>
-        <span class="tier-discount">$693.000<sup>+ IVA</sup></span>
-      </div>
-      <span class="tier-badge">30% OFF</span>
-      <a href="contacto.html" class="btn-link">Cotizar plan I</a>
-    </article>
-
-    <article class="tier-card tier-card--featured">
-      <span class="tier-label">Estructura empresarial</span>
-      <h4>Plan II</h4>
-      <p class="tier-desc">Para empresas medianas con riesgo II–III.</p>
-      <div class="tier-prices">
-        <span class="tier-original">$1.250.000<sup>+ IVA</sup></span>
-        <span class="tier-discount">$875.000<sup>+ IVA</sup></span>
-      </div>
-      <span class="tier-badge">30% OFF</span>
-      <a href="contacto.html" class="btn-link">Cotizar plan II</a>
-    </article>
-
-    <article class="tier-card">
-      <span class="tier-label">Estructura empresarial</span>
-      <h4>Plan III</h4>
-      <p class="tier-desc">Para empresas grandes con riesgo IV–V.</p>
-      <div class="tier-prices">
-        <span class="tier-original">$1.500.000<sup>+ IVA</sup></span>
-        <span class="tier-discount">$1.050.000<sup>+ IVA</sup></span>
-      </div>
-      <span class="tier-badge">30% OFF</span>
-      <a href="contacto.html" class="btn-link">Cotizar plan III</a>
-    </article>
-  </div>
-
-  <!-- Features comunes -->
-  <ul class="plan-features reveal">
-    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg>Visitas presenciales y remoto</li>
-    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg>Entregables documentados</li>
-    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg>Acompañamiento ante ARL y Mintrabajo</li>
-    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg>Contrato inicial por 6 meses</li>
-  </ul>
-
-  <!-- Plan Vial add-on -->
-  <div class="plan-vial reveal">
-    <div class="plan-vial-intro">
-      <span class="eyebrow">Complemento</span>
-      <h3>Plan Estratégico de Seguridad Vial</h3>
-      <p>Adicional opcional para empresas con vehículos o conductores. Se calcula sobre el plan SG-SST base contratado.</p>
-    </div>
-    <div class="plan-vial-tiers">
-      <div class="vial-tier">
-        <span class="vial-level">Básico</span>
-        <span class="vial-increment">+25%</span>
-      </div>
-      <div class="vial-tier">
-        <span class="vial-level">Estándar</span>
-        <span class="vial-increment">+35%</span>
-      </div>
-      <div class="vial-tier">
-        <span class="vial-level">Avanzado</span>
-        <span class="vial-increment">+45%</span>
-      </div>
-    </div>
-  </div>
-
-  <p class="plan-disclaimer reveal">* El descuento del 30% se mantiene durante los primeros 3 meses del contrato. Los precios pueden variar según el diagnóstico inicial de su empresa.</p>
 </section>
 
 <!-- FAQ -->
@@ -473,11 +346,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="brand">
-          <img src="/logo-mark-light.png" alt="GESSEG" class="brand-mark" width="42" height="42">
-          <span class="brand-text">
-            <span class="brand-name">GESSEG</span>
-            <span class="brand-tag">Colombia S.A.S</span>
-          </span>
+          <img src="/logo-light.png" alt="GESSEG Colombia S.A.S" class="brand-logo" width="180" height="68">
         </a>
         <p>Consultoría especializada en Seguridad y Salud en el Trabajo. Acompañamos a las organizaciones colombianas en el cumplimiento normativo y la gestión integral del riesgo laboral.</p>
         <div class="footer-socials">
@@ -504,6 +373,7 @@
           <li><a href="index.html">Inicio</a></li>
           <li><a href="nosotros.html">Nosotros</a></li>
           <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="planes.html">Planes</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </div>

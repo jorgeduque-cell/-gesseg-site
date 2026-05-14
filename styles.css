@@ -252,6 +252,22 @@ p.large { font-size: 18px; line-height: 1.6; }
   transition: transform .35s var(--ease-out);
 }
 .brand:hover .brand-mark { transform: rotate(-4deg) scale(1.06); }
+
+/* Logo completo (con texto integrado) */
+.brand-logo {
+  display: block;
+  height: 52px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  transition: transform .35s var(--ease-out), opacity .25s;
+}
+.brand:hover .brand-logo { transform: scale(1.03); opacity: .9; }
+.site-header.scrolled .brand-logo { height: 44px; }
+.footer-brand .brand-logo { height: 56px; max-width: 220px; }
+@media (max-width: 600px) {
+  .brand-logo { height: 44px; }
+}
 .brand-text { display: flex; flex-direction: column; line-height: 1; }
 .brand-name {
   font-family: var(--font-display);
@@ -2191,6 +2207,83 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
   max-width: 70ch;
   margin: 16px auto 0;
   position: relative; z-index: 2;
+}
+
+/* ============== ¿POR QUÉ SOMOS DIFERENTES? (comparativa simple) ============== */
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  position: relative; z-index: 2;
+}
+@media (min-width: 800px) {
+  .diff-grid {
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .diff-grid::before {
+    content: '';
+    grid-column: 2;
+    grid-row: 1;
+    background: var(--navy);
+    width: 2px;
+    justify-self: center;
+    height: 80%;
+    margin-top: 10%;
+  }
+}
+.diff-col {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 28px;
+}
+@media (min-width: 800px) {
+  .diff-col--other { grid-column: 1; }
+  .diff-col--gesseg { grid-column: 3; }
+}
+.diff-icon {
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  color: var(--gray-soft);
+  margin-bottom: 4px;
+}
+.diff-col--gesseg .diff-icon img {
+  width: 56px;
+  height: auto;
+}
+.diff-col h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(20px, 2.4vw, 28px);
+  letter-spacing: -0.015em;
+  margin: 0 0 8px;
+}
+.diff-col--other h4 { color: var(--gray); }
+.diff-col--gesseg h4 { color: var(--navy); }
+.diff-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 8px 0 0;
+}
+.diff-col li {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+.diff-col--other li {
+  color: var(--gray);
+  font-weight: 400;
+}
+.diff-col--gesseg li {
+  color: var(--navy);
+  font-weight: 600;
 }
 
 /* ============== MOBILE MENU TOGGLE OPEN STATE ============== */
