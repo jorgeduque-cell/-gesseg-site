@@ -91,19 +91,12 @@
 
 <!-- Hero -->
 <section class="hero wrap">
-  <h1 class="hero-title reveal hero-title--wide">{{{hero.title}}}</h1>
-
-  <div class="hero-grid hero-grid--below">
-    <div class="hero-text reveal delay-1">
-      <p class="lede">{{hero.lede}}</p>
-      <div class="hero-actions">
-        <a href="servicios.html" class="btn btn-primary btn-arrow">Conocer servicios</a>
-        <a href="contacto.html" class="btn btn-ghost">Hablar con un asesor</a>
-      </div>
-    </div>
-
-    <div class="hero-visual reveal delay-2">
-      <img class="hero-photo" src="{{hero.photo}}" alt="{{hero.photo_alt}}" loading="eager" fetchpriority="high">
+  <div class="hero-solo reveal">
+    <h1 class="hero-title hero-title--wide">{{{hero.title}}}</h1>
+    <p class="lede">{{hero.lede}}</p>
+    <div class="hero-actions">
+      <a href="servicios.html" class="btn btn-primary btn-arrow">Conocer servicios</a>
+      <a href="contacto.html" class="btn btn-ghost">Hablar con un asesor</a>
     </div>
   </div>
 </section>

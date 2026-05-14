@@ -411,17 +411,16 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
   .hero-grid { grid-template-columns: 6fr 5fr; gap: 64px; }
 }
 
-/* Variante para el hero rediseñado: título full-width + lede/foto abajo */
-.hero-grid--below {
-  align-items: center;
+/* Hero sin foto: titulo + lede + botones centrados en una sola columna */
+.hero-solo {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.5vw, 40px);
+  max-width: 1180px;
 }
-@media (min-width: 900px) {
-  .hero-grid--below { grid-template-columns: 1fr 1fr; gap: 64px; }
-}
-.hero-grid--below .hero-visual {
-  aspect-ratio: 4 / 3;
-  max-height: 440px;
-  min-height: 320px;
+.hero-solo .lede {
+  max-width: 60ch;
+  font-size: clamp(22px, 2.4vw, 30px);
 }
 .hero-text {
   display: flex;
