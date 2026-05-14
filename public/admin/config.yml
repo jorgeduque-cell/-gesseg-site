@@ -10,7 +10,7 @@ backend:
   name: github
   repo: jorgeduque-cell/-gesseg-site
   branch: main
-  base_url: https://gesset.vercel.app
+  base_url: https://gessegcolombia.com
   auth_endpoint: api/auth
   commit_messages:
     create: "Crear {{collection}} desde panel"
@@ -20,8 +20,8 @@ backend:
     deleteMedia: "Eliminar imagen {{path}} desde panel"
 
 # URL pública del sitio (para previews)
-site_url: https://gesset.vercel.app
-display_url: https://gesset.vercel.app
+site_url: https://gessegcolombia.com
+display_url: https://gessegcolombia.com
 
 # Idioma del panel (para que la UI salga en español)
 locale: es
