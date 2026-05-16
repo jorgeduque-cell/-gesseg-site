@@ -110,40 +110,6 @@
   </div>
 </section>
 
-<!-- Lo que más nos piden -->
-<section class="block wrap">
-  <div class="section-head">
-    <div class="reveal">
-      <h2 class="section-title">Tres servicios que <em>transforman</em> empresas.</h2>
-    </div>
-    <div class="right reveal delay-1">
-      <p class="large">Las soluciones más solicitadas por nuestros clientes. Diseñadas para cumplir, prevenir y abrir oportunidades comerciales reales.</p>
-      <a href="servicios.html" class="btn btn-ghost btn-arrow" style="margin-top:24px;">Ver portafolio completo</a>
-    </div>
-  </div>
-
-  <div class="featured-grid reveal delay-1">
-    {{#each featured_services}}
-    <article class="featured-card">
-      <a href="servicios.html#{{id}}" class="featured-image" aria-label="{{title}}">
-        <img src="{{photo}}" alt="{{photo_alt}}" loading="lazy">
-        <span class="featured-tag">{{badge}}</span>
-      </a>
-      <div class="featured-body">
-        <h3>{{title}}</h3>
-        <p>{{description}}</p>
-        <ul class="featured-points">
-          {{#each points}}
-          <li>{{this}}</li>
-          {{/each}}
-        </ul>
-        <a href="servicios.html#{{id}}" class="btn-link">Conocer servicio</a>
-      </div>
-    </article>
-    {{/each}}
-  </div>
-</section>
-
 <!-- Tienes la Tranquilidad (CTA con urgencia) -->
 <section class="tranquilidad-banner">
   <div class="wrap">
