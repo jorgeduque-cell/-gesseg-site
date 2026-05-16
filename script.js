@@ -113,53 +113,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ----- Lines slider (Líneas de negocio 360°) -----
+  // ----- Lines slider (Líneas de negocio 360°) — loop infinito -----
   document.querySelectorAll('[data-slider]').forEach(slider => {
     const track = slider.querySelector('.lines-track');
-    const items = track ? Array.from(track.children) : [];
+    const originalItems = track ? Array.from(track.children) : [];
     const prev = slider.querySelector('.slider-prev');
     const next = slider.querySelector('.slider-next');
     const dotsContainer = slider.querySelector('.slider-dots');
-    if (!track || items.length === 0) return;
+    if (!track || originalItems.length === 0) return;
 
-    const visibleCount = () => {
-      const w = window.innerWidth;
-      if (w >= 1000) return 3;
-      if (w >= 700) return 2;
-      return 1;
-    };
+    const total = originalItems.length;
+
+    // Clonar todos los items al final para permitir loop infinito hacia adelante
+    originalItems.forEach(item => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.classList.add('is-clone');
+      track.appendChild(clone);
+    });
+
+    const totalSlots = total * 2;
+    const itemPercent = 100 / totalSlots;
 
     let index = 0;
-    const maxIndex = () => Math.max(0, items.length - visibleCount());
+    let snapTimer;
+    const TRANSITION_MS = 600;
+
+    const setOffset = (idx) => {
+      track.style.transform = `translateX(-${itemPercent * idx}%)`;
+    };
+
+    const update = () => {
+      track.style.transition = '';
+      setOffset(index);
+      dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
+        d.classList.toggle('is-active', i === ((index % total) + total) % total);
+      });
+    };
 
     const buildDots = () => {
       dotsContainer.innerHTML = '';
-      const total = maxIndex() + 1;
       for (let i = 0; i < total; i++) {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'slider-dot';
-        btn.setAttribute('aria-label', 'Ir al grupo ' + (i + 1));
+        btn.setAttribute('aria-label', 'Ir al servicio ' + (i + 1));
         btn.addEventListener('click', () => { index = i; update(); });
         dotsContainer.appendChild(btn);
       }
     };
 
-    const update = () => {
-      const max = maxIndex();
-      if (index > max) index = max;
-      if (index < 0) index = 0;
-      const offset = (100 / items.length) * index;
-      track.style.transform = `translateX(-${offset}%)`;
-      if (prev) prev.disabled = index === 0;
-      if (next) next.disabled = index === max;
-      dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
-        d.classList.toggle('is-active', i === index);
-      });
+    const goNext = () => {
+      index++;
+      update();
+      if (index >= total) {
+        clearTimeout(snapTimer);
+        snapTimer = setTimeout(() => {
+          track.style.transition = 'none';
+          index -= total;
+          setOffset(index);
+          // Forzar reflow para que la siguiente transición funcione
+          void track.offsetHeight;
+          track.style.transition = '';
+        }, TRANSITION_MS + 20);
+      }
     };
 
-    prev?.addEventListener('click', () => { index--; update(); });
-    next?.addEventListener('click', () => { index++; update(); });
+    const goPrev = () => {
+      if (index <= 0) {
+        // Salto silencioso al equivalente al final, después animar atrás
+        track.style.transition = 'none';
+        index = total;
+        setOffset(index);
+        void track.offsetHeight;
+        track.style.transition = '';
+        index--;
+        setOffset(index);
+        dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
+          d.classList.toggle('is-active', i === ((index % total) + total) % total);
+        });
+      } else {
+        index--;
+        update();
+      }
+    };
+
+    prev?.addEventListener('click', goPrev);
+    next?.addEventListener('click', goNext);
 
     let startX = 0;
     let startY = 0;
@@ -174,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
       startTime = Date.now();
       dragging = true;
       horizontal = null;
+      clearTimeout(snapTimer);
     }, { passive: true });
 
     viewport.addEventListener('touchmove', e => {
@@ -185,8 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (horizontal) {
         track.style.transition = 'none';
-        const baseOffset = (100 / items.length) * index;
-        const dragPercent = (dx / viewport.offsetWidth) * (100 / items.length) * visibleCount();
+        const baseOffset = itemPercent * index;
+        const dragPercent = (dx / viewport.offsetWidth) * itemPercent;
         track.style.transform = `translateX(calc(-${baseOffset}% + ${dragPercent}%))`;
       }
     }, { passive: true });
@@ -199,9 +240,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const velocity = Math.abs(dx) / Math.max(elapsed, 1);
       const threshold = velocity > 0.5 ? 20 : viewport.offsetWidth * 0.12;
       if (horizontal && Math.abs(dx) > threshold) {
-        if (dx < 0) index++; else index--;
+        if (dx < 0) goNext(); else goPrev();
+      } else {
+        update();
       }
-      update();
       dragging = false;
       horizontal = null;
     });
@@ -216,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => { buildDots(); update(); }, 150);
+      resizeTimer = setTimeout(() => { update(); }, 150);
     });
 
     buildDots();
