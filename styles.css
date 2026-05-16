@@ -439,15 +439,16 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
 /* Variante con foto de fondo a pantalla completa */
 .hero-dark--bg {
   background: var(--navy);
-  min-height: clamp(520px, 70vh, 720px);
+  min-height: clamp(580px, 78vh, 780px);
   display: flex;
   align-items: center;
+  padding: clamp(40px, 6vw, 80px) 0;
 }
 .hero-dark--bg .hero-dark-bg {
   position: absolute;
   inset: 0;
   background-image: url('/gabriela.jpg');
-  background-size: cover;
+  background-size: auto 100%;
   background-position: right center;
   background-repeat: no-repeat;
   z-index: 0;
@@ -459,11 +460,11 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
   background:
     linear-gradient(90deg,
       var(--navy) 0%,
-      rgba(11,29,63,0.97) 25%,
-      rgba(11,29,63,0.78) 45%,
-      rgba(11,29,63,0.35) 65%,
-      rgba(11,29,63,0.05) 85%,
-      transparent 100%
+      rgba(11,29,63,0.98) 30%,
+      rgba(11,29,63,0.85) 45%,
+      rgba(11,29,63,0.45) 58%,
+      rgba(11,29,63,0.10) 72%,
+      transparent 85%
     );
 }
 .hero-dark--bg .hero-dark-inner {
@@ -475,20 +476,21 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 640px;
+  max-width: 620px;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .hero-dark--bg {
-    min-height: clamp(560px, 90vh, 760px);
+    min-height: clamp(560px, 90vh, 780px);
   }
   .hero-dark--bg .hero-dark-bg {
-    background-position: 75% center;
+    background-size: cover;
+    background-position: 72% center;
   }
   .hero-dark--bg .hero-dark-overlay {
     background:
       linear-gradient(180deg,
         rgba(11,29,63,0.55) 0%,
-        rgba(11,29,63,0.85) 60%,
+        rgba(11,29,63,0.85) 55%,
         var(--navy) 100%
       );
   }
