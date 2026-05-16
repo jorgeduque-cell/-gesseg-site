@@ -113,6 +113,74 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ----- Lines slider (Líneas de negocio 360°) -----
+  document.querySelectorAll('[data-slider]').forEach(slider => {
+    const track = slider.querySelector('.lines-track');
+    const items = track ? Array.from(track.children) : [];
+    const prev = slider.querySelector('.slider-prev');
+    const next = slider.querySelector('.slider-next');
+    const dotsContainer = slider.querySelector('.slider-dots');
+    if (!track || items.length === 0) return;
+
+    const visibleCount = () => {
+      const w = window.innerWidth;
+      if (w >= 1000) return 3;
+      if (w >= 700) return 2;
+      return 1;
+    };
+
+    let index = 0;
+    const maxIndex = () => Math.max(0, items.length - visibleCount());
+
+    const buildDots = () => {
+      dotsContainer.innerHTML = '';
+      const total = maxIndex() + 1;
+      for (let i = 0; i < total; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slider-dot';
+        btn.setAttribute('aria-label', 'Ir al grupo ' + (i + 1));
+        btn.addEventListener('click', () => { index = i; update(); });
+        dotsContainer.appendChild(btn);
+      }
+    };
+
+    const update = () => {
+      const max = maxIndex();
+      if (index > max) index = max;
+      if (index < 0) index = 0;
+      const offset = (100 / items.length) * index;
+      track.style.transform = `translateX(-${offset}%)`;
+      if (prev) prev.disabled = index === 0;
+      if (next) next.disabled = index === max;
+      dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
+        d.classList.toggle('is-active', i === index);
+      });
+    };
+
+    prev?.addEventListener('click', () => { index--; update(); });
+    next?.addEventListener('click', () => { index++; update(); });
+
+    let startX = 0;
+    let dragging = false;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      if (!dragging) return;
+      const dx = (e.changedTouches[0].clientX - startX);
+      if (Math.abs(dx) > 40) { dx < 0 ? index++ : index--; update(); }
+      dragging = false;
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { buildDots(); update(); }, 150);
+    });
+
+    buildDots();
+    update();
+  });
+
   // ----- FAQ: only one open at a time -----
   document.querySelectorAll('.faq').forEach(faq => {
     faq.querySelectorAll('details').forEach(d => {
