@@ -2690,24 +2690,30 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
   color: var(--ink-soft);
 }
 
-/* ============== LINES SLIDER (carrusel servicios con flechas) ============== */
+/* ============== LINES SLIDER (scroll nativo + flechas laterales) ============== */
 .lines-slider {
   position: relative;
   z-index: 2;
 }
 .lines-slider-viewport {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
   border-top: 1px solid var(--line-soft);
   border-left: 1px solid var(--line-soft);
+  scrollbar-width: none;
 }
+.lines-slider-viewport::-webkit-scrollbar { display: none; }
 .lines-track {
   display: flex;
-  transition: transform .38s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: transform;
 }
 .lines-track .line-item {
   flex: 0 0 100%;
   min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 @media (min-width: 700px) {
   .lines-track .line-item { flex: 0 0 50%; }
@@ -2715,50 +2721,59 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
 @media (min-width: 1000px) {
   .lines-track .line-item { flex: 0 0 33.3333%; }
 }
+
+/* Controles: dots debajo del slider */
 .lines-slider-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  margin-top: 28px;
+  margin-top: 24px;
+  min-height: 16px;
 }
+
+/* Flechas a los lados, centradas verticalmente en el viewport */
 .slider-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 56px; /* altura aprox de controles + gap = 32 + 24 */
+  margin: auto 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: 1.5px solid var(--navy);
+  border: none;
   background: var(--navy);
   color: var(--accent-bright);
   cursor: pointer;
-  flex-shrink: 0;
-  transition: background .25s var(--ease-out), color .25s var(--ease-out), border-color .25s var(--ease-out), transform .25s var(--ease-out);
+  z-index: 10;
+  box-shadow: 0 6px 20px rgba(11,29,63,.25);
+  transition: background .25s var(--ease-out), color .25s var(--ease-out), transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
   -webkit-tap-highlight-color: transparent;
 }
-.slider-arrow:hover:not(:disabled),
-.slider-arrow:active:not(:disabled) {
+.slider-prev { left: -10px; }
+.slider-next { right: -10px; }
+.slider-arrow:hover,
+.slider-arrow:active {
   background: var(--accent);
   color: var(--navy);
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-.slider-arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
+  box-shadow: 0 10px 28px rgba(11,29,63,.35);
+  transform: scale(1.08);
 }
 .slider-arrow:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 @media (max-width: 700px) {
-  .lines-slider-controls { gap: 24px; margin-top: 24px; }
-  .slider-arrow { width: 58px; height: 58px; }
-  .slider-arrow svg { width: 26px; height: 26px; }
+  .slider-arrow { width: 46px; height: 46px; }
+  .slider-arrow svg { width: 22px; height: 22px; }
+  .slider-prev { left: 6px; }
+  .slider-next { right: 6px; }
 }
-.lines-slider-viewport {
-  touch-action: pan-y;
+@media (min-width: 700px) {
+  .slider-prev { left: -22px; }
+  .slider-next { right: -22px; }
 }
 .slider-dots {
   display: flex;
