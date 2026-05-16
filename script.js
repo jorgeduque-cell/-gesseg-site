@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ----- Lines slider (Líneas de negocio 360°) — loop infinito -----
+  // ----- Lines slider (Líneas de negocio 360°) — loop infinito + sensible -----
   document.querySelectorAll('[data-slider]').forEach(slider => {
     const track = slider.querySelector('.lines-track');
     const originalItems = track ? Array.from(track.children) : [];
@@ -124,31 +124,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const total = originalItems.length;
 
-    // Clonar todos los items al final para permitir loop infinito hacia adelante
-    originalItems.forEach(item => {
-      const clone = item.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      clone.classList.add('is-clone');
-      track.appendChild(clone);
-    });
+    // Clones a ambos lados: track = [items, items, items] (3 copias)
+    // Esto permite swipes multi-step en cualquier dirección sin huecos
+    const buildClones = () => {
+      // Pre-pend una copia
+      const preFragment = document.createDocumentFragment();
+      originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.classList.add('is-clone');
+        preFragment.appendChild(clone);
+      });
+      track.prepend(preFragment);
+      // Append una copia
+      const postFragment = document.createDocumentFragment();
+      originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.classList.add('is-clone');
+        postFragment.appendChild(clone);
+      });
+      track.appendChild(postFragment);
+    };
+    buildClones();
 
-    const totalSlots = total * 2;
+    const totalSlots = total * 3;
     const itemPercent = 100 / totalSlots;
+    const TRANSITION_MS = 380;
 
-    let index = 0;
+    // Empezamos en la copia central (index = total)
+    let index = total;
     let snapTimer;
-    const TRANSITION_MS = 600;
 
-    const setOffset = (idx) => {
+    const setOffset = (idx, animate = true) => {
+      track.style.transition = animate ? '' : 'none';
       track.style.transform = `translateX(-${itemPercent * idx}%)`;
+      if (!animate) {
+        void track.offsetHeight; // forzar reflow
+        track.style.transition = '';
+      }
     };
 
-    const update = () => {
-      track.style.transition = '';
-      setOffset(index);
+    const updateDots = () => {
+      const real = ((index - total) % total + total) % total;
       dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
-        d.classList.toggle('is-active', i === ((index % total) + total) % total);
+        d.classList.toggle('is-active', i === real);
       });
+    };
+
+    const scheduleSnap = () => {
+      clearTimeout(snapTimer);
+      snapTimer = setTimeout(() => {
+        // Normalizar al rango central [total, 2*total - 1] sin animación
+        if (index < total) index += total;
+        else if (index >= total * 2) index -= total;
+        else return;
+        setOffset(index, false);
+      }, TRANSITION_MS + 30);
+    };
+
+    const advance = (steps) => {
+      if (!steps) { setOffset(index); return; }
+      index += steps;
+      setOffset(index);
+      updateDots();
+      scheduleSnap();
     };
 
     const buildDots = () => {
@@ -158,60 +198,35 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.type = 'button';
         btn.className = 'slider-dot';
         btn.setAttribute('aria-label', 'Ir al servicio ' + (i + 1));
-        btn.addEventListener('click', () => { index = i; update(); });
+        btn.addEventListener('click', () => {
+          const real = ((index - total) % total + total) % total;
+          const diff = i - real;
+          advance(diff);
+        });
         dotsContainer.appendChild(btn);
       }
     };
 
-    const goNext = () => {
-      index++;
-      update();
-      if (index >= total) {
-        clearTimeout(snapTimer);
-        snapTimer = setTimeout(() => {
-          track.style.transition = 'none';
-          index -= total;
-          setOffset(index);
-          // Forzar reflow para que la siguiente transición funcione
-          void track.offsetHeight;
-          track.style.transition = '';
-        }, TRANSITION_MS + 20);
-      }
-    };
+    prev?.addEventListener('click', () => advance(-1));
+    next?.addEventListener('click', () => advance(1));
 
-    const goPrev = () => {
-      if (index <= 0) {
-        // Salto silencioso al equivalente al final, después animar atrás
-        track.style.transition = 'none';
-        index = total;
-        setOffset(index);
-        void track.offsetHeight;
-        track.style.transition = '';
-        index--;
-        setOffset(index);
-        dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
-          d.classList.toggle('is-active', i === ((index % total) + total) % total);
-        });
-      } else {
-        index--;
-        update();
-      }
-    };
-
-    prev?.addEventListener('click', goPrev);
-    next?.addEventListener('click', goNext);
-
+    // Touch handling con drag-follow y momentum
     let startX = 0;
     let startY = 0;
     let dragging = false;
     let horizontal = null;
     let startTime = 0;
+    let lastDx = 0;
+    let lastTime = 0;
+    let instantVelocity = 0;
     const viewport = slider.querySelector('.lines-slider-viewport') || track;
 
     viewport.addEventListener('touchstart', e => {
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
-      startTime = Date.now();
+      startTime = lastTime = Date.now();
+      lastDx = 0;
+      instantVelocity = 0;
       dragging = true;
       horizontal = null;
       clearTimeout(snapTimer);
@@ -221,10 +236,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!dragging) return;
       const dx = e.touches[0].clientX - startX;
       const dy = e.touches[0].clientY - startY;
-      if (horizontal === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+      if (horizontal === null && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
         horizontal = Math.abs(dx) > Math.abs(dy);
       }
       if (horizontal) {
+        const now = Date.now();
+        const dt = Math.max(now - lastTime, 1);
+        instantVelocity = (dx - lastDx) / dt;
+        lastDx = dx;
+        lastTime = now;
+
         track.style.transition = 'none';
         const baseOffset = itemPercent * index;
         const dragPercent = (dx / viewport.offsetWidth) * itemPercent;
@@ -233,36 +254,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     viewport.addEventListener('touchend', e => {
-      if (!dragging) return;
-      track.style.transition = '';
-      const dx = (e.changedTouches[0].clientX - startX);
-      const elapsed = Date.now() - startTime;
-      const velocity = Math.abs(dx) / Math.max(elapsed, 1);
-      const threshold = velocity > 0.5 ? 20 : viewport.offsetWidth * 0.12;
-      if (horizontal && Math.abs(dx) > threshold) {
-        if (dx < 0) goNext(); else goPrev();
-      } else {
-        update();
+      if (!dragging) {
+        return;
       }
+      const wasHorizontal = horizontal;
       dragging = false;
       horizontal = null;
+      if (!wasHorizontal) {
+        return;
+      }
+
+      const dx = (e.changedTouches[0].clientX - startX);
+      const viewportW = viewport.offsetWidth;
+      const oneItem = viewportW; // 1 item = 100% viewport en móvil
+
+      // Projección con velocidad (momentum)
+      const projection = dx + instantVelocity * 150; // ~150ms de inercia
+      const stepsRaw = projection / oneItem;
+
+      // Snap al item más cercano (con threshold mínimo de 8% del viewport)
+      let steps;
+      const minMove = 0.08;
+      if (Math.abs(stepsRaw) < minMove) {
+        steps = 0;
+      } else {
+        steps = Math.round(-stepsRaw);
+        if (steps === 0) steps = stepsRaw < 0 ? 1 : -1;
+      }
+
+      advance(steps);
     });
 
     viewport.addEventListener('touchcancel', () => {
-      track.style.transition = '';
       dragging = false;
       horizontal = null;
-      update();
+      setOffset(index);
     });
 
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => { update(); }, 150);
+      resizeTimer = setTimeout(() => { setOffset(index, false); updateDots(); }, 150);
     });
 
     buildDots();
-    update();
+    setOffset(index, false);
+    updateDots();
   });
 
   // ----- FAQ: only one open at a time -----
