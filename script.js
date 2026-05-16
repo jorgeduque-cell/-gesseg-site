@@ -165,31 +165,52 @@ document.addEventListener('DOMContentLoaded', () => {
     let startY = 0;
     let dragging = false;
     let horizontal = null;
+    let startTime = 0;
     const viewport = slider.querySelector('.lines-slider-viewport') || track;
+
     viewport.addEventListener('touchstart', e => {
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
+      startTime = Date.now();
       dragging = true;
       horizontal = null;
     }, { passive: true });
+
     viewport.addEventListener('touchmove', e => {
       if (!dragging) return;
       const dx = e.touches[0].clientX - startX;
       const dy = e.touches[0].clientY - startY;
-      if (horizontal === null && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+      if (horizontal === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
         horizontal = Math.abs(dx) > Math.abs(dy);
       }
-      if (horizontal && e.cancelable) e.preventDefault();
-    }, { passive: false });
+      if (horizontal) {
+        track.style.transition = 'none';
+        const baseOffset = (100 / items.length) * index;
+        const dragPercent = (dx / viewport.offsetWidth) * (100 / items.length) * visibleCount();
+        track.style.transform = `translateX(calc(-${baseOffset}% + ${dragPercent}%))`;
+      }
+    }, { passive: true });
+
     viewport.addEventListener('touchend', e => {
       if (!dragging) return;
+      track.style.transition = '';
       const dx = (e.changedTouches[0].clientX - startX);
-      if (horizontal && Math.abs(dx) > 40) {
+      const elapsed = Date.now() - startTime;
+      const velocity = Math.abs(dx) / Math.max(elapsed, 1);
+      const threshold = velocity > 0.5 ? 20 : viewport.offsetWidth * 0.12;
+      if (horizontal && Math.abs(dx) > threshold) {
         if (dx < 0) index++; else index--;
-        update();
       }
+      update();
       dragging = false;
       horizontal = null;
+    });
+
+    viewport.addEventListener('touchcancel', () => {
+      track.style.transition = '';
+      dragging = false;
+      horizontal = null;
+      update();
     });
 
     let resizeTimer;
