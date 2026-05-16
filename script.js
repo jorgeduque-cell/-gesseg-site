@@ -215,18 +215,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let startY = 0;
     let dragging = false;
     let horizontal = null;
-    let startTime = 0;
-    let lastDx = 0;
-    let lastTime = 0;
-    let instantVelocity = 0;
+    let samples = []; // {time, x} para calcular velocidad sobre ventana reciente
     const viewport = slider.querySelector('.lines-slider-viewport') || track;
+
+    const visibleCount = () => {
+      const w = window.innerWidth;
+      if (w >= 1000) return 3;
+      if (w >= 700) return 2;
+      return 1;
+    };
 
     viewport.addEventListener('touchstart', e => {
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
-      startTime = lastTime = Date.now();
-      lastDx = 0;
-      instantVelocity = 0;
+      samples = [{ time: Date.now(), x: startX }];
       dragging = true;
       horizontal = null;
       clearTimeout(snapTimer);
@@ -234,17 +236,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     viewport.addEventListener('touchmove', e => {
       if (!dragging) return;
-      const dx = e.touches[0].clientX - startX;
+      const x = e.touches[0].clientX;
+      const dx = x - startX;
       const dy = e.touches[0].clientY - startY;
       if (horizontal === null && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
         horizontal = Math.abs(dx) > Math.abs(dy);
       }
       if (horizontal) {
         const now = Date.now();
-        const dt = Math.max(now - lastTime, 1);
-        instantVelocity = (dx - lastDx) / dt;
-        lastDx = dx;
-        lastTime = now;
+        samples.push({ time: now, x });
+        // Mantener solo últimos 100ms para cálculo de velocidad
+        while (samples.length > 2 && samples[0].time < now - 100) samples.shift();
 
         track.style.transition = 'none';
         const baseOffset = itemPercent * index;
@@ -254,32 +256,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     viewport.addEventListener('touchend', e => {
-      if (!dragging) {
-        return;
-      }
+      if (!dragging) return;
       const wasHorizontal = horizontal;
       dragging = false;
       horizontal = null;
-      if (!wasHorizontal) {
-        return;
+      if (!wasHorizontal) return;
+
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX;
+      const viewportW = viewport.offsetWidth;
+      const itemWidth = viewportW / visibleCount();
+
+      // Calcular velocidad sobre ventana reciente (más confiable que el último frame)
+      let velocity = 0;
+      if (samples.length >= 2) {
+        const first = samples[0];
+        const last = samples[samples.length - 1];
+        const dt = last.time - first.time;
+        if (dt > 0) velocity = (last.x - first.x) / dt; // px/ms
       }
 
-      const dx = (e.changedTouches[0].clientX - startX);
-      const viewportW = viewport.offsetWidth;
-      const oneItem = viewportW; // 1 item = 100% viewport en móvil
+      // Momentum: proyectamos ~1.5 segundos de inercia
+      const momentumPx = velocity * 1500;
+      const projected = dx + momentumPx;
+      const projectedItems = projected / itemWidth;
 
-      // Projección con velocidad (momentum)
-      const projection = dx + instantVelocity * 150; // ~150ms de inercia
-      const stepsRaw = projection / oneItem;
-
-      // Snap al item más cercano (con threshold mínimo de 8% del viewport)
       let steps;
-      const minMove = 0.08;
-      if (Math.abs(stepsRaw) < minMove) {
+      const absProj = Math.abs(projectedItems);
+      if (absProj < 0.12) {
         steps = 0;
+      } else if (absProj < 1) {
+        // Movimiento pequeño pero intencional: avanza 1 en la dirección
+        steps = projectedItems < 0 ? 1 : -1;
       } else {
-        steps = Math.round(-stepsRaw);
-        if (steps === 0) steps = stepsRaw < 0 ? 1 : -1;
+        steps = Math.round(-projectedItems);
+        // Limitar saltos extremos
+        steps = Math.max(-5, Math.min(5, steps));
       }
 
       advance(steps);
