@@ -162,13 +162,34 @@ document.addEventListener('DOMContentLoaded', () => {
     next?.addEventListener('click', () => { index++; update(); });
 
     let startX = 0;
+    let startY = 0;
     let dragging = false;
-    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
-    track.addEventListener('touchend', e => {
+    let horizontal = null;
+    const viewport = slider.querySelector('.lines-slider-viewport') || track;
+    viewport.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      dragging = true;
+      horizontal = null;
+    }, { passive: true });
+    viewport.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+      if (horizontal === null && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+        horizontal = Math.abs(dx) > Math.abs(dy);
+      }
+      if (horizontal && e.cancelable) e.preventDefault();
+    }, { passive: false });
+    viewport.addEventListener('touchend', e => {
       if (!dragging) return;
       const dx = (e.changedTouches[0].clientX - startX);
-      if (Math.abs(dx) > 40) { dx < 0 ? index++ : index--; update(); }
+      if (horizontal && Math.abs(dx) > 40) {
+        if (dx < 0) index++; else index--;
+        update();
+      }
       dragging = false;
+      horizontal = null;
     });
 
     let resizeTimer;

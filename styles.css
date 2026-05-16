@@ -2726,28 +2726,39 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-  border: 1px solid var(--line-soft);
-  background: var(--bg);
-  color: var(--navy);
-  cursor: pointer;
-  transition: background .25s var(--ease-out), color .25s var(--ease-out), border-color .25s var(--ease-out), transform .25s var(--ease-out);
-}
-.slider-arrow:hover:not(:disabled) {
+  border: 1.5px solid var(--navy);
   background: var(--navy);
   color: var(--accent-bright);
-  border-color: var(--navy);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .25s var(--ease-out), color .25s var(--ease-out), border-color .25s var(--ease-out), transform .25s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+.slider-arrow:hover:not(:disabled),
+.slider-arrow:active:not(:disabled) {
+  background: var(--accent);
+  color: var(--navy);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 .slider-arrow:disabled {
-  opacity: 0.35;
+  opacity: 0.3;
   cursor: not-allowed;
 }
 .slider-arrow:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+@media (max-width: 700px) {
+  .lines-slider-controls { gap: 24px; margin-top: 24px; }
+  .slider-arrow { width: 58px; height: 58px; }
+  .slider-arrow svg { width: 26px; height: 26px; }
+}
+.lines-slider-viewport {
+  touch-action: pan-y;
 }
 .slider-dots {
   display: flex;
