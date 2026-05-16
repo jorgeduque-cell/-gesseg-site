@@ -435,6 +435,65 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
   overflow: hidden;
   margin-bottom: 0;
 }
+
+/* Variante con foto de fondo a pantalla completa */
+.hero-dark--bg {
+  background: var(--navy);
+  min-height: clamp(520px, 70vh, 720px);
+  display: flex;
+  align-items: center;
+}
+.hero-dark--bg .hero-dark-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/gabriela.jpg');
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.hero-dark--bg .hero-dark-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg,
+      var(--navy) 0%,
+      rgba(11,29,63,0.97) 25%,
+      rgba(11,29,63,0.78) 45%,
+      rgba(11,29,63,0.35) 65%,
+      rgba(11,29,63,0.05) 85%,
+      transparent 100%
+    );
+}
+.hero-dark--bg .hero-dark-inner {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+.hero-dark--bg .hero-dark-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 640px;
+}
+@media (max-width: 800px) {
+  .hero-dark--bg {
+    min-height: clamp(560px, 90vh, 760px);
+  }
+  .hero-dark--bg .hero-dark-bg {
+    background-position: 75% center;
+  }
+  .hero-dark--bg .hero-dark-overlay {
+    background:
+      linear-gradient(180deg,
+        rgba(11,29,63,0.55) 0%,
+        rgba(11,29,63,0.85) 60%,
+        var(--navy) 100%
+      );
+  }
+  .hero-dark--bg .hero-dark-text { max-width: 100%; }
+}
 .hero-dark-deco {
   position: absolute;
   inset: 0;
