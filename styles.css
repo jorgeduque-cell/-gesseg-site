@@ -436,10 +436,10 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
   margin-bottom: 0;
 }
 
-/* Variante con foto de fondo a pantalla completa */
+/* Variante con foto de fondo a pantalla completa (imagen ya trae overlay) */
 .hero-dark--bg {
   background: var(--navy);
-  min-height: clamp(580px, 78vh, 780px);
+  min-height: clamp(520px, 72vh, 720px);
   display: flex;
   align-items: center;
   padding: clamp(40px, 6vw, 80px) 0;
@@ -447,25 +447,14 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
 .hero-dark--bg .hero-dark-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/gabriela.jpg');
-  background-size: auto 100%;
-  background-position: right center;
+  background-image: url('/usar%20gabriela.jpeg');
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
   z-index: 0;
 }
 .hero-dark--bg .hero-dark-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(90deg,
-      var(--navy) 0%,
-      rgba(11,29,63,0.98) 30%,
-      rgba(11,29,63,0.85) 45%,
-      rgba(11,29,63,0.45) 58%,
-      rgba(11,29,63,0.10) 72%,
-      transparent 85%
-    );
+  display: none;
 }
 .hero-dark--bg .hero-dark-inner {
   width: 100%;
@@ -480,19 +469,23 @@ p.large { font-size: 19px; line-height: 1.5; font-weight: 500; }
 }
 @media (max-width: 900px) {
   .hero-dark--bg {
-    min-height: clamp(560px, 90vh, 780px);
+    min-height: clamp(540px, 88vh, 760px);
   }
   .hero-dark--bg .hero-dark-bg {
-    background-size: cover;
-    background-position: 72% center;
+    background-position: 70% center;
   }
-  .hero-dark--bg .hero-dark-overlay {
+  .hero-dark--bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     background:
       linear-gradient(180deg,
-        rgba(11,29,63,0.55) 0%,
-        rgba(11,29,63,0.85) 55%,
+        rgba(11,29,63,0.35) 0%,
+        rgba(11,29,63,0.75) 55%,
         var(--navy) 100%
       );
+    pointer-events: none;
   }
   .hero-dark--bg .hero-dark-text { max-width: 100%; }
 }
