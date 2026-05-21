@@ -68,7 +68,7 @@ plans:
     - Acompañamiento ante ARL y Mintrabajo
     - Contrato inicial por 6 meses
   vial_title: Plan Estratégico de Seguridad Vial
-  vial_description: Adicional opcional para empresas con vehículos o conductores. Se calcula sobre el plan SG-SST base contratado.
+  vial_description: Adicionalmente si tu empresa está obligada a Diseñar e Implementar el PESV (Plan Estratégico de Seguridad Vial) de acuerdo a la Resolución 40595 de 2022 para empresas con vehículos o conductores. Se calcula sobre el plan SG-SST base contratado.
   vial_levels:
     - name: Básico
       increment: +25%
