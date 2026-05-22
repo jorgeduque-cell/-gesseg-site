@@ -1431,7 +1431,7 @@ section.dark .service-tags span { border-color: var(--line-onDark); color: rgba(
   color: var(--accent-soft);
   margin-bottom: 22px;
 }
-.footer ul li { margin-bottom: 11px; }
+.footer ul li { margin-bottom: 11px; font-size: 14px; color: rgba(245,240,230,.7); }
 .footer ul a {
   font-size: 14px;
   color: rgba(245,240,230,.7);
