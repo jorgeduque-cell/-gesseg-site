@@ -7,19 +7,34 @@ name: Trigger Vercel Deploy
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   trigger-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Hit Vercel Deploy Hook
+      - name: Check secret configured
         run: |
           if [ -z "${{ secrets.VERCEL_DEPLOY_HOOK }}" ]; then
-            echo "⚠️  Secret VERCEL_DEPLOY_HOOK no está configurado."
-            echo "Configurar en: Settings → Secrets and variables → Actions → New repository secret"
+            echo "❌ ERROR: Secret VERCEL_DEPLOY_HOOK no está configurado en este repositorio."
+            echo "Configurar en: Settings → Secrets and variables → Actions"
             echo "Name: VERCEL_DEPLOY_HOOK"
             echo "Value: la URL del Deploy Hook desde Vercel"
-            exit 0
+            exit 1
           fi
-          curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
-          echo "✓ Deploy disparado en Vercel"
+          echo "✓ Secret configurado"
+
+      - name: Hit Vercel Deploy Hook
+        run: |
+          echo "Disparando Deploy Hook..."
+          response=$(curl -s -w "\n%{http_code}" -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}")
+          body=$(echo "$response" | head -n -1)
+          http_code=$(echo "$response" | tail -n 1)
+          echo "HTTP Status: $http_code"
+          echo "Response body: $body"
+          if [ "$http_code" -ge 200 ] && [ "$http_code" -lt 300 ]; then
+            echo "✅ Deploy disparado correctamente en Vercel"
+          else
+            echo "❌ Falló el Deploy Hook con código HTTP $http_code"
+            exit 1
+          fi
