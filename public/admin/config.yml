@@ -33,78 +33,309 @@ collections:
     delete: false
     files:
       - name: home
-        label: "Todo el contenido"
+        label: "📄 Editar todo el contenido"
         file: "content/site.yml"
         format: yaml
 
         fields:
 
-          # ============= PORTADA =============
+          # ============= 🌐 GLOBALES =============
+          - name: nav
+            label: "🌐 Menú · Botón principal"
+            widget: object
+            collapsed: true
+            summary: "Texto del botón Solicitar diagnóstico"
+            fields:
+              - { name: cta, label: "Texto del botón en el menú", widget: string }
+
+          - name: footer
+            label: "🌐 Pie de página"
+            widget: object
+            collapsed: true
+            summary: "Pie de página"
+            fields:
+              - { name: about, label: "Descripción de la empresa", widget: text }
+              - { name: copyright, label: "Línea de copyright", widget: string }
+
+          # ============= 🏠 PORTADA / INICIO =============
           - name: hero
             label: "🏠 Portada principal"
             widget: object
             collapsed: false
-            summary: "Portada"
+            summary: "Portada del inicio"
             fields:
               - name: title
                 label: "Título grande"
                 widget: string
-                hint: "💡 Use *palabra* (con asteriscos) para destacar una palabra en cursiva dorada. Ej: Protegemos la *vida* de quienes *sostienen* su empresa."
+                hint: "💡 Use *palabra* para destacar en cursiva dorada."
               - name: lede
                 label: "Descripción debajo del título"
                 widget: text
-                hint: "Texto explicativo corto. Sin formato especial."
+              - { name: cta_primary, label: "Botón principal (dorado)", widget: string }
+              - { name: cta_secondary, label: "Botón secundario", widget: string }
+              - { name: check_1, label: "Check 1", widget: string }
+              - { name: check_2, label: "Check 2", widget: string }
+              - { name: check_3, label: "Check 3", widget: string }
 
-          # ============= SERVICIOS DESTACADOS =============
+          - name: tranquilidad
+            label: "🏠 Sección 'Tienes la tranquilidad'"
+            widget: object
+            collapsed: true
+            summary: "Tienes la tranquilidad"
+            fields:
+              - { name: eyebrow, label: "Etiqueta superior", widget: string }
+              - name: title
+                label: "Título"
+                widget: string
+                hint: "💡 Use *palabra* para resaltar en dorado."
+              - { name: subtitle, label: "Subtítulo", widget: text }
+              - { name: cta_primary, label: "Botón principal", widget: string }
+              - { name: cta_secondary, label: "Botón secundario (WhatsApp)", widget: string }
+              - { name: deadline_month, label: "Mes del calendario", widget: string, hint: "Ej: JULIO" }
+              - { name: deadline_year, label: "Año del calendario", widget: string, hint: "Ej: 2026" }
+              - { name: deadline_footer, label: "Texto debajo del calendario", widget: string }
+
+          - name: continuamos
+            label: "🏠 Sección 'Continuamos, no reiniciamos'"
+            widget: object
+            collapsed: true
+            summary: "Continuamos no reiniciamos"
+            fields:
+              - { name: eyebrow, label: "Etiqueta superior", widget: string }
+              - name: title
+                label: "Título principal"
+                widget: string
+                hint: "💡 Use *palabra* para resaltar en dorado."
+              - { name: description, label: "Descripción", widget: text }
+              - name: levels
+                label: "3 niveles del SG-SST"
+                widget: list
+                min: 3
+                max: 3
+                collapsed: true
+                summary: "{{fields.state}} → {{fields.title}}"
+                fields:
+                  - { name: state, label: "Estado de la empresa", widget: string, hint: "Ej: Sin implementación" }
+                  - { name: graphic, label: "Gráfico (imagen)", widget: image, hint: "Sube el árbol/brote correspondiente" }
+                  - { name: title, label: "Acción de GESSEG", widget: string, hint: "Ej: Estructuramos" }
+                  - { name: description, label: "Descripción", widget: text }
+
+          - name: lineas_negocio
+            label: "🏠 + 🛠️ Líneas de negocio 360° (slider)"
+            widget: object
+            collapsed: true
+            summary: "Slider de 6 servicios"
+            fields:
+              - { name: eyebrow, label: "Etiqueta superior", widget: string }
+              - { name: title_home, label: "Título en INICIO", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: description_home, label: "Descripción en INICIO", widget: text }
+              - { name: title_servicios, label: "Título en SERVICIOS", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: description_servicios, label: "Descripción en SERVICIOS", widget: text }
+              - name: items
+                label: "6 servicios del slider"
+                widget: list
+                min: 6
+                max: 6
+                collapsed: true
+                summary: "{{fields.num}} · {{fields.title}}"
+                fields:
+                  - { name: num, label: "Número", widget: string, hint: "Ej: 01, 02..." }
+                  - { name: title, label: "Nombre del servicio", widget: string }
+                  - { name: description, label: "Descripción", widget: text }
+
+          - name: diferencias
+            label: "🏠 Sección '¿Por qué somos diferentes?'"
+            widget: object
+            collapsed: true
+            summary: "Comparativa Otras vs GESSEG"
+            fields:
+              - { name: title, label: "Título de la sección", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: otras_title, label: "Columna izquierda · Título", widget: string }
+              - name: otras_items
+                label: "Columna izquierda · Lista"
+                widget: list
+                field: { name: item, widget: string, label: "Punto" }
+              - { name: gesseg_title, label: "Columna derecha · Título", widget: string }
+              - name: gesseg_items
+                label: "Columna derecha · Lista"
+                widget: list
+                field: { name: item, widget: string, label: "Punto" }
+
+          - name: callout_home
+            label: "🏠 Frase destacada (callout inicio)"
+            widget: object
+            collapsed: true
+            summary: "Frase destacada del inicio"
+            fields:
+              - { name: text, label: "Texto de la frase", widget: text }
+              - { name: attribution, label: "Atribución", widget: string }
+
+          - name: faq_section
+            label: "🏠 Encabezado de FAQ"
+            widget: object
+            collapsed: true
+            summary: "Encabezado del FAQ"
+            fields:
+              - { name: eyebrow, label: "Etiqueta", widget: string }
+              - { name: title, label: "Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: description, label: "Descripción", widget: text }
+
+          - name: cta_home
+            label: "🏠 Banner final del inicio (CTA)"
+            widget: object
+            collapsed: true
+            summary: "CTA final del inicio"
+            fields:
+              - { name: title, label: "Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: cta_primary, label: "Botón principal", widget: string }
+              - { name: cta_secondary, label: "Botón secundario", widget: string }
+
+          # ============= 🛠️ SERVICIOS DESTACADOS (compartidos) =============
           - name: featured_services
-            label: "💼 Servicios destacados (3)"
+            label: "🛠️ 3 Servicios destacados (cards + página servicios)"
             widget: list
             min: 3
             max: 3
             collapsed: true
             summary: "{{fields.title}}"
             fields:
-              - name: id
-                label: "ID (no modificar)"
-                widget: hidden
-              - name: title
-                label: "Nombre del servicio"
-                widget: string
-              - name: badge
-                label: "Etiqueta superior"
-                widget: string
-                hint: "Ej: 01 · Más solicitado"
-              - name: description
-                label: "Descripción corta"
-                widget: text
+              - { name: id, label: "ID (no modificar)", widget: hidden }
+              - { name: title, label: "Nombre del servicio", widget: string }
+              - { name: badge, label: "Etiqueta superior", widget: string }
+              - { name: description, label: "Descripción corta", widget: text }
               - name: points
                 label: "Puntos clave"
                 widget: list
-                field:
-                  name: point
-                  label: "Punto"
-                  widget: string
-                hint: "Recomendado: 4 puntos."
-              - name: photo
-                label: "Foto del servicio"
-                widget: image
-                hint: "📸 Arrastra una imagen o haz click. Se mostrará en blanco y negro."
-              - name: photo_alt
-                label: "Descripción de la foto"
-                widget: string
+                field: { name: point, widget: string, label: "Punto" }
+              - { name: photo, label: "Foto del servicio", widget: image }
+              - { name: photo_alt, label: "Descripción de la foto", widget: string }
 
-          # ============= PLANES Y PRECIOS =============
-          - name: plans
-            label: "💰 Planes y precios"
+          # ============= 🛠️ PÁGINA SERVICIOS =============
+          - name: servicios_page
+            label: "🛠️ Página Servicios (textos detallados)"
             widget: object
-            collapsed: false
-            summary: "Planes SG-SST + Vial"
+            collapsed: true
+            summary: "Contenido de la página Servicios"
             fields:
-              - name: promo_label
-                label: "Banner promocional"
-                widget: string
-                hint: "Ej: 50% OFF · primeros 2 meses"
+              - { name: hero_title, label: "Hero · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: hero_lede, label: "Hero · Descripción", widget: text }
+              - { name: insignia_title, label: "Sección 3 servicios · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: insignia_description, label: "Sección 3 servicios · Descripción", widget: text }
+              - { name: cta_cotizar, label: "Texto botón 'Solicitar cotización'", widget: string }
 
+              - { name: svc1_eyebrow, label: "Servicio 1 · Etiqueta", widget: string }
+              - { name: svc1_intro, label: "Servicio 1 · Párrafo intro", widget: text }
+              - { name: svc1_resultados_titulo, label: "Servicio 1 · Título columna 1", widget: string }
+              - name: svc1_resultados
+                label: "Servicio 1 · Lista columna 1"
+                widget: list
+                field: { name: item, widget: string }
+              - { name: svc1_beneficios_titulo, label: "Servicio 1 · Título columna 2", widget: string }
+              - name: svc1_beneficios
+                label: "Servicio 1 · Lista columna 2"
+                widget: list
+                field: { name: item, widget: string }
+
+              - { name: svc2_eyebrow, label: "Servicio 2 · Etiqueta", widget: string }
+              - { name: svc2_intro, label: "Servicio 2 · Párrafo intro", widget: text }
+              - { name: svc2_incluye_titulo, label: "Servicio 2 · Título columna 1", widget: string }
+              - name: svc2_incluye
+                label: "Servicio 2 · Lista columna 1"
+                widget: list
+                field: { name: item, widget: string }
+              - { name: svc2_cortesias_titulo, label: "Servicio 2 · Título columna 2", widget: string }
+              - name: svc2_cortesias
+                label: "Servicio 2 · Lista columna 2"
+                widget: list
+                field: { name: item, widget: string }
+
+              - { name: svc3_eyebrow, label: "Servicio 3 · Etiqueta", widget: string }
+              - { name: svc3_intro, label: "Servicio 3 · Párrafo intro", widget: text }
+              - { name: svc3_identifica_titulo, label: "Servicio 3 · Título columna 1", widget: string }
+              - name: svc3_identifica
+                label: "Servicio 3 · Lista columna 1"
+                widget: list
+                field: { name: item, widget: string }
+              - { name: svc3_normativo_titulo, label: "Servicio 3 · Título columna 2", widget: string }
+              - name: svc3_normativo
+                label: "Servicio 3 · Lista columna 2"
+                widget: list
+                field: { name: item, widget: string }
+
+              - { name: metodologia_eyebrow, label: "Metodología · Etiqueta", widget: string }
+              - { name: metodologia_title, label: "Metodología · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: metodologia_description, label: "Metodología · Descripción", widget: text }
+              - name: metodologia_steps
+                label: "Metodología · 4 pasos"
+                widget: list
+                min: 4
+                max: 4
+                collapsed: true
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: title, label: "Título del paso", widget: string }
+                  - name: points
+                    label: "Actividades"
+                    widget: list
+                    field: { name: point, widget: string }
+              - { name: metodologia_highlight_badge, label: "Insignia destacada", widget: string, hint: "Ej: +85% de avance" }
+              - { name: metodologia_highlight_text, label: "Texto destacado", widget: text, hint: "💡 Use **palabra** para negrita." }
+
+              - { name: callout_text, label: "Frase destacada (callout)", widget: text }
+              - { name: callout_attribution, label: "Atribución del callout", widget: string }
+              - { name: cta_title, label: "CTA final · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: cta_button, label: "CTA final · Botón", widget: string }
+
+          # ============= 👥 PÁGINA NOSOTROS =============
+          - name: nosotros_page
+            label: "👥 Página Nosotros"
+            widget: object
+            collapsed: true
+            summary: "Contenido página Nosotros"
+            fields:
+              - { name: hero_title, label: "Hero · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: hero_lede, label: "Hero · Descripción", widget: text }
+              - { name: quienes_eyebrow, label: "Quiénes somos · Etiqueta", widget: string }
+              - { name: quienes_title, label: "Quiénes somos · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: quienes_intro, label: "Quiénes somos · Párrafo 1", widget: text }
+              - { name: quienes_outro, label: "Quiénes somos · Párrafo 2", widget: text }
+              - { name: valores_eyebrow, label: "Valores · Etiqueta", widget: string }
+              - { name: valores_title, label: "Valores · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - name: valores
+                label: "4 Valores"
+                widget: list
+                min: 4
+                max: 4
+                collapsed: true
+                summary: "{{fields.num}} · {{fields.title}}"
+                fields:
+                  - { name: num, label: "Número", widget: string }
+                  - { name: title, label: "Nombre del valor", widget: string }
+                  - { name: description, label: "Descripción", widget: text }
+              - { name: callout_text, label: "Frase destacada", widget: text }
+              - { name: callout_attribution, label: "Atribución", widget: string }
+              - { name: cta_title, label: "CTA final · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: cta_primary, label: "CTA final · Botón 1", widget: string }
+              - { name: cta_secondary, label: "CTA final · Botón 2", widget: string }
+
+          # ============= 💰 PÁGINA PLANES =============
+          - name: plans
+            label: "💰 Página Planes y precios"
+            widget: object
+            collapsed: true
+            summary: "Página Planes"
+            fields:
+              - { name: hero_title, label: "Hero · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: hero_lede, label: "Hero · Descripción", widget: text }
+              - { name: criteria_label, label: "Criterios · Etiqueta superior", widget: string }
+              - name: criteria_items
+                label: "Criterios · 4 elementos"
+                widget: list
+                min: 4
+                max: 4
+                field: { name: item, widget: string }
+              - { name: section_title, label: "Título sección SG-SST", widget: string }
+              - { name: promo_label, label: "Banner promocional", widget: string }
               - name: tiers
                 label: "3 Planes SG-SST"
                 widget: list
@@ -113,55 +344,21 @@ collections:
                 collapsed: true
                 summary: "{{fields.name}} — ${{fields.discount_price}}"
                 fields:
-                  - name: id
-                    label: "ID (no modificar)"
-                    widget: hidden
-                  - name: name
-                    label: "Nombre"
-                    widget: string
-                    hint: "Ej: Plan I"
-                  - name: label
-                    label: "Etiqueta superior"
-                    widget: string
-                    hint: "Ej: Estructura empresarial I"
-                  - name: subtitle
-                    label: "¿Para cuántos trabajadores?"
-                    widget: string
-                    hint: "Ej: 10 o menos trabajadores."
-                  - name: original_price
-                    label: "Precio original"
-                    widget: string
-                    hint: "Sin símbolo $. Ej: 850.000"
-                  - name: discount_price
-                    label: "Precio con descuento"
-                    widget: string
-                    hint: "Sin símbolo $. Ej: 425.000"
-                  - name: badge
-                    label: "Badge de descuento"
-                    widget: string
-                    hint: "Ej: 50% OFF"
-                  - name: featured
-                    label: "¿Destacar este plan?"
-                    widget: boolean
-                    default: false
-                    hint: "Si marcas SÍ, este plan se muestra en azul navy resaltado en el centro."
-
+                  - { name: id, label: "ID", widget: hidden }
+                  - { name: name, label: "Nombre", widget: string }
+                  - { name: label, label: "Etiqueta superior", widget: string }
+                  - { name: subtitle, label: "Para cuántos trabajadores", widget: string }
+                  - { name: original_price, label: "Precio original (sin $)", widget: string }
+                  - { name: discount_price, label: "Precio con descuento (sin $)", widget: string }
+                  - { name: badge, label: "Badge de descuento", widget: string }
+                  - { name: featured, label: "¿Destacar?", widget: boolean, default: false }
               - name: features
                 label: "Beneficios incluidos en todos los planes"
                 widget: list
-                field:
-                  name: feature
-                  label: "Beneficio"
-                  widget: string
-
-              - name: vial_title
-                label: "Título del Plan Vial"
-                widget: string
-
-              - name: vial_description
-                label: "Descripción del Plan Vial"
-                widget: text
-
+                field: { name: feature, widget: string }
+              - { name: vial_eyebrow, label: "Plan Vial · Etiqueta", widget: string }
+              - { name: vial_title, label: "Plan Vial · Título", widget: string }
+              - { name: vial_description, label: "Plan Vial · Descripción", widget: text }
               - name: vial_levels
                 label: "3 niveles del Plan Vial"
                 widget: list
@@ -170,74 +367,81 @@ collections:
                 collapsed: true
                 summary: "{{fields.name}} {{fields.increment}}"
                 fields:
-                  - name: name
-                    label: "Nivel"
-                    widget: string
-                    hint: "Ej: Básico"
-                  - name: increment
-                    label: "Incremento"
-                    widget: string
-                    hint: "Ej: +25%"
+                  - { name: name, label: "Nivel", widget: string }
+                  - { name: increment, label: "Incremento", widget: string }
+              - { name: disclaimer, label: "Texto pequeño de aclaración", widget: text }
+              - { name: cta_title, label: "CTA final · Título", widget: string }
+              - { name: cta_primary, label: "CTA final · Botón 1", widget: string }
+              - { name: cta_secondary, label: "CTA final · Botón 2", widget: string }
 
-              - name: disclaimer
-                label: "Texto pequeño de aclaración"
-                widget: text
-                hint: "Aparece debajo de los planes en letra pequeña."
-
-          # ============= PREGUNTAS FRECUENTES =============
+          # ============= ❓ FAQ (Inicio) =============
           - name: faq
-            label: "❓ Preguntas frecuentes"
+            label: "❓ Preguntas frecuentes (inicio)"
             widget: list
             collapsed: true
             summary: "{{fields.question}}"
             fields:
-              - name: question
-                label: "Pregunta"
-                widget: string
-              - name: answer
-                label: "Respuesta"
-                widget: text
-                hint: "💡 Use **palabra** (doble asterisco) para destacar en negrita. Ej: **Sí.** Muchas empresas..."
+              - { name: question, label: "Pregunta", widget: string }
+              - { name: answer, label: "Respuesta", widget: text, hint: "💡 Use **palabra** para negrita." }
 
-          # ============= CONTACTO =============
+          # ============= 📞 PÁGINA CONTACTO =============
+          - name: contacto_page
+            label: "📞 Página Contacto"
+            widget: object
+            collapsed: true
+            summary: "Página Contacto"
+            fields:
+              - { name: hero_title, label: "Hero · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - { name: hero_lede, label: "Hero · Descripción", widget: text }
+              - { name: info_eyebrow, label: "Datos de contacto · Etiqueta", widget: string }
+              - { name: info_phone_title, label: "Llámenos · Título", widget: string }
+              - { name: info_phone_hint, label: "Llámenos · Aclaración", widget: string }
+              - { name: info_email_title, label: "Escríbanos · Título", widget: string }
+              - { name: info_email_hint, label: "Escríbanos · Aclaración", widget: string }
+              - { name: info_whatsapp_title, label: "WhatsApp · Título", widget: string }
+              - { name: info_whatsapp_hint, label: "WhatsApp · Aclaración", widget: string }
+              - { name: info_office_title, label: "Oficina · Título", widget: string }
+              - { name: info_office_hint, label: "Oficina · Aclaración", widget: string }
+              - { name: info_coverage_title, label: "Cobertura · Título", widget: string }
+              - { name: info_coverage_text, label: "Cobertura · Texto principal", widget: string }
+              - { name: info_coverage_hint, label: "Cobertura · Aclaración", widget: string }
+              - { name: form_eyebrow, label: "Formulario · Etiqueta", widget: string }
+              - { name: form_title, label: "Formulario · Título", widget: string }
+              - { name: form_intro, label: "Formulario · Introducción", widget: string }
+              - { name: form_submit, label: "Formulario · Botón enviar", widget: string }
+              - { name: form_disclaimer, label: "Formulario · Texto legal", widget: text }
+              - { name: faq_title, label: "FAQ · Título", widget: string, hint: "💡 Use *palabra* para destacar." }
+              - name: faqs
+                label: "FAQ · 4 preguntas"
+                widget: list
+                min: 4
+                max: 4
+                collapsed: true
+                summary: "{{fields.question}}"
+                fields:
+                  - { name: question, label: "Pregunta", widget: string }
+                  - { name: answer, label: "Respuesta", widget: text }
+
+          # ============= 📞 DATOS DE CONTACTO (globales) =============
           - name: contact
-            label: "📞 Datos de contacto"
+            label: "📞 Datos de contacto (globales)"
             widget: object
             collapsed: false
-            summary: "Contacto"
+            summary: "Datos globales de contacto"
             fields:
-              - name: phone
-                label: "Teléfono"
-                widget: string
-                hint: "Ej: +57 304 390 0623"
-              - name: phone_url
-                label: "Link teléfono (para click-to-call)"
-                widget: string
-                hint: "Ej: tel:+573043900623 (sin espacios)"
-              - name: whatsapp
-                label: "WhatsApp"
-                widget: string
-                hint: "Solo dígitos, prefijo país. Ej: 573043900623"
-              - name: email
-                label: "Correo electrónico"
-                widget: string
-              - name: city
-                label: "Ciudad"
-                widget: string
-              - name: hours
-                label: "Horario de atención"
-                widget: string
+              - { name: phone, label: "Teléfono visible", widget: string, hint: "Ej: +57 304 390 0623" }
+              - { name: phone_url, label: "Link teléfono", widget: string, hint: "Ej: tel:+573043900623" }
+              - { name: whatsapp, label: "WhatsApp (solo dígitos)", widget: string, hint: "Ej: 573043900623" }
+              - { name: email, label: "Correo electrónico", widget: string }
+              - { name: city, label: "Ciudad", widget: string }
+              - { name: hours, label: "Horario de atención", widget: string }
 
-          # ============= REDES SOCIALES =============
+          # ============= 🌐 REDES SOCIALES =============
           - name: social
             label: "🌐 Redes sociales"
             widget: object
-            collapsed: false
-            summary: "Redes"
+            collapsed: true
+            summary: "Redes sociales"
             fields:
-              - name: instagram
-                label: "URL Instagram"
-                widget: string
-              - name: facebook
-                label: "URL Facebook"
-                widget: string
+              - { name: instagram, label: "URL Instagram", widget: string }
+              - { name: facebook, label: "URL Facebook", widget: string }

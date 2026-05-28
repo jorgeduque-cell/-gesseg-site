@@ -45,7 +45,7 @@
       <li><a href="planes.html">Planes</a></li>
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
-    <a href="contacto.html" class="btn btn-primary nav-cta btn-arrow">Solicitar diagnóstico</a>
+    <a href="contacto.html" class="btn btn-primary nav-cta btn-arrow">{{nav.cta}}</a>
     <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-nav"><span></span></button>
   </nav>
 </header>
@@ -54,19 +54,19 @@
 <section class="hero-interior">
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Inicio</a> &nbsp;/&nbsp; Servicios</div>
-    <h1>Servicios que <em>realmente</em> funcionan en su empresa.</h1>
-    <p class="lede">No entregamos plantillas. Construimos sistemas vivos, defendibles ante la autoridad y útiles en el día a día de su operación.</p>
+    <h1>{{{servicios_page.hero_title}}}</h1>
+    <p class="lede">{{servicios_page.hero_lede}}</p>
   </div>
 </section>
 
-<!-- Lo que más nos piden -->
+<!-- Tres servicios insignia -->
 <section class="block wrap">
   <div class="section-head">
     <div class="reveal">
-      <h2 class="section-title">Tres servicios <em>insignia</em>.</h2>
+      <h2 class="section-title">{{{servicios_page.insignia_title}}}</h2>
     </div>
     <div class="right reveal delay-1">
-      <p class="large">Los servicios que más solicitan nuestros clientes. Conozca lo que incluyen, los resultados esperados y el valor real que entregan.</p>
+      <p class="large">{{servicios_page.insignia_description}}</p>
     </div>
   </div>
 
@@ -77,30 +77,28 @@
       <span class="svc-detail-num">01</span>
     </div>
     <div class="svc-detail-body">
-      <span class="eyebrow">Servicio insignia</span>
-      <h3>Implementación SG-SST</h3>
-      <p class="lead-p">Servicio integral ejecutado por especialistas en SST. GESSEG asume el diseño, implementación y mantenimiento del sistema, asegurando cumplimiento legal real y eliminando la carga operativa para su empresa.</p>
+      <span class="eyebrow">{{servicios_page.svc1_eyebrow}}</span>
+      <h3>{{featured_services.[0].title}}</h3>
+      <p class="lead-p">{{servicios_page.svc1_intro}}</p>
       <div class="svc-detail-grid">
         <div>
-          <h5>Resultados</h5>
+          <h5>{{servicios_page.svc1_resultados_titulo}}</h5>
           <ul>
-            <li>+85% de avance en aproximadamente 4 meses</li>
-            <li>Cumplimiento Decreto 1072 / Resolución 0312</li>
-            <li>Certificado de cumplimiento del SG-SST</li>
-            <li>Preparación ante ARL, Mintrabajo y auditorías</li>
+            {{#each servicios_page.svc1_resultados}}
+            <li>{{this}}</li>
+            {{/each}}
           </ul>
         </div>
         <div>
-          <h5>Beneficios</h5>
+          <h5>{{servicios_page.svc1_beneficios_titulo}}</h5>
           <ul>
-            <li>Tercerización completa del SG-SST</li>
-            <li>Acompañamiento experto permanente</li>
-            <li>Optimización de la reinversión de ARL</li>
-            <li>Habilitación para licitaciones y contratos</li>
+            {{#each servicios_page.svc1_beneficios}}
+            <li>{{this}}</li>
+            {{/each}}
           </ul>
         </div>
       </div>
-      <a href="contacto.html" class="btn btn-primary btn-arrow">Solicitar cotización</a>
+      <a href="contacto.html" class="btn btn-primary btn-arrow">{{servicios_page.cta_cotizar}}</a>
     </div>
   </article>
 
@@ -111,30 +109,28 @@
       <span class="svc-detail-num">02</span>
     </div>
     <div class="svc-detail-body">
-      <span class="eyebrow">Paquete integral</span>
-      <h3>Plan de Emergencias</h3>
-      <p class="lead-p">Diseño e implementación de un plan funcional, alineado al SG-SST y la normativa colombiana. Preparamos su empresa para responder con certeza ante cualquier evento que afecte personas, instalaciones o continuidad operativa.</p>
+      <span class="eyebrow">{{servicios_page.svc2_eyebrow}}</span>
+      <h3>{{featured_services.[1].title}}</h3>
+      <p class="lead-p">{{servicios_page.svc2_intro}}</p>
       <div class="svc-detail-grid">
         <div>
-          <h5>Incluye</h5>
+          <h5>{{servicios_page.svc2_incluye_titulo}}</h5>
           <ul>
-            <li>Visita inicial de verificación</li>
-            <li>Análisis de vulnerabilidad</li>
-            <li>Procedimientos por tipo de emergencia</li>
-            <li>Planos de evacuación y socialización</li>
+            {{#each servicios_page.svc2_incluye}}
+            <li>{{this}}</li>
+            {{/each}}
           </ul>
         </div>
         <div>
-          <h5>Cortesías</h5>
+          <h5>{{servicios_page.svc2_cortesias_titulo}}</h5>
           <ul>
-            <li>Dotación básica para brigada</li>
-            <li>Simulacro de evacuación</li>
-            <li>Entrega 100% digital</li>
-            <li>Tiempo estimado: 15 días hábiles</li>
+            {{#each servicios_page.svc2_cortesias}}
+            <li>{{this}}</li>
+            {{/each}}
           </ul>
         </div>
       </div>
-      <a href="contacto.html" class="btn btn-primary btn-arrow">Solicitar cotización</a>
+      <a href="contacto.html" class="btn btn-primary btn-arrow">{{servicios_page.cta_cotizar}}</a>
     </div>
   </article>
 
@@ -145,30 +141,28 @@
       <span class="svc-detail-num">03</span>
     </div>
     <div class="svc-detail-body">
-      <span class="eyebrow">Diagnóstico real</span>
-      <h3>Auditorías Internas</h3>
-      <p class="lead-p">Evaluamos el estado real de su SG-SST frente a la normativa vigente. Identificamos oportunidades de mejora, posibles incumplimientos y los aspectos críticos que deben fortalecerse.</p>
+      <span class="eyebrow">{{servicios_page.svc3_eyebrow}}</span>
+      <h3>{{featured_services.[2].title}}</h3>
+      <p class="lead-p">{{servicios_page.svc3_intro}}</p>
       <div class="svc-detail-grid">
         <div>
-          <h5>Identificamos</h5>
+          <h5>{{servicios_page.svc3_identifica_titulo}}</h5>
           <ul>
-            <li>Oportunidades de mejora</li>
-            <li>Posibles incumplimientos</li>
-            <li>Debilidades documentales y operativas</li>
-            <li>Aspectos críticos a fortalecer</li>
+            {{#each servicios_page.svc3_identifica}}
+            <li>{{this}}</li>
+            {{/each}}
           </ul>
         </div>
         <div>
-          <h5>Marco normativo</h5>
+          <h5>{{servicios_page.svc3_normativo_titulo}}</h5>
           <ul>
-            <li>Decreto 1072 de 2015</li>
-            <li>Resolución 0312 de 2019</li>
-            <li>Requisitos por actividad económica</li>
-            <li>Plan de cierre con responsables</li>
+            {{#each servicios_page.svc3_normativo}}
+            <li>{{this}}</li>
+            {{/each}}
           </ul>
         </div>
       </div>
-      <a href="contacto.html" class="btn btn-primary btn-arrow">Solicitar cotización</a>
+      <a href="contacto.html" class="btn btn-primary btn-arrow">{{servicios_page.cta_cotizar}}</a>
     </div>
   </article>
 </section>
@@ -177,47 +171,24 @@
 <section class="block tight wrap">
   <div class="section-head">
     <div class="reveal">
-      <span class="eyebrow" style="margin-bottom:24px;">Líneas de negocio 360°</span>
-      <h2 class="section-title">Y todo lo demás <em>también</em>.</h2>
+      <span class="eyebrow" style="margin-bottom:24px;">{{lineas_negocio.eyebrow}}</span>
+      <h2 class="section-title">{{{lineas_negocio.title_servicios}}}</h2>
     </div>
     <div class="right reveal delay-1">
-      <p class="large">Seis líneas que cubren cada riesgo, cada proceso y cada compromiso normativo de su organización.</p>
+      <p class="large">{{lineas_negocio.description_servicios}}</p>
     </div>
   </div>
 
   <div class="lines-slider reveal" data-slider>
     <div class="lines-slider-viewport">
       <div class="lines-track">
+        {{#each lineas_negocio.items}}
         <div class="line-item">
-          <span class="line-num">01</span>
-          <h4>Diseño e Implementación</h4>
-          <p>Sistemas de gestión de SST, sistemas integrados de gestión y planes estratégicos de seguridad vial.</p>
+          <span class="line-num">{{num}}</span>
+          <h4>{{title}}</h4>
+          <p>{{description}}</p>
         </div>
-        <div class="line-item">
-          <span class="line-num">02</span>
-          <h4>Capacitación y Formación</h4>
-          <p>Talleres, actividades lúdicas y charlas enfocadas en la prevención de cada factor de riesgo presente.</p>
-        </div>
-        <div class="line-item">
-          <span class="line-num">03</span>
-          <h4>Asesorías Jurídicas Laborales</h4>
-          <p>Acompañamiento en gestión empresarial para mantener empresa y procesos en regla con sus trabajadores.</p>
-        </div>
-        <div class="line-item">
-          <span class="line-num">04</span>
-          <h4>Auditorías</h4>
-          <p>Mejora continua con planes de acción reales y efectivos según los requisitos legales aplicables.</p>
-        </div>
-        <div class="line-item">
-          <span class="line-num">05</span>
-          <h4>Acompañamiento SISO</h4>
-          <p>Profesional SISO en sitio acompañando la operación, verificando condiciones y soportando la ejecución del SG-SST.</p>
-        </div>
-        <div class="line-item">
-          <span class="line-num">06</span>
-          <h4>Proveedores</h4>
-          <p>EPP, mediciones ambientales, batería psicosocial, semana de la salud, cursos de 50 y 20 HRS, alturas y espacios confinados.</p>
-        </div>
+        {{/each}}
       </div>
     </div>
     <button type="button" class="slider-arrow slider-prev" aria-label="Servicio anterior">
@@ -237,57 +208,30 @@
   <div class="wrap">
     <div class="section-head">
       <div class="reveal">
-        <span class="eyebrow on-dark" style="margin-bottom:24px;">Metodología</span>
-        <h2 class="section-title">El método que <em>sí funciona</em>.</h2>
+        <span class="eyebrow on-dark" style="margin-bottom:24px;">{{servicios_page.metodologia_eyebrow}}</span>
+        <h2 class="section-title">{{{servicios_page.metodologia_title}}}</h2>
       </div>
       <div class="right reveal delay-1">
-        <p class="large">Una secuencia disciplinada que arranca con un diagnóstico honesto y termina con un sistema que respira sin nuestra presencia.</p>
+        <p class="large">{{servicios_page.metodologia_description}}</p>
       </div>
     </div>
 
     <div class="steps reveal">
+      {{#each servicios_page.metodologia_steps}}
       <div class="step">
-        <h3>Evaluación inicial</h3>
+        <h3>{{title}}</h3>
         <ul>
-          <li>Reconocimiento de la empresa</li>
-          <li>Identificación de procesos</li>
-          <li>Evaluación del estado del SG-SST</li>
-          <li>Identificación de oportunidades de mejora</li>
+          {{#each points}}
+          <li>{{this}}</li>
+          {{/each}}
         </ul>
       </div>
-      <div class="step">
-        <h3>Plan de trabajo</h3>
-        <ul>
-          <li>Diseño o actualización del plan anual</li>
-          <li>Priorización de actividades</li>
-          <li>Cronograma de ejecución</li>
-        </ul>
-      </div>
-      <div class="step">
-        <h3>Implementación y fortalecimiento</h3>
-        <ul>
-          <li>Gestión documental</li>
-          <li>Matriz de peligros</li>
-          <li>Capacitaciones</li>
-          <li>Comités</li>
-          <li>Inspecciones</li>
-          <li>Investigación de accidentes</li>
-        </ul>
-      </div>
-      <div class="step">
-        <h3>Seguimiento y mejora continua</h3>
-        <ul>
-          <li>Seguimiento de avances</li>
-          <li>Actualización documental</li>
-          <li>Reportes MinTrabajo y ARL</li>
-          <li>Mejora continua</li>
-        </ul>
-      </div>
+      {{/each}}
     </div>
 
     <div class="method-highlight reveal delay-1">
-      <span class="method-badge">+85% de avance</span>
-      <p>en aproximadamente <strong>4 meses</strong> de implementación.</p>
+      <span class="method-badge">{{servicios_page.metodologia_highlight_badge}}</span>
+      <p>{{{servicios_page.metodologia_highlight_text}}}</p>
     </div>
   </div>
 </section>
@@ -296,8 +240,8 @@
 <section class="callout">
   <div class="wrap">
     <div class="callout-body reveal">
-      <p>El mejor sistema de gestión es el que un trabajador puede explicar en 30 segundos sin abrir un manual.</p>
-      <span class="attr">Principio de diseño GESSEG</span>
+      <p>{{servicios_page.callout_text}}</p>
+      <span class="attr">{{servicios_page.callout_attribution}}</span>
     </div>
   </div>
 </section>
@@ -306,9 +250,9 @@
 <section class="cta-banner">
   <div class="wrap">
     <div class="cta-grid">
-      <h2 class="section-title reveal">¿Su empresa necesita uno o varios de <em>estos servicios</em>?</h2>
+      <h2 class="section-title reveal">{{{servicios_page.cta_title}}}</h2>
       <div class="cta-actions reveal delay-1">
-        <a href="contacto.html" class="btn btn-primary btn-arrow">Solicitar cotización</a>
+        <a href="contacto.html" class="btn btn-primary btn-arrow">{{servicios_page.cta_button}}</a>
       </div>
     </div>
   </div>
@@ -321,7 +265,7 @@
         <a href="index.html" class="brand">
           <img src="/logo-light.png" alt="GESSEG Colombia S.A.S" class="brand-logo" width="180" height="68">
         </a>
-        <p>Consultoría especializada en Seguridad y Salud en el Trabajo. Acompañamos a las organizaciones colombianas en el cumplimiento normativo y la gestión integral del riesgo laboral.</p>
+        <p>{{footer.about}}</p>
         <div class="footer-socials">
           <a href="https://wa.me/573043900623" target="_blank" rel="noopener" aria-label="WhatsApp">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.4-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 22a10 10 0 0 1-5.1-1.4L2 22l1.4-4.8A10 10 0 1 1 12 22"/></svg>
@@ -370,7 +314,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 GESSEG Colombia S.A.S — Todos los derechos reservados</span>
+      <span>{{footer.copyright}}</span>
       <span><a href="politica-privacidad.html">Política de privacidad</a> · <a href="tratamiento-datos.html">Tratamiento de datos</a></span>
     </div>
   </div>

@@ -1,6 +1,120 @@
+# =========================================================
+# CONTENIDO EDITABLE DEL SITIO GESSEG
+# Edita aquí desde el panel /admin · cualquier cambio se publica en ~30 segundos.
+# Sintaxis útil:
+#   *palabra*   → palabra en cursiva dorada
+#   **palabra** → palabra en negrita
+# =========================================================
+
+# ============= GLOBALES (aparecen en todas las páginas) =============
+nav:
+  cta: "Solicitar diagnóstico"
+
+footer:
+  about: "Consultoría especializada en Seguridad y Salud en el Trabajo. Acompañamos a las organizaciones colombianas en el cumplimiento normativo y la gestión integral del riesgo laboral."
+  copyright: "© 2026 GESSEG Colombia S.A.S — Todos los derechos reservados"
+
+# ============= INICIO · Portada principal =============
 hero:
   title: Soluciones estratégicas en SG-SST *para* organizaciones que buscan avanzar con *seguridad*.
   lede: Acompañamos empresas en Colombia con procesos modernos, organizados y enfocados en prevención, cumplimiento y seguimiento.
+  cta_primary: "Solicitar asesoría"
+  cta_secondary: "Conocer servicios"
+  check_1: "Prevención"
+  check_2: "Cumplimiento"
+  check_3: "Seguimiento continuo"
+
+# ============= INICIO · "Tienes la tranquilidad" =============
+tranquilidad:
+  eyebrow: "Con GESSEG Colombia S.A.S"
+  title: "Tienes la *tranquilidad* de que el SG-SST de tu empresa está al día."
+  subtitle: "Sin vueltas, sin demoras. Un proceso ágil diseñado para empresas que buscan cumplimiento legal real — no solo un fólder con documentos."
+  cta_primary: "Solicitar diagnóstico"
+  cta_secondary: "Escribir por WhatsApp"
+  deadline_month: "JULIO"
+  deadline_year: "2026"
+  deadline_footer: "Vence el plazo para certificar tu SG-SST"
+
+# ============= INICIO · "Continuamos no reiniciamos" =============
+continuamos:
+  eyebrow: "Continuamos, no reiniciamos"
+  title: "No importa *dónde* esté hoy su SG-SST."
+  description: "Nos adaptamos al estado real de su sistema. No le pedimos empezar de cero — partimos de lo que ya tiene y lo llevamos al cumplimiento."
+  levels:
+    - state: "Sin implementación"
+      graphic: "/SIN IMPLEMENTACION.png"
+      title: "Estructuramos"
+      description: "Diseñamos el SG-SST desde cero según su sector, número de trabajadores y nivel de riesgo."
+    - state: "Con avances parciales"
+      graphic: "/CON AVANCES PARCIALES.png"
+      title: "Fortalecemos y actualizamos"
+      description: "Diagnosticamos lo existente, identificamos vacíos y completamos el sistema con base en la norma vigente."
+    - state: "Implementación avanzada"
+      graphic: "/IMPLEMENTACIÓN AVANZADA.png"
+      title: "Hacemos seguimiento y mejoramos"
+      description: "Aseguramos la mejora continua con indicadores, auditorías internas y actualización ante cambios normativos."
+
+# ============= INICIO + SERVICIOS · Líneas de negocio 360° =============
+lineas_negocio:
+  eyebrow: "Líneas de negocio 360°"
+  title_home: "Un ecosistema *completo* para su empresa."
+  description_home: "Más allá de los servicios principales, integramos seis líneas que cubren cada riesgo, cada proceso y cada compromiso de su organización."
+  title_servicios: "Y todo lo demás *también*."
+  description_servicios: "Seis líneas que cubren cada riesgo, cada proceso y cada compromiso normativo de su organización."
+  items:
+    - num: "01"
+      title: "Diseño e Implementación"
+      description: "Sistemas de gestión de SST, sistemas integrados y planes estratégicos de seguridad vial, alineados al sector de cada cliente."
+    - num: "02"
+      title: "Capacitación y Formación"
+      description: "Talleres, actividades lúdicas y charlas enfocadas en la prevención de cada factor de riesgo presente en su organización."
+    - num: "03"
+      title: "Asesorías Jurídicas Laborales"
+      description: "Acompañamiento en gestión empresarial para mantener empresa y procesos en regla con sus trabajadores."
+    - num: "04"
+      title: "Auditorías"
+      description: "Mejora continua con planes de acción reales y efectivos, de acuerdo con los requisitos legales aplicables."
+    - num: "05"
+      title: "Acompañamiento SISO"
+      description: "Profesional SISO en sitio acompañando la operación, verificando condiciones y soportando la ejecución del SG-SST."
+    - num: "06"
+      title: "Proveedores"
+      description: "EPP, mediciones ambientales, batería psicosocial, semana de la salud, cursos certificados de 50 y 20 HRS y trabajo en alturas."
+
+# ============= INICIO · "¿Por qué somos diferentes?" =============
+diferencias:
+  title: "¿Por qué somos *diferentes*?"
+  otras_title: "Otras empresas"
+  otras_items:
+    - "No pueden soportar otros requisitos legales"
+    - "Entregan tareas que sobrecargan al cliente"
+    - "Al irse, las evidencias se van también"
+    - "Cumplimiento parcial"
+  gesseg_title: "GESSEG Colombia S.A.S"
+  gesseg_items:
+    - "Vamos más allá de lo mínimo"
+    - "Proceso ágil y sin sobrecargas operativas"
+    - "Las evidencias están en poder del cliente"
+    - "Servicio integral"
+
+# ============= INICIO · Callout (frase destacada) =============
+callout_home:
+  text: "El SG-SST no se reduce a un fólder con documentos. Es la diferencia entre que un trabajador llegue a casa esa noche, o no."
+  attribution: "Equipo técnico GESSEG"
+
+# ============= INICIO · Sección FAQ =============
+faq_section:
+  eyebrow: "Preguntas frecuentes"
+  title: "Lo que *siempre* nos preguntan."
+  description: "Respuestas claras a las dudas más comunes de empresas que están considerando trabajar con nosotros."
+
+# ============= INICIO · CTA banner final =============
+cta_home:
+  title: "¿Necesita un *diagnóstico* inicial sin compromiso?"
+  cta_primary: "Agendar diagnóstico"
+  cta_secondary: "Conocer servicios"
+
+# ============= SERVICIOS DESTACADOS (aparecen en /, /servicios.html) =============
 featured_services:
   - id: sgsst
     title: Implementación SG-SST
@@ -35,7 +149,132 @@ featured_services:
       - Preparación ante visitas y requerimientos
     photo: /servicio-auditorias.jpg
     photo_alt: Reunión de auditoría interna del SG-SST con equipo directivo
+
+# ============= PÁGINA SERVICIOS =============
+servicios_page:
+  hero_title: "Servicios que *realmente* funcionan en su empresa."
+  hero_lede: "No entregamos plantillas. Construimos sistemas vivos, defendibles ante la autoridad y útiles en el día a día de su operación."
+  insignia_title: "Tres servicios *insignia*."
+  insignia_description: "Los servicios que más solicitan nuestros clientes. Conozca lo que incluyen, los resultados esperados y el valor real que entregan."
+  svc1_eyebrow: "Servicio insignia"
+  svc1_intro: "Servicio integral ejecutado por especialistas en SST. GESSEG asume el diseño, implementación y mantenimiento del sistema, asegurando cumplimiento legal real y eliminando la carga operativa para su empresa."
+  svc1_resultados_titulo: "Resultados"
+  svc1_resultados:
+    - "+85% de avance en aproximadamente 4 meses"
+    - "Cumplimiento Decreto 1072 / Resolución 0312"
+    - "Certificado de cumplimiento del SG-SST"
+    - "Preparación ante ARL, Mintrabajo y auditorías"
+  svc1_beneficios_titulo: "Beneficios"
+  svc1_beneficios:
+    - "Tercerización completa del SG-SST"
+    - "Acompañamiento experto permanente"
+    - "Optimización de la reinversión de ARL"
+    - "Habilitación para licitaciones y contratos"
+  svc2_eyebrow: "Paquete integral"
+  svc2_intro: "Diseño e implementación de un plan funcional, alineado al SG-SST y la normativa colombiana. Preparamos su empresa para responder con certeza ante cualquier evento que afecte personas, instalaciones o continuidad operativa."
+  svc2_incluye_titulo: "Incluye"
+  svc2_incluye:
+    - "Visita inicial de verificación"
+    - "Análisis de vulnerabilidad"
+    - "Procedimientos por tipo de emergencia"
+    - "Planos de evacuación y socialización"
+  svc2_cortesias_titulo: "Cortesías"
+  svc2_cortesias:
+    - "Dotación básica para brigada"
+    - "Simulacro de evacuación"
+    - "Entrega 100% digital"
+    - "Tiempo estimado: 15 días hábiles"
+  svc3_eyebrow: "Diagnóstico real"
+  svc3_intro: "Evaluamos el estado real de su SG-SST frente a la normativa vigente. Identificamos oportunidades de mejora, posibles incumplimientos y los aspectos críticos que deben fortalecerse."
+  svc3_identifica_titulo: "Identificamos"
+  svc3_identifica:
+    - "Oportunidades de mejora"
+    - "Posibles incumplimientos"
+    - "Debilidades documentales y operativas"
+    - "Aspectos críticos a fortalecer"
+  svc3_normativo_titulo: "Marco normativo"
+  svc3_normativo:
+    - "Decreto 1072 de 2015"
+    - "Resolución 0312 de 2019"
+    - "Requisitos por actividad económica"
+    - "Plan de cierre con responsables"
+  cta_cotizar: "Solicitar cotización"
+  metodologia_eyebrow: "Metodología"
+  metodologia_title: "El método que *sí funciona*."
+  metodologia_description: "Una secuencia disciplinada que arranca con un diagnóstico honesto y termina con un sistema que respira sin nuestra presencia."
+  metodologia_steps:
+    - title: "Evaluación inicial"
+      points:
+        - "Reconocimiento de la empresa"
+        - "Identificación de procesos"
+        - "Evaluación del estado del SG-SST"
+        - "Identificación de oportunidades de mejora"
+    - title: "Plan de trabajo"
+      points:
+        - "Diseño o actualización del plan anual"
+        - "Priorización de actividades"
+        - "Cronograma de ejecución"
+    - title: "Implementación y fortalecimiento"
+      points:
+        - "Gestión documental"
+        - "Matriz de peligros"
+        - "Capacitaciones"
+        - "Comités"
+        - "Inspecciones"
+        - "Investigación de accidentes"
+    - title: "Seguimiento y mejora continua"
+      points:
+        - "Seguimiento de avances"
+        - "Actualización documental"
+        - "Reportes MinTrabajo y ARL"
+        - "Mejora continua"
+  metodologia_highlight_badge: "+85% de avance"
+  metodologia_highlight_text: "en aproximadamente **4 meses** de implementación."
+  callout_text: "El mejor sistema de gestión es el que un trabajador puede explicar en 30 segundos sin abrir un manual."
+  callout_attribution: "Principio de diseño GESSEG"
+  cta_title: "¿Su empresa necesita uno o varios de *estos servicios*?"
+  cta_button: "Solicitar cotización"
+
+# ============= PÁGINA NOSOTROS =============
+nosotros_page:
+  hero_title: "Una firma *colombiana*, construida sobre evidencia y disciplina técnica."
+  hero_lede: "Llevamos más de una década acompañando a empresas en el diseño, implementación y mejora continua de sus Sistemas de Gestión de Seguridad y Salud en el Trabajo."
+  quienes_eyebrow: "Quiénes somos"
+  quienes_title: "Convertimos la *norma* en una práctica diaria, medible y sostenible."
+  quienes_intro: "GESSEG Colombia S.A.S es una consultora especializada en Seguridad y Salud en el Trabajo. Nuestro equipo está conformado por profesionales licenciados en SST, ingenieros, médicos y psicólogos con experiencia operativa en sectores de alto riesgo."
+  quienes_outro: "Trabajamos con un principio innegociable: cada documento, cada inspección y cada capacitación debe traducirse en una decisión que reduzca el riesgo real al que está expuesto un trabajador. La gestión documental es un medio, no un fin."
+  valores_eyebrow: "Lo que nos define"
+  valores_title: "Cuatro *principios* que guían cada proyecto."
+  valores:
+    - num: "01"
+      title: "Rigor técnico"
+      description: "Cada documento que firmamos es defendible ante auditoría, ARL o Ministerio de Trabajo. Citamos norma, evidencia y metodología."
+    - num: "02"
+      title: "Verdad operativa"
+      description: "El riesgo se evalúa en piso, no en escritorio. Nuestros profesionales están en campo con el equipo del cliente, observando la operación real."
+    - num: "03"
+      title: "Acompañamiento sostenido"
+      description: "Un SG-SST sin mantenimiento muere en 6 meses. Construimos planes de seguimiento que viven en la rutina mensual de la organización."
+    - num: "04"
+      title: "Transparencia con el cliente"
+      description: "Si un hallazgo es crítico, lo decimos sin matices. Si una norma cambia, advertimos antes de que el riesgo de incumplimiento sea suyo."
+  callout_text: "Una empresa madura en SST no es la que tiene los documentos al día. Es la que los tiene al día porque los usa."
+  callout_attribution: "Filosofía GESSEG"
+  cta_title: "Conozca cómo podemos *aportar* a su organización."
+  cta_primary: "Agendar reunión"
+  cta_secondary: "Ver servicios"
+
+# ============= PÁGINA PLANES =============
 plans:
+  hero_title: "Planes que se *ajustan* a su empresa."
+  hero_lede: "El plan ideal depende de las características reales de su organización. Diagnosticamos juntos y le proponemos lo que necesita — sin paquetes prefabricados."
+  criteria_label: "El valor se define según"
+  criteria_items:
+    - "Cantidad de trabajadores"
+    - "Clase de riesgo de la actividad económica"
+    - "Cantidad de vehículos al servicio de la organización"
+    - "Cantidad de conductores al servicio de la organización"
+  section_title: "Sistema de Gestión SST"
   promo_label: 50% OFF · primeros 2 meses
   tiers:
     - id: '1'
@@ -69,6 +308,7 @@ plans:
     - Contrato inicial por 6 meses
   vial_title: Plan Estratégico de Seguridad Vial
   vial_description: Adicionalmente si tu empresa está obligada a Diseñar e Implementar el PESV (Plan Estratégico de Seguridad Vial) de acuerdo a la Resolución 40595 de 2022 para empresas con vehículos o conductores. Se calcula sobre el plan SG-SST base contratado.
+  vial_eyebrow: "Complemento"
   vial_levels:
     - name: Básico
       increment: +25%
@@ -77,6 +317,11 @@ plans:
     - name: Avanzado
       increment: +45%
   disclaimer: '* El descuento del 50% se mantiene durante los primeros 2 meses del contrato. Los precios pueden variar según el diagnóstico inicial de su empresa.'
+  cta_title: "¿Listo para empezar?"
+  cta_primary: "Solicitar cotización"
+  cta_secondary: "Escribir por WhatsApp"
+
+# ============= FAQ (aparece en inicio) =============
 faq:
   - question: ¿La asesoría con GESSEG tiene costo?
     answer: '**No.** La reunión incluye un diagnóstico inicial y es completamente gratuita, para que conozcas exactamente qué necesita tu empresa.'
@@ -86,6 +331,40 @@ faq:
     answer: '**No.** La ARL brinda acompañamiento, pero no implementa el sistema por completo. Nosotros te ayudamos a gestionar ese apoyo de acuerdo a los aportes que realiza tu empresa, para que realmente obtengas beneficios.'
   - question: ¿El SG-SST me sirve para licitaciones o contratos?
     answer: '**Sí.** Muchas empresas exigen el cumplimiento del SG-SST como requisito para contratar o participar en procesos comerciales.'
+
+# ============= PÁGINA CONTACTO =============
+contacto_page:
+  hero_title: "Hablemos sobre el *SG-SST* de su organización."
+  hero_lede: "Cuéntenos brevemente su situación actual y agendamos una conversación inicial sin costo. Si su empresa requiere acción urgente, escríbanos directamente al WhatsApp."
+  info_eyebrow: "Datos de contacto"
+  info_phone_title: "Llámenos"
+  info_phone_hint: "Atención lunes a viernes, 8:00 a.m. – 6:00 p.m."
+  info_email_title: "Escríbanos"
+  info_email_hint: "Respondemos en menos de 24 horas hábiles."
+  info_whatsapp_title: "WhatsApp Business"
+  info_whatsapp_hint: "Para consultas rápidas y agendamiento inmediato."
+  info_office_title: "Oficina principal"
+  info_office_hint: "Atención presencial con cita previa."
+  info_coverage_title: "Cobertura"
+  info_coverage_text: "Todo el territorio nacional"
+  info_coverage_hint: "Bogotá, Medellín, Cali, Barranquilla, Cartagena, Bucaramanga y resto del país."
+  form_eyebrow: "Solicitud de diagnóstico"
+  form_title: "Cuéntenos su necesidad."
+  form_intro: "Complete el formulario y un asesor lo contactará en menos de 24 horas hábiles."
+  form_disclaimer: "Su solicitud se abrirá en WhatsApp para enviarse a nuestro asesor. Al enviar acepta nuestra política de tratamiento de datos (Ley 1581 de 2012)."
+  form_submit: "Enviar por WhatsApp"
+  faq_title: "Antes de *escribirnos*."
+  faqs:
+    - question: "¿El diagnóstico inicial tiene costo?"
+      answer: "No. La primera reunión de diagnóstico, ya sea presencial en Bogotá o virtual, es sin costo. Allí evaluamos su situación actual y definimos si nuestros servicios encajan con lo que necesita."
+    - question: "¿Atienden empresas pequeñas (menos de 10 trabajadores)?"
+      answer: "Sí. La Resolución 0312 de 2019 define estándares diferenciados para empresas de hasta 10, de 11 a 50 y de más de 50 trabajadores. Tenemos paquetes ajustados a cada tamaño."
+    - question: "¿Trabajan fuera de Bogotá?"
+      answer: "Sí. Atendemos proyectos en todo el territorio nacional, con presencia en sitio cuando el alcance lo requiere y modalidad híbrida para los componentes documentales."
+    - question: "¿Qué documentos necesitan para empezar?"
+      answer: "Para el diagnóstico inicial nos basta con la información básica de la empresa, número de trabajadores y actividad económica. Si ya cuenta con un SG-SST documentado, su revisión nos permite hacer una evaluación más precisa."
+
+# ============= DATOS DE CONTACTO (aparecen en todo el sitio) =============
 contact:
   phone: +57 304 390 0623
   phone_url: tel:+573043900623
@@ -93,6 +372,8 @@ contact:
   email: contacto@gessegcolombia.com
   city: Bogotá D.C., Colombia
   hours: Lun – Vie · 8:00am a 5:00pm · Sáb · 8:00am a 1:00pm
+
+# ============= REDES SOCIALES =============
 social:
   instagram: https://www.instagram.com/gesseg_colombia
   facebook: https://www.facebook.com/share/18q2nj233A/

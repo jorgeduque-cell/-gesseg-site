@@ -44,7 +44,7 @@
       <li><a href="planes.html" class="active">Planes</a></li>
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
-    <a href="contacto.html" class="btn btn-primary nav-cta btn-arrow">Solicitar diagnóstico</a>
+    <a href="contacto.html" class="btn btn-primary nav-cta btn-arrow">{{nav.cta}}</a>
     <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-nav"><span></span></button>
   </nav>
 </header>
@@ -53,8 +53,8 @@
 <section class="hero-interior">
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Inicio</a> &nbsp;/&nbsp; Planes</div>
-    <h1>Planes que se <em>ajustan</em> a su empresa.</h1>
-    <p class="lede">El plan ideal depende de las características reales de su organización. Diagnosticamos juntos y le proponemos lo que necesita — sin paquetes prefabricados.</p>
+    <h1>{{{plans.hero_title}}}</h1>
+    <p class="lede">{{plans.hero_lede}}</p>
   </div>
 </section>
 
@@ -63,18 +63,18 @@
 
   <!-- Criterios -->
   <div class="plan-criteria reveal">
-    <span class="plan-criteria-label">El valor se define según</span>
+    <span class="plan-criteria-label">{{plans.criteria_label}}</span>
     <ul>
-      <li><span class="num">1</span> Cantidad de trabajadores</li>
-      <li><span class="num">2</span> Clase de riesgo de la actividad económica</li>
-      <li><span class="num">3</span> Cantidad de vehículos al servicio de la organización</li>
-      <li><span class="num">4</span> Cantidad de conductores al servicio de la organización</li>
+      <li><span class="num">1</span> {{plans.criteria_items.[0]}}</li>
+      <li><span class="num">2</span> {{plans.criteria_items.[1]}}</li>
+      <li><span class="num">3</span> {{plans.criteria_items.[2]}}</li>
+      <li><span class="num">4</span> {{plans.criteria_items.[3]}}</li>
     </ul>
   </div>
 
   <!-- SG-SST tiers -->
   <div class="plan-section-head reveal">
-    <h3>Sistema de Gestión SST</h3>
+    <h3>{{plans.section_title}}</h3>
     <span class="plan-promo">{{plans.promo_label}}</span>
   </div>
 
@@ -104,7 +104,7 @@
   <!-- Plan Vial add-on -->
   <div class="plan-vial reveal">
     <div class="plan-vial-intro">
-      <span class="eyebrow">Complemento</span>
+      <span class="eyebrow">{{plans.vial_eyebrow}}</span>
       <h3>{{plans.vial_title}}</h3>
       <p>{{plans.vial_description}}</p>
     </div>
@@ -125,10 +125,10 @@
 <section class="cta-banner">
   <div class="wrap">
     <div class="cta-grid">
-      <h2 class="section-title reveal">¿Listo para empezar?</h2>
+      <h2 class="section-title reveal">{{plans.cta_title}}</h2>
       <div class="cta-actions reveal delay-1">
-        <a href="contacto.html" class="btn btn-primary btn-arrow">Solicitar cotización</a>
-        <a href="https://wa.me/{{contact.whatsapp}}" target="_blank" rel="noopener" class="btn btn-ghost">Escribir por WhatsApp</a>
+        <a href="contacto.html" class="btn btn-primary btn-arrow">{{plans.cta_primary}}</a>
+        <a href="https://wa.me/{{contact.whatsapp}}" target="_blank" rel="noopener" class="btn btn-ghost">{{plans.cta_secondary}}</a>
       </div>
     </div>
   </div>
@@ -141,7 +141,7 @@
         <a href="index.html" class="brand">
           <img src="/logo-light.png" alt="GESSEG Colombia S.A.S" class="brand-logo" width="180" height="68">
         </a>
-        <p>Consultoría especializada en Seguridad y Salud en el Trabajo. Acompañamos a las organizaciones colombianas en el cumplimiento normativo y la gestión integral del riesgo laboral.</p>
+        <p>{{footer.about}}</p>
         <div class="footer-socials">
           <a href="https://wa.me/{{contact.whatsapp}}" target="_blank" rel="noopener" aria-label="WhatsApp">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.4-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 22a10 10 0 0 1-5.1-1.4L2 22l1.4-4.8A10 10 0 1 1 12 22"/></svg>
@@ -190,7 +190,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 GESSEG Colombia S.A.S — Todos los derechos reservados</span>
+      <span>{{footer.copyright}}</span>
       <span><a href="politica-privacidad.html">Política de privacidad</a> · <a href="tratamiento-datos.html">Tratamiento de datos</a></span>
     </div>
   </div>
